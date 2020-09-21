@@ -22,11 +22,11 @@ class User < ApplicationRecord
     
 
     def self.generate_session_token 
-        SecureRandom::urlsafe_base64()
+        SecureRandom::urlsafe_base64(16)
     end
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by_username(username)
+    def self.find_by_credentials(email, password)
+        user = User.find_by_email(email)
         if user && user.is_password?(password)
             return user
         else 
@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
     def password=(password)
         @password = password
-        self.password_digest = Bcrypt::Password.create(password)
+        self.password_digest = BCrypt::Password.create(password)
     end
 
     def is_password?(password)
