@@ -29,12 +29,12 @@ class SessionForm extends React.Component {
             return (
                 <div className="signup-modal">
                     <h2>Let's get started</h2>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <label htmlFor="firstName"> First name
                             <input type="text" id="firstName" value={this.state.firstName} onChange={this.handleChange('firstName')}/>
                         </label>
                         <label htmlFor="lastName"> Last name
-                            <input type="text" id="lastName" value={this.state.firstName} onChange={this.handleChange('lastName')} />
+                            <input type="text" id="lastName" value={this.state.lastName} onChange={this.handleChange('lastName')} />
                         </label>
                         <p>Enter your name as it appears on your drivers license</p>
                         <label htmlFor="email"> Email
@@ -69,15 +69,19 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-modal">
                     <h2>Welcome back</h2>
-                    <p>Email</p>
-                    <label htmlFor="email">
+                    <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="email">Email
                         <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')} />
                     </label>
                     <br/>
-                    <p>Password</p>
-                    <label htmlFor="password">
+                    <br/>
+                    <label htmlFor="password"> Password
                         <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
                     </label>
+                    <br/>
+                    <br/>
+                    <button type="submit" className="submit-button">Login</button>
+                    </form>
                     <br />
                     <br />
                     <div>

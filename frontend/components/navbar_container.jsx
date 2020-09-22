@@ -3,14 +3,20 @@ import NavBar from './navbar';
 import { logout } from '../actions/session_actions';
 
 const mSTP = state => {
-   return {
-       loggedIn: Boolean(state.session.id)
+   if (state.session.id) {
+       return {
+           currentUser: state.entities.users[state.session.id]
+       }
+   } else {
+       return {
+           currentUser: null
+       }
    }
 }
 
 const mDTP = dispatch => {
     return {
-        action: () => dispatch(logout())
+        logout: () => dispatch(logout())
     }
 }
 

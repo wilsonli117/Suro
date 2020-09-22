@@ -5,12 +5,11 @@ const _nullSession = {
 }
 
 const sessionReducer = (state = _nullSession, action) => {
-    
     Object.freeze(state);
-
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
-            return {id: action.currentUser.id}
+            const userId = parseInt(Object.keys(action.currentUser)[0]);
+            return {id: userId}
 
         case LOGOUT_CURRENT_USER:
             return _nullSession;
