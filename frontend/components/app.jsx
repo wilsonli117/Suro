@@ -8,7 +8,6 @@ const App = () => {
     return (
         <div>
             <header>
-            <h1>SURO TEST FROM APP COMPONENT</h1>
             <NavBar />
             </header>
 
