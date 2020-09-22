@@ -17,14 +17,32 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidUpdate() {
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+       this.emailInputError ? email.className = 'error' : email.className = "" ;
+        this.passwordInputError ? password.className = 'error' : password.className = "" ;
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state);
     }
 
+    emailCheck(email) {
+        const splitOnAt = email.split('@')
+        const splitOnDot = email.split('.')
+        if (!email.includes('@') || !email.includes('.') || splitOnAt.length > 2 || splitOnDot[splitOnDot.length - 1].length < 2 || !email.length) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     handleChange(field) {
         return e => {
-            (e.currentTarget.value.length < 8 && e.currentTarget.value != 0) ? this.passwordInputError = true : this.passwordInputError = false;
+            (field == 'password' && e.currentTarget.value.length < 6 && e.currentTarget.value != 0) ? this.passwordInputError = true : this.passwordInputError = false;
+            (field === 'email' && !this.emailCheck(e.currentTarget.value)) ? this.emailInputError = true : this.emailInputError = false;
             return this.setState({ [field]: e.currentTarget.value })
         }
     }
@@ -43,14 +61,14 @@ class SessionForm extends React.Component {
                         </label>
                         <p>Enter your name as it appears on your drivers license</p>
                         <label htmlFor="email"> Email
-                            <input type="text" id="email" className={this.emailInputError} value={this.state.email} onChange={this.handleChange('email')}/>
+                            <input type="email" id="email" value={this.state.email} onChange={this.handleChange('email')}/>
                         </label>
                         <br/>
                         <br/>
                         <label htmlFor="password">Password
                             <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')}/>
                         </label>
-                            {this.passwordInputErrors ? <div>Please enter at least 8 characters</div> : null } 
+                            {this.passwordInputError ? <div>Please enter at least 6 characters</div> : null } 
                         <br/>
                         <br/>
                         <input type="checkbox" id="terms" />
@@ -84,6 +102,7 @@ class SessionForm extends React.Component {
                     <label htmlFor="password"> Password
                         <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
                     </label>
+                        {this.passwordInputError ? <div>Please enter at least 8 characters</div> : null} 
                     <br/>
                     <br/>
                     <button type="submit" className="submit-button">Login</button>
