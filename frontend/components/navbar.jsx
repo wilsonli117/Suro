@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { logout } from '../actions/session_actions';
 
 const NavBar = props => {
     if (!props.currentUser) {
         return (
-            <nav>
+            <nav className="nav-bar">
                 <Link to="/">Logo Place Holder</Link>
 
                 <ul>
@@ -20,7 +19,7 @@ const NavBar = props => {
         )
     } else {
         return (
-            <nav>
+            <nav className="nav-bar">
                 <Link to="/">Logo Place Holder</Link>
 
                 <ul>

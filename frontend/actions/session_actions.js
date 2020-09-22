@@ -1,4 +1,4 @@
-import { signUp, logIn, logOut } from '../util/session_api_util';
+import { signUp, logIn, logOut, demoLogIn } from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -31,4 +31,7 @@ export const logout = () => dispatch => logOut()
     .then(() => dispatch(logoutCurrentUser()));
 
 export const signup = user => dispatch => signUp(user)
+    .then(user => dispatch(receiveCurrentUser(user)));
+
+export const demologin = () => dispatch => demoLogIn()
     .then(user => dispatch(receiveCurrentUser(user)));

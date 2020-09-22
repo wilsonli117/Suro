@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
     componentDidUpdate() {
         const email = document.getElementById('email');
         const password = document.getElementById('password');
-       this.emailInputError ? email.className = 'error' : email.className = "" ;
+        this.emailInputError ? email.className = 'error' : email.className = "" ;
         this.passwordInputError ? password.className = 'error' : password.className = "" ;
     }
 
@@ -75,7 +75,7 @@ class SessionForm extends React.Component {
                         <label htmlFor="terms">I agree to the <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</label>
                         <br/>
                         <br/>
-                        <input type="checkbox" id="promo" checked/>
+                        <input type="checkbox" id="promo" defaultChecked/>
                         <label htmlFor="promo">Yes, send me deals, discounts and updates!</label>
                         <br/>
                         <br/>
@@ -107,6 +107,8 @@ class SessionForm extends React.Component {
                     <br/>
                     <button type="submit" className="submit-button">Login</button>
                     </form>
+                    <p>or</p>
+                    <button onClick={this.props.demologin}>Demo Login</button>
                     <ul className="session-errors">
                         {this.props.errors.map((error, index) => <li key={index}>{error}</li>)}
                     </ul>

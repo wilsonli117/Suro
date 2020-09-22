@@ -31,3 +31,18 @@ export const logOut = () => {
         })
     );
 };
+
+export const demoLogIn = () => {
+    return (
+        $.ajax({
+            url: "api/session",
+            method: "POST",
+            data: {
+                user: {
+                    email: "demo@gmail.com",
+                    password: "asdf123"
+                }
+            }
+        })
+    )
+}
