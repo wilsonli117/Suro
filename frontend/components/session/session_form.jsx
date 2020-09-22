@@ -30,30 +30,37 @@ class SessionForm extends React.Component {
                 <div className="signup-modal">
                     <h2>Let's get started</h2>
                     <form>
-
-                        <label for="firstName">First name
+                        <label htmlFor="firstName"> First name
                             <input type="text" id="firstName" value={this.state.firstName} onChange={this.handleChange('firstName')}/>
                         </label>
-                        <label for="lastName"> Last name
+                        <label htmlFor="lastName"> Last name
                             <input type="text" id="lastName" value={this.state.firstName} onChange={this.handleChange('lastName')} />
                         </label>
                         <p>Enter your name as it appears on your drivers license</p>
-                        <label for="email">
+                        <label htmlFor="email"> Email
                             <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')}/>
                         </label>
-                        <label for="password">
+                        <br/>
+                        <br/>
+                        <label htmlFor="password">Password
                             <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')}/>
                         </label>
+                        <br/>
+                        <br/>
                         <input type="checkbox" id="terms"/>
-                        <label for="terms">I agree to the <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</label>
+                        <label htmlFor="terms">I agree to the <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</label>
+                        <br/>
+                        <br/>
                         <input type="checkbox" id="promo"/>
-                        <label for="promo">Yes, send me deals, discounts and updates!</label>
+                        <label htmlFor="promo">Yes, send me deals, discounts and updates!</label>
+                        <br/>
+                        <br/>
                         <button type="submit" className="submit-button">Sign up</button>
                         <br/>
                         <br/>
                         <div>
                             <p>Already have an account?</p>
-                            <Button><Redirect to="/login">Log in</Redirect></Button>
+                            <button><Link to="/login">Log in</Link></button>
                         </div>
                     </form>
                 </div>
@@ -62,17 +69,20 @@ class SessionForm extends React.Component {
             return (
                 <div className="login-modal">
                     <h2>Welcome back</h2>
-                    <label for="email">
+                    <p>Email</p>
+                    <label htmlFor="email">
                         <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')} />
                     </label>
-                    <label for="password">
+                    <br/>
+                    <p>Password</p>
+                    <label htmlFor="password">
                         <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
                     </label>
                     <br />
                     <br />
                     <div>
                         <p>Don't have an account?</p>
-                        <Button><Redirect to="/login">Log in</Redirect></Button>
+                        <button><Link to="/signup">Sign up</Link></button>
                     </div>
                 </div>
             )

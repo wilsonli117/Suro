@@ -6,13 +6,13 @@ const NavBar = props => {
     if (!props.loggedIn) {
         return (
             <nav>
-                <Link>Logo Place Holder</Link>
+                <Link to="/">Logo Place Holder</Link>
 
                 <ul>
-                    <Link>List your car</Link>
+                    <li><Link to="/">List your car</Link></li>
                     <li>Learn more</li>
-                    <Link>Log in</Link>
-                    <Link>Sign up</Link>
+                    <li><Link to="/login">Log in</Link></li>
+                    <li><Link to="/signup">Sign up</Link></li>
                     <li>User Icon</li>
                 </ul>
             </nav>
