@@ -5,14 +5,14 @@ const NavBar = props => {
     if (!props.currentUser) {
         return (
             <nav className="nav-bar">
-                <Link to="/">Logo Place Holder</Link>
+                <Link className="logo" to="/"><img src="/assets/logo.png" alt="Suro"/></Link>
 
                 <ul>
                     <li><Link to="">List your car</Link></li>
                     <li className="nav-learn">Learn more</li>
                     <li><Link to="/login">Log in</Link></li>
                     <li><Link to="/signup">Sign up</Link></li>
-                    <li>User Icon</li>
+                    <i className="far fa-user-circle fa-2x"></i>
                 </ul>
        
             </nav>
@@ -20,7 +20,7 @@ const NavBar = props => {
     } else {
         return (
             <nav className="nav-bar">
-                <Link to="/">Logo Place Holder</Link>
+                <Link className="logo" to="/"><img src="/assets/logo.png" alt="Suro" /></Link>
 
                 <ul>
                     

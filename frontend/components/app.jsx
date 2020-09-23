@@ -10,6 +10,7 @@ const App = () => {
             <header>
             <NavBar />
             </header>
+            <div><img src="/assets/gtr.jpg" alt="GT-R" className="car-pic"/></div>
 
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
