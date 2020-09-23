@@ -21,12 +21,13 @@ class SessionForm extends React.Component {
         const email = document.getElementById('email');
         const password = document.getElementById('password');
         this.emailInputError ? email.className = 'error' : email.className = "" ;
-        this.passwordInputError ? password.className = 'error' : password.className = "" ;
+        this.passwordInputError && this.props.formType === 'signup' ? password.className = 'error' : password.className = "" ;
+        if (this.props.loggedIn) this.props.closeModal();
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state);
+        this.props.action(this.state)
     }
 
     emailCheck(email) {
@@ -71,7 +72,7 @@ class SessionForm extends React.Component {
                             {this.passwordInputError ? <div>Please enter at least 6 characters</div> : null } 
                         <br/>
                         <br/>
-                        <input type="checkbox" id="terms" />
+                        <input type="checkbox" id="terms" required/>
                         <label htmlFor="terms">I agree to the <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</label>
                         <br/>
                         <br/>
@@ -84,7 +85,7 @@ class SessionForm extends React.Component {
                         <br/>
                         <div>
                             <p>Already have an account?</p>
-                            <button><Link to="/login">Log in</Link></button>
+                            {this.props.logInForm}
                         </div>
                     </form>
                 </div>
@@ -94,29 +95,23 @@ class SessionForm extends React.Component {
                 <div className="login-modal">
                     <h2>Welcome back</h2>
                     <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email">Email
-                        <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')} />
-                    </label>
-                    <br/>
-                    <br/>
-                    <label htmlFor="password"> Password
-                        <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
-                    </label>
-                        {this.passwordInputError ? <div>Please enter at least 8 characters</div> : null} 
-                    <br/>
-                    <br/>
-                    <button type="submit" className="submit-button">Login</button>
+                    <label htmlFor="email">Email</label>
+                    <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')} />
+               
+                    <label htmlFor="password"> Password </label>
+                    <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
+                 
+                    <button type="submit" className="submit-button">Log in</button>
                     </form>
                     <p>or</p>
-                    <button onClick={this.props.demologin}>Demo Login</button>
+                    <button className="demo-button" onClick={this.props.demologin}>Log in as Demo User</button>
                     <ul className="session-errors">
-                        {this.props.errors.map((error, index) => <li key={index}>{error}</li>)}
+                    {this.props.errors.map((error, index) => <li key={index}><i class="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
                     </ul>
-                    <br />
-                    <br />
+                
                     <div>
                         <p>Don't have an account?</p>
-                        <button><Link to="/signup">Sign up</Link></button>
+                        {this.props.signUpForm}
                     </div>
                 </div>
             )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { openModal } from '../actions/modal_actions';
 
 const NavBar = props => {
     if (!props.currentUser) {
@@ -10,8 +11,8 @@ const NavBar = props => {
                 <ul>
                     <li><Link to="">List your car</Link></li>
                     <li className="nav-learn">Learn more</li>
-                    <li><Link to="/login">Log in</Link></li>
-                    <li><Link to="/signup">Sign up</Link></li>
+                    <li><a onClick={() => props.openModal('login')}>Log in</a></li>
+                    <li><a onClick={() => props.openModal('signup')}>Sign up</a></li>
                     <i className="far fa-user-circle fa-2x"></i>
                 </ul>
        
