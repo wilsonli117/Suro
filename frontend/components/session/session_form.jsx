@@ -54,36 +54,34 @@ class SessionForm extends React.Component {
                 <div className="signup-modal">
                     <h2>Let's get started</h2>
                     <form onSubmit={this.handleSubmit}>
-                        <label htmlFor="firstName"> First name
-                            <input type="text" id="firstName" value={this.state.firstName} onChange={this.handleChange('firstName')}/>
-                        </label>
-                        <label htmlFor="lastName"> Last name
-                            <input type="text" id="lastName" value={this.state.lastName} onChange={this.handleChange('lastName')} />
-                        </label>
-                        <p>Enter your name as it appears on your drivers license</p>
-                        <label htmlFor="email"> Email
+                        <div className="name">
+                            <div className="first-name">
+                                <label htmlFor="firstName">First name</label>
+                                <input type="text" id="firstName" autoFocus value={this.state.firstName} onChange={this.handleChange('firstName')}/>
+                            </div>
+                            <div className="last-name">
+                                <label htmlFor="lastName">Last name</label>
+                                <input type="text" id="lastName" value={this.state.lastName} onChange={this.handleChange('lastName')} />
+                            </div>
+                        </div>
+                        <p className="license">Enter your name as it appears on your drivers license</p>
+                        <div className="details">
+                            <label htmlFor="email"> Email</label>
                             <input type="email" id="email" value={this.state.email} onChange={this.handleChange('email')}/>
-                        </label>
-                        <br/>
-                        <br/>
-                        <label htmlFor="password">Password
+                            <label htmlFor="password">Password</label>
                             <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')}/>
-                        </label>
-                            {this.passwordInputError ? <div>Please enter at least 6 characters</div> : null } 
-                        <br/>
-                        <br/>
-                        <input type="checkbox" id="terms" required/>
-                        <label htmlFor="terms">I agree to the <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</label>
-                        <br/>
-                        <br/>
-                        <input type="checkbox" id="promo" defaultChecked/>
-                        <label htmlFor="promo">Yes, send me deals, discounts and updates!</label>
-                        <br/>
-                        <br/>
-                        <button type="submit" className="submit-button">Sign up</button>
-                        <br/>
-                        <br/>
-                        <div>
+                            {this.passwordInputError ? <div className="password-error"><i className="fas fa-exclamation-circle"></i><p>Please enter at least 6 characters</p></div> : null } 
+                            <div className="terms">
+                                <input type="checkbox" id="terms" required/>
+                                <label htmlFor="terms"><p>I agree to the </p><a>terms of service</a><p>and</p><a>privacy policy.</a></label>
+                            </div>
+                            <div className="promo">
+                                <input type="checkbox" id="promo" defaultChecked/>
+                                <label htmlFor="promo">Yes, send me deals, discounts and updates!</label>
+                            </div>
+                            <button type="submit" className="submit-button">Sign up</button>
+                        </div>
+                        <div className="login">
                             <p>Already have an account?</p>
                             {this.props.logInForm}
                         </div>
@@ -96,17 +94,17 @@ class SessionForm extends React.Component {
                     <h2>Welcome back</h2>
                     <form onSubmit={this.handleSubmit}>
                     <label htmlFor="email">Email</label>
-                    <input type="text" id="email" value={this.state.email} onChange={this.handleChange('email')} />
+                    <input type="email" id="email" placeholder="Email" autoFocus value={this.state.email} onChange={this.handleChange('email')} />
                
                     <label htmlFor="password"> Password </label>
-                    <input type="password" id="password" value={this.state.password} onChange={this.handleChange('password')} />
+                    <input type="password" id="password" placeholder="password" value={this.state.password} onChange={this.handleChange('password')} />
                  
                     <button type="submit" className="submit-button">Log in</button>
                     </form>
-                    <p>or</p>
+                    <span>or</span>
                     <button className="demo-button" onClick={this.props.demologin}>Log in as Demo User</button>
                     <ul className="session-errors">
-                    {this.props.errors.map((error, index) => <li key={index}><i class="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
+                    {this.props.errors.map((error, index) => <li key={index}><i className="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
                     </ul>
                 
                     <div>
