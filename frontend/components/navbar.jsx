@@ -6,7 +6,7 @@ const NavBar = props => {
     if (!props.currentUser) {
         return (
             <nav className="no-login-nav-bar">
-                <Link className="logo" to="/"><img src="/assets/logo.png" alt="Suro"/></Link>
+                <Link className="logo" to="/"><img src={window.logoURL} alt="Suro"/></Link>
 
                 <ul>
                     <li><Link to="">List your car</Link></li>
