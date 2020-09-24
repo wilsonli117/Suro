@@ -97,7 +97,7 @@ class SessionForm extends React.Component {
                     <input type="email" id="email" placeholder="Email" autoFocus value={this.state.email} onChange={this.handleChange('email')} />
                
                     <label htmlFor="password"> Password </label>
-                    <input type="password" id="password" placeholder="password" value={this.state.password} onChange={this.handleChange('password')} />
+                    <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={this.handleChange('password')} />
                  
                     <button type="submit" className="submit-button">Log in</button>
                     </form>
