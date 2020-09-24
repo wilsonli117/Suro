@@ -21,7 +21,7 @@ const NavBar = props => {
     } else {
         return (
             <nav className="login-nav-bar">
-                <Link className="logo" to="/"><img src="/assets/logo.png" alt="Suro" /></Link>
+                <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>
 
                 <ul className="nav-ul">
                     <li><Link to="">List your car</Link></li>

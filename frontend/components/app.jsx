@@ -13,7 +13,7 @@ const App = () => {
             <NavBar />
             </header>
             <div className='parent'>
-                <img src="/assets/gtr.jpg" alt="GT-R" className="car-pic"/>
+                <img src={window.gtrURL} alt="GT-R" className="car-pic"/>
             </div>
 
         
