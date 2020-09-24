@@ -20,10 +20,98 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        height: 517px;
         h1 {
             display: block;
             font-size: 90px;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+            color: white;
+            font-size: 21px;
+            font-weight: 900;
+        }
+        .search-bar {
+            display: flex;
+            background: white;
+            border: 1px solid lightgray;
+            border-radius: 50px;
+            // box-shadow: -1px 3px 60px 27px rgba(0,0,0,0.58);
+            box-shadow: -1px 3px 52px 16px rgba(0,0,0,0.55);
+            margin-top: 30px;
+            p {
+                color: black;
+                font-size: 11px;
+                font-weight: bold;
+            }
+            .where {
+                display: flex;
+                flex-direction: column;
+              
+                padding: 10px 10px 10px 15px;
+                border-right: 1px solid lightgray;
+                > input {
+                width: 330px;
+                font-size: 18px;
+                font-weight: 500;
+                font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                }
+            }
+            .from {
+                > p {
+                    margin: 0 5px 0 5px;
+                }
+                display: flex;
+                flex-direction: column;
+                
+                padding: 10px 20px 10px 5px;
+                 border-right: 1px solid lightgray;
+                > div {
+                    display: flex;
+                        > select{
+                            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                            font-size: 18px;
+                            font-weight: 500;
+                            border: none;
+                        }
+                }
+            }
+            .until {
+                > p {
+                    margin: 0 5px 0 5px;
+                }
+                display: flex;
+                flex-direction: column;
+                
+                padding: 10px 10px 10px 5px;
+                > div {
+                    display: flex;
+                        > select{
+                                font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                                font-size: 18px;
+                                font-weight: 500;
+                                border: none;
+                        }
+                    }
+            }
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f5a731f5;
+                height: 45px;
+                width: 45px;
+                border-radius: 40px;
+                margin-top: 8px;
+                margin-right: 6px;
+            }
+    
         }
     }
+       
 }
