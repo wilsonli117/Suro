@@ -1,0 +1,29 @@
+.search {
+    background-image: url('/assets/gtr.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    background-position: center;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    .slashes {
+        position: absolute;
+        height: 20px;
+        width: 225px;
+        top: 80px;
+        left: 10px;
+        opacity: 0.6;
+    }
+    .search-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        h1 {
+            display: block;
+            font-size: 90px;
+        }
+    }
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { AuthRoute } from '../util/route_util';
-import NavBar from './navbar_container';
 import Modal from './modal/modal';
+import NavBar from './navbar_container';
+import Search from './search/search';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 
@@ -12,10 +13,7 @@ const App = () => {
             <header>
             <NavBar />
             </header>
-            <div className='parent'>
-                <img src={window.gtrURL} alt="GT-R" className="car-pic"/>
-            </div>
-
+            <Search />
         
         </div>
     )

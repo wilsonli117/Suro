@@ -13,7 +13,7 @@ const NavBar = props => {
                     <li className="nav-learn">
                         <div className="nav-learn-trigger-1">Learn more
                             <ul className="nav-learn-dropdown">
-                                <li><p>How Turo Works</p></li>
+                                <li><p>How Suro Works</p></li>
                                 <li><p>Insurance & protection</p></li>
                                 <li><p>Carculator</p></li>
                                 <li><p>Host tools</p></li>
@@ -37,7 +37,7 @@ const NavBar = props => {
                     <li>
                             <div className="nav-learn-trigger">Learn more
                                 <ul className="nav-learn-dropdown">
-                                    <li><p>How Turo Works</p></li>
+                                    <li><p>How Suro Works</p></li>
                                     <li><p>Insurance & protection</p></li>
                                     <li><p>Carculator</p></li>
                                     <li><p>Host tools</p></li>
