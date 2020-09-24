@@ -8,66 +8,99 @@ header {
 .no-login-nav-bar {
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
+    height: 60px;
     margin: 0 60px 0 48px;
-    ul {
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 50px;
+        img {
+            margin-bottom: 2px;
+        }
+    }
+    .nav-ul {
        display: flex;
-       align-self: center;
-        li {
+       justify-content: space-between;
+
+        > li {
             display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            padding: 0 10px 0 10px;
             font-size: 13px;
             font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
             font-weight: bold;
+            .nav-learn-trigger-1 {
+                padding: 20px 0 20px 0;
+                margin: 0;
+                li {
+                    white-space: nowrap;
+                    padding: 10px;
+                    margin: 0;
+                }
+            }
         }
         .modal:hover {
             cursor: pointer;
         }
         i {
             padding: 0 10px;
+          
         }
     }
 }
 
-.logo{
-        display: flex;
-        width: 100px;
-        height: 50px;
-       }
-
-.parent {
-    height: 750px;
-    overflow: hidden;
-}
-
-
 .login-nav-bar {
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
+    height: 60px;
     margin: 0 60px 0 48px;
-    .nav-ul {
-        display: flex;
-        align-self: center;
-        li {
+    .logo{
             display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 50px;
+        img {
+            margin-bottom: 2px;
+        }
+    }
+    .nav-ul {
+       display: flex;
+       justify-content: space-between;
+      
+      
+        > li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            padding: 0 10px 0 10px;
             font-size: 13px;
             font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
             font-weight: bold;
         }
         i {
             padding: 0 10px;
+            
         }
     }
 }
 
+
+.parent {
+    height: 750px;
+    overflow: hidden;
+}
+
 div[class*=trigger]{
     position: relative;
+    padding: 20px 0 20px 0;
 }
 
 ul[class*="dropdown"] {
@@ -76,17 +109,48 @@ ul[class*="dropdown"] {
     background-color: white;
     box-shadow: 5px 5px 10px -3px rgba(0,0,0,0.5);
     margin: 5px;
-    top: 29px;
+    top: 54px;
     right: -5px;
+    min-width: 95px;
     li {
-        display: block;
-        margin: 10px;
+        padding: 10px;
+        height: 35px;
         white-space: nowrap;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         &:hover {
-            background-color: lightgray;
+            background-color: rgba(177, 174, 174, 0.288);
             cursor: pointer;
         }
     }
+}
+
+.nav-user-dd {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 5px 5px 10px -3px rgba(0,0,0,0.5);
+    margin: 5px;
+    top: 59px;
+    right: -1px;
+    min-width: 150px;
+    li {
+        padding: 10px;
+        height: 35px;
+        white-space: nowrap;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &:hover {
+            background-color: rgba(177, 174, 174, 0.288);
+            cursor: pointer;
+        }
+    }
+}
+
+.nav-learn-trigger-1:hover .nav-learn-dropdown {
+    display: block;
 }
 
 .nav-learn-trigger:hover .nav-learn-dropdown {
@@ -97,6 +161,6 @@ ul[class*="dropdown"] {
     display: block;
 }
 
-.nav-user-trigger:hover .nav-user-dropdown {
+.nav-user-trigger:hover .nav-user-dd {
     display: block;
 }
