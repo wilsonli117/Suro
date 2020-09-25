@@ -31,7 +31,8 @@ export const logout = () => dispatch => logOut()
     .then(() => dispatch(logoutCurrentUser()));
 
 export const signup = user => dispatch => signUp(user)
-    .then(user => dispatch(receiveCurrentUser(user)));
+    .then(user => dispatch(receiveCurrentUser(user)),
+    errors => dispatch(receiveSessionErrors(errors)));
 
 export const demologin = () => dispatch => demoLogIn()
     .then(user => dispatch(receiveCurrentUser(user)));

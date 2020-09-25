@@ -14,20 +14,35 @@ class SessionForm extends React.Component {
 
         this.passwordInputError = false;
         this.emailInputError = false;
+        this.submittedBefore = false;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidUpdate() {
+        if (this.props.formType === "signup" && this.submittedBefore) {
+            const fname = document.getElementById('firstName');
+            const lname = document.getElementById('lastName');
+            !this.state.firstName ? fname.className = 'error' : fname.className = "";
+            !this.state.lastName ? lname.className = 'error' : lname.className = "";
+        } 
         const email = document.getElementById('email');
         const password = document.getElementById('password');
-        this.emailInputError ? email.className = 'error' : email.className = "" ;
-        this.passwordInputError && this.props.formType === 'signup' ? password.className = 'error' : password.className = "" ;
+        this.emailInputError || (!this.state.email && this.props.formType ==='login') ? email.className = 'error' : email.className = "" ;
+        this.passwordInputError || (!this.state.password && this.props.formType === 'login')? password.className = 'error' : password.className = "" ;
         if (this.props.loggedIn) this.props.closeModal();
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state)
+        if (this.props.formType === "signup" && (!this.state.firstName || !this.state.lastName)) {
+            const firstname = document.getElementById('firstName');
+            const lastname = document.getElementById('lastName');
+            !this.state.firstName ? firstname.className = 'error' : firstname.className = "";
+            !this.state.lastName ? lastname.className = 'error' : lastname.className = "";
+            this.submittedBefore = true;
+        } else {
+            this.props.action(this.state);
+        }
     }
 
     emailCheck(email) {
@@ -80,6 +95,9 @@ class SessionForm extends React.Component {
                                 <label htmlFor="promo">Yes, send me deals, discounts and updates!</label>
                             </div>
                             <button type="submit" className="submit-button">Sign up</button>
+                            <ul className="session-errors">
+                                {this.props.errors.map((error, index) => <li key={index}><i className="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
+                            </ul>
                         </div>
                         <div className="login">
                             <p>Already have an account?</p>
@@ -102,7 +120,7 @@ class SessionForm extends React.Component {
                     <button type="submit" className="submit-button">Log in</button>
                     </form>
                     <span>or</span>
-                    <button className="demo-button" onClick={this.props.demologin}>Log in as Demo User</button>
+                    <button className="demo-button" onClick={this.props.demologin}>Continue as Demo User</button>
                     <ul className="session-errors">
                     {this.props.errors.map((error, index) => <li key={index}><i className="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
                     </ul>
