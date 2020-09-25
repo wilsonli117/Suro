@@ -11,7 +11,7 @@ const App = () => {
         <div>
             <Modal />
             <header>
-            <NavBar />
+                <NavBar />
             </header>
             <Search />
         

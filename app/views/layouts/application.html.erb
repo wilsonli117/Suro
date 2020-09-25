@@ -18,6 +18,7 @@
       window.squigglyURL = "<%= image_url('squiggly.png') %>"
       window.thumbsupURL = "<%= image_url('thumbsup.png') %>"
     </script>
+    <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
   <body>
     <%= yield %>
