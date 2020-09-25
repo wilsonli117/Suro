@@ -2,7 +2,7 @@ import React from 'react';
 
 const Covid = props => {
     return (
-        <div className="covid">
+        <div className="splash-info-container">
             <div className="div-city"></div>
             <div className="insurance">
                 <p>INSURANCE PROVIDER</p>
@@ -10,7 +10,7 @@ const Covid = props => {
             </div>
 
             <p>Hit the road confidently</p>
-            <div className="safe-sharing"><h2>Safe car sharing while navigating COVID-19</h2></div>
+            <div className="splash-info-container-header"><h2>Safe car sharing while navigating COVID-19</h2></div>
             <ul>
                 <li>
                     <img src={window.cleaningURL} />

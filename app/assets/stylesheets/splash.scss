@@ -1,4 +1,4 @@
-.covid {
+.splash-info-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,10 +52,24 @@
             margin: 10px 0 10px 0;
         }
     }
+
+    .discover-ul {
+        margin-bottom: 50px;
+    }
+
+    .book-button {
+        font-size: 18px;
+        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+        font-weight: bold;
+        color: white;
+        background-color: #593CFB;
+        height: 50px;
+        width: 215px;
+    }
 }
 
-.safe-sharing {
-    width: 600px;
+.splash-info-container-header {
+    width: 700px;
     margin-top: 15px;
     > h2 {
         text-align: center;
