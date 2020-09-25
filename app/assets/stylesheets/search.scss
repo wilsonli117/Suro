@@ -53,7 +53,7 @@
                 display: flex;
                 flex-direction: column;
               
-                padding: 10px 10px 10px 15px;
+                padding: 9px 10px 9px 15px;
                 border-right: 1px solid lightgray;
                 > input {
                 width: 330px;
@@ -69,7 +69,7 @@
                 display: flex;
                 flex-direction: column;
                 
-                padding: 10px 20px 10px 5px;
+                padding: 9px 20px 9px 5px;
                  border-right: 1px solid lightgray;
                 > div {
                     display: flex;
@@ -88,7 +88,7 @@
                 display: flex;
                 flex-direction: column;
                 
-                padding: 10px 10px 10px 5px;
+                padding: 9px 10px 9px 5px;
                 > div {
                     display: flex;
                         > select{
@@ -113,5 +113,105 @@
     
         }
     }
-       
+  
+}
+
+.covid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 600px;
+    > p {
+        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+        font-size: 21px;
+        font-weight: 900;
+    }
+   
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 40px;
+        margin-bottom: 35px;
+        width: 960px;
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            width: 320px;
+            margin: 0 10px 0 10px;
+            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+            div {
+                font-size: 21px;
+                font-weight: 900;
+                margin-bottom: 8px;
+            }
+            p {
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: 15px;
+            }
+            button {
+                color: #593CFB;
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 5px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        img {
+            height: 50px;
+            width: 50px;
+            margin: 10px 0 10px 0;
+        }
+    }
+}
+
+.safe-sharing {
+    width: 600px;
+    margin-top: 15px;
+    > h2 {
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 51px;
+        font-weight: 900;
+    }
+}
+
+.div-city {
+    position: fixed;
+    height: 1px;
+}  
+
+.insurance {
+     position: relative;
+     background: white;
+     color: #898989;
+     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+     font-size: 12px;
+     font-weight: 900;
+     border-radius: 20px;
+     width: 265px;
+     height: 86px;
+     text-align: center;
+     bottom: 56px;
+     > p {
+        margin: 16px 0 8px 0;
+     }
+     > button {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        img {
+            height: 40px;
+            width: 154px;
+            margin: 0 56px 0 55px;
+        }
+     }
+     
 }
