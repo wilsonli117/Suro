@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <script src="https://kit.fontawesome.com/41454d6525.js" crossorigin="anonymous"></script>
     <script type='text/javascript'>
       window.logoURL = "<%= image_url('logo.png') %>"
@@ -24,7 +25,6 @@
       window.suvURL = "<%= image_url('suv.jpg') %>"
       window.sportURL = "<%= image_url('sport.jpg') %>"
     </script>
-    <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
   <body>
     <%= yield %>
