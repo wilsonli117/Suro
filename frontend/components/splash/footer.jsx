@@ -2,8 +2,7 @@ import React from 'react';
 
 const Footer = props => {
     return (
-        <footer>
-            <div className="footer-container">
+            <footer className="footer-container">
                 <div className="disclaimer">
                     <div>*</div>
                     <p>All references or similarities to Turo, Liberty Mutual, or any other copyrighted works are for educational purposes only.</p>
@@ -45,10 +44,10 @@ const Footer = props => {
                         <li>FAQs</li>
                     </ul>
                     <div className="footer-icons">
-                        <button><i class="fab fa-github-square fa-2x"></i></button>
-                        <button><i class="fab fa-twitter fa-2x"></i></button>
-                        <button><i class="fab fa-linkedin fa-2x"></i></button>
-                        <button><i class="fab fa-instagram fa-2x"></i></button>
+                        <button><i className="fab fa-github-square"></i></button>
+                        <button><i className="fab fa-twitter"></i></button>
+                        <button><i className="fab fa-linkedin"></i></button>
+                        <button><i className="fab fa-instagram"></i></button>
                     </div>
                 </div>
                 <ul className="footer-copyright">
@@ -57,8 +56,7 @@ const Footer = props => {
                     <li>Privacy</li>
                     <li>Sitemap</li>
                 </ul>
-            </div>
-       </footer >
+           </footer >
     )
 }
 

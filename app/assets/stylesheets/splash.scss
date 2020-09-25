@@ -111,3 +111,42 @@
      }
      
 }
+
+.host-learn-container {
+    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    .host-learn-text-container {
+        width: 380px;
+        height: 390px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0 10px 16px 10px;
+        h2 {
+            font-size: 50px;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+        > p {
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #593CFB;
+            color: white;
+            text-align: center;
+            height: 50px;
+            width: 135px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 16px;
+        }
+    }
+    img {
+        height: 340px;
+        width: 540px;
+    }
+}
