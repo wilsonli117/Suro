@@ -2,8 +2,9 @@ import React from 'react';
 
 const Category = props => {
     return (
-        <>
-            <h2 className="category-browse">Browse by category</h2>
+        <>  
+            <div className="category-flex">
+                <h2 className="category-browse">Browse by category</h2>
             <div className="category">
                 <ul className="categories">
                     <div><i className="fas fa-angle-left fa-2x"></i></div>
@@ -15,6 +16,7 @@ const Category = props => {
                     <li><img src={window.sportURL} /><div>Sport</div></li>
                     <div><i className="fas fa-angle-right fa-2x"></i></div>
                 </ul>
+            </div>
             </div>
         </>
     )

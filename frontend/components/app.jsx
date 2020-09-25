@@ -3,7 +3,7 @@ import { AuthRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import NavBar from './navbar_container';
 import Search from './search/search';
-import Category from './category/category';
+import Category from './splash/category';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 
