@@ -37,8 +37,10 @@ class SessionForm extends React.Component {
         if (this.props.formType === "signup" && (!this.state.firstName || !this.state.lastName)) {
             const firstname = document.getElementById('firstName');
             const lastname = document.getElementById('lastName');
+            const signupPassword = document.getElementsById('password');
             !this.state.firstName ? firstname.className = 'error' : firstname.className = "";
             !this.state.lastName ? lastname.className = 'error' : lastname.className = "";
+            // !this.state.password ? signupPassword.className = 'error' : signupPassword.className = "";
             this.submittedBefore = true;
         } else {
             this.props.action(this.state);
