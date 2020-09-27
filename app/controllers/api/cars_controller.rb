@@ -6,8 +6,14 @@ class Api::CarsController < ApplicationController
     end
 
     def show
-        @car = Car.find(params[:id])
-        render :show
+        @car = Car.find_by(id: params[:id])
+
+        if @car 
+            render :show
+        else 
+            render json: ["Car not found"], status: 404
+        end
+        
     end
 
     def create

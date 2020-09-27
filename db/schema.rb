@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_162607) do
+ActiveRecord::Schema.define(version: 2020_09_27_210347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_162607) do
     t.integer "year", null: false
     t.string "make", null: false
     t.string "model", null: false
-    t.string "price", null: false
     t.text "description", null: false
     t.integer "hp", null: false
     t.integer "mpg", null: false
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_09_27_162607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "vin", null: false
+    t.integer "price"
     t.index ["hp"], name: "index_cars_on_hp"
     t.index ["latitude"], name: "index_cars_on_latitude"
     t.index ["longitude"], name: "index_cars_on_longitude"

@@ -1,4 +1,5 @@
 json.set! car.id do 
+    json.id car.id
     json.ownerId car.owner_id
     json.longitude car.longitude
     json.latitude car.latitude
