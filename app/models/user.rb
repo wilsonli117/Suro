@@ -19,6 +19,9 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     attr_reader :password
+
+    has_many :cars,
+        foreign_key: :owner_id
     
 
     def self.generate_session_token 

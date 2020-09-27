@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_150131) do
+ActiveRecord::Schema.define(version: 2020_09_27_162607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,48 @@ ActiveRecord::Schema.define(version: 2020_09_26_150131) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "car_features", force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "feature_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id", "feature_id"], name: "index_car_features_on_car_id_and_feature_id", unique: true
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.float "longitude", null: false
+    t.float "latitude", null: false
+    t.integer "year", null: false
+    t.string "make", null: false
+    t.string "model", null: false
+    t.string "price", null: false
+    t.text "description", null: false
+    t.integer "hp", null: false
+    t.integer "mpg", null: false
+    t.string "fuel_type", null: false
+    t.integer "doors", null: false
+    t.integer "seats", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "vin", null: false
+    t.index ["hp"], name: "index_cars_on_hp"
+    t.index ["latitude"], name: "index_cars_on_latitude"
+    t.index ["longitude"], name: "index_cars_on_longitude"
+    t.index ["make"], name: "index_cars_on_make"
+    t.index ["owner_id"], name: "index_cars_on_owner_id"
+    t.index ["price"], name: "index_cars_on_price"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

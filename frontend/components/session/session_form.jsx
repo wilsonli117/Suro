@@ -34,15 +34,16 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.props.formType === "signup" && (!this.state.firstName || !this.state.lastName)) {
+        if (this.props.formType === "signup" && (!this.state.firstName || !this.state.lastName || !this.state.password)) {
             const firstname = document.getElementById('firstName');
             const lastname = document.getElementById('lastName');
-            const signupPassword = document.getElementsById('password');
+            const signupPassword = document.getElementById('password');
             !this.state.firstName ? firstname.className = 'error' : firstname.className = "";
             !this.state.lastName ? lastname.className = 'error' : lastname.className = "";
-            // !this.state.password ? signupPassword.className = 'error' : signupPassword.className = "";
+            !this.state.password ? signupPassword.className = 'error' : signupPassword.className = "";
             this.submittedBefore = true;
-        } else {
+        } 
+        else {
             this.props.action(this.state);
         }
     }
