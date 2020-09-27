@@ -26,9 +26,21 @@ export const receiveFeatures = features => {
     }
 }
 
+export const receiveCarErrors = errors => {
+    return {
+        type: RECEIVE_CAR_ERRORS,
+        errors
+    }
+}
+
 export const fetchcars = () => dispatch => fetchCars()
-    .then(cars => dispatch(receiveCars(cars));
+    .then(cars => dispatch(receiveCars(cars)))
 
 export const fetchcar = carId => dispatch => fetchCar(carId)
     .then(car => dispatch(receiveCar(car)), 
-    errors => dispatch(receive))
+    errors => dispatch(receiveCarErrors(errors)))
+
+export const fetchfeatures = () => dispatch => fetchFeatures()
+    .then(features => dispatch(receiveFeatures(features)))
+
+    
