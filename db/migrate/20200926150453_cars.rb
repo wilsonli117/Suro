@@ -34,7 +34,7 @@ class Cars < ActiveRecord::Migration[5.2]
       t.timestamps 
     end
 
-    create table :car_features do |t|
+    create_table :car_features do |t|
       t.integer :car_id, null: false 
       t.integer :feature_id, null: false 
       
