@@ -12,5 +12,6 @@ json.set! car.id do
     json.fuel_type car.fuel_type
     json.numDoors car.doors
     json.numSeats car.seats
+    json.photoURLs car.photos.map { |photo| url_for(photo) }
     json.featureIDs car.features.pluck(:id)
 end

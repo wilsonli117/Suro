@@ -37,6 +37,8 @@ class Car < ApplicationRecord
     has_many :features, 
         through: :car_features
 
+    has_many_attached :photos
+
 
 
 end
