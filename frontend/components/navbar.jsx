@@ -5,11 +5,54 @@ const NavBar = props => {
     
     if (props.location.pathname == '/cars') {
         return (
+            <>
             <nav className="car-index-nav-bar">
+                <div className="car-index-nav-search">
                 <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>   
+                    <div className="index-where"> 
+                        <p>Where</p>
+                        <label htmlFor="index-nav-where"></label>
+                        <input type="text" id="index-nav-where" value="Map location"/>
+                    </div>
+                    <div className="index-from">
+                        <p>From</p>
+                        <label htmlFor="index-nav-from-date"></label>
+                        <select id="index-nav-from-date">
+                            <option>11/07/2020   </option>
+                        </select>
+                        <label htmlFor="index-nav-from-time"></label>
+                        <select id="index-nav-from-time" >
+                            <option value="18:00">6:00 PM   </option>
+                        </select>
+                    </div>
+                    <div className="index-until">
+                        <p>Until</p>
+                        <label htmlFor="index-nav-until-date"> </label>
+                        <select id="index-nav-until-date">
+                            <option>11/08/2020   </option>
+                        </select>
+                        <label htmlFor="index-nav-until-time"></label>
+                        <select id="index-nav-until-time" >
+                            <option value="20:00">10:00 PM   </option>
+                        </select>
+                    </div>
+                </div>
+                    <div>
+                        <i className="far fa-user-circle fa-2x"></i>
+                    </div>
             </nav>
+            <div className="index-nav-filters">
+                <button>Sort By</button>
+                <button>Price</button>
+                <button>Book Instantly</button>
+                <button>Delivery</button>
+                <button>Distance included</button>
+                <button><i className="fas fa-sliders-h"></i>More filters</button>
+            </div>
+            </>
         )
     }
+
     if (!props.currentUser) {
         return (
             <nav className="no-login-nav-bar">
