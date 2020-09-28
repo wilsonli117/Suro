@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { openModal } from '../actions/modal_actions';
 
 const NavBar = props => {
+    
+    if (props.location.pathname == '/cars') {
+        return (
+            <nav className="car-index-nav-bar">
+                <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>   
+            </nav>
+        )
+    }
     if (!props.currentUser) {
         return (
             <nav className="no-login-nav-bar">

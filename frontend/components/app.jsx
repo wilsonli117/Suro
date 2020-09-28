@@ -4,6 +4,7 @@ import { AuthRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import NavBar from './navbar_container';
 import Splash from './splash/splash';
+import CarIndex from './cars/car_index_container'
 
 const App = () => {
     return (
@@ -13,7 +14,8 @@ const App = () => {
                 <NavBar />
             </header>
 
-            <Route path="/" component={Splash}/>
+            <Route exact path="/cars" component={CarIndex} />
+            <Route exact path="/" component={Splash}/>
 
         </div>
     )
