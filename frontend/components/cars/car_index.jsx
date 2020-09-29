@@ -6,7 +6,6 @@ class CarIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchcars();
-        debugger;
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
     }
 
