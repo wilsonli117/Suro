@@ -6,13 +6,13 @@ import Discover from './discover';
 import HostLearn from './host_learn'
 import Footer from './footer';
 
-const Splash = () => {
+const Splash = (props) => {
     return (
         <div>
-            <Search />
+            <Search history={props.history}/>
             <Covid />
             <Category />
-            <Discover />
+            <Discover history={props.history}/>
             <HostLearn />
             <Footer />
         </div>

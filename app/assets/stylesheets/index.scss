@@ -1,0 +1,96 @@
+.index-container {
+    position: absolute;
+    top: 155px;
+
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .index-cars-container {
+        width: 65.5%;
+        height: 100%;
+        z-index: 1;
+        margin-left: 5px;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 10px 10px 10px;
+            .car-card {
+                width: 47%;
+                height: 30%;
+                min-width: 40%;
+                margin: 14px 10px 14px 10px;
+                border: 1px solid rgb(238, 238, 238);
+                border-radius: 4px;
+                box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.1);
+                overflow: hidden;
+                img {
+                    overflow: hidden;
+                }
+                .car-name {
+                    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                    font-size: 18px;
+                    font-weight: 900;
+                    margin: 10px;
+                    padding: 10px;
+                    text-align: left;
+                }
+                .car-price {
+                    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                    font-size: 16px;
+                    font-weight: 900;
+                    padding: 0 10px 10px 10px;
+                    padding-top: 20px;
+                    margin: 10px;
+                    text-align: right;
+                    border-top: 1px solid rgb(238, 238, 238);
+                    letter-spacing: .06em;
+                }
+                &:hover img {
+                    opacity: 0.85;
+                }
+            }
+        }
+        .end-of-results {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 100px 0 250px 0;
+            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+            h3 {
+                font-size: 21px;
+                font-weight: 900;
+            }
+            .fa-search {
+                color: rgba(236, 232, 232, 0.932);
+            }
+            > p {
+                color: grey;
+            }
+        }
+    }
+    .map {
+        position: fixed;
+        width: 35%;
+        height: 84.7%;
+        right: 0;
+        top: 155px;
+        z-index: 2;
+        
+        .map-container {
+            position: relative;
+            height: 100%;
+            min-height: 100%;
+            z-index: 2;
+        }
+    }
+    #map {
+        height: 100%;
+        width: 100%;
+        
+       
+        position: absolute;
+    }
+}

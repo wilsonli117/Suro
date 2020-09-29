@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag asset_path('favicon.png') %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
     <script src="https://kit.fontawesome.com/41454d6525.js" crossorigin="anonymous"></script>
     <script type='text/javascript'>
       window.logoURL = "<%= image_url('logo.png') %>"

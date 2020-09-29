@@ -12,7 +12,7 @@ const NavBar = props => {
                     <div className="index-where"> 
                         <p>Where</p>
                         <label htmlFor="index-nav-where"></label>
-                        <input type="text" id="index-nav-where" value="Map location"/>
+                        <input type="text" id="index-nav-where" placeholder="Map location"/>
                     </div>
                     <div className="index-from">
                         <p>From</p>
@@ -37,8 +37,33 @@ const NavBar = props => {
                         </select>
                     </div>
                 </div>
-                    <div>
+                    <div id="index-dd-trigger">
                         <i className="far fa-user-circle fa-2x"></i>
+                        <ul className="car-index-nav-dd">
+                            { props.currentUser ?
+                            <>
+                                <li>Host</li>
+                                <li>Trips</li>
+                                <li>Account</li>
+                                <li>Profile</li>
+                                <li>Favorites</li>
+                                <li>Carculator</li>
+                                <li>Host tools</li>
+                                <li>Get help</li>
+                                <li onClick={() => props.logout(props.currentUser.id)}>Log out</li>
+                            </>
+                            :
+                            <>
+                                <li onClick={() => props.openModal('login')}>Log in</li>
+                                <li onClick={() => props.openModal('signup')}>Sign up</li>
+                                <li className="separator">How Suro works</li>
+                                <li>Insurance & protection</li>
+                                <li>Carculator</li>
+                                <li>Host tools</li>
+                                <li>Get help</li>
+                            </>
+                            }
+                        </ul>
                     </div>
             </nav>
             <div className="index-nav-filters">

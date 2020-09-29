@@ -40,3 +40,7 @@ button,
 input[type="submit"] {
   cursor: pointer;
 }
+
+html,body, #root, #root-div {
+  height: 100%;
+}

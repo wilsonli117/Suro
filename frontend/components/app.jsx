@@ -8,7 +8,7 @@ import CarIndex from './cars/car_index_container'
 
 const App = () => {
     return (
-        <div>
+        <div id="root-div">
             <Modal />
             <header>
                 <NavBar />

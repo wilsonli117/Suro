@@ -23,7 +23,7 @@ const Discover = props => {
                     <p>Drive confidently with your choice of protection plans — all plans include varying levels of liability insurance from Liberty Mutual provided through Turo Insurance Agency and physical damage protection.</p>
                 </li>
             </ul>
-            <button className="book-button">Book the perfect car</button>
+            <button className="book-button" onClick={() => props.history.push("/cars")}>Book the perfect car</button>
         </div>
         
     )

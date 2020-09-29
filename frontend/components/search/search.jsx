@@ -42,7 +42,7 @@ const Search = props => {
 
                             </div>
                         </div>
-                        <button><i className="fas fa-search"></i></button>
+                        <button onClick={() => props.history.push("/cars")}><i className="fas fa-search"></i></button>
                     </div>
 
                 </div>
