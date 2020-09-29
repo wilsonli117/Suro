@@ -67,7 +67,7 @@ F40.photos.attach(io: F401, filename: 'F401.jpg')
 F40.photos.attach(io: F402, filename: 'F402.jpg')
 F40.photos.attach(io: F403, filename: 'F403.jpg')
 
-RWB = Car.create(owner_id: 3, address: "123 Seed Address", city: "New York", state: "NY", longitude: -73.9809975, latitude: 40.7270082, year: 1989, make: "PORSCHE", model: "911 RWB", price: 964, description: "Rauh Welt Begriff's Akira Nakai travel's the world creating wild-looking custom Porsches with huge wheel arch flares. Forgestar wheels uses one of these machines as the starting point for a show car that packs the Porsche with a long list of modifications, and now it's for rent. The car is allegedly one of the lowest miles RWB-tuned vehicles in the world.", hp: 400, mpg: 17, doors: 2, seats: 2, vin: "WP0EB0913KS173174")
+RWB = Car.create(owner_id: 3, address: "123 Seed Address", city: "New York", state: "NY", longitude: -73.9809975, latitude: 40.7270082, year: 1989, make: "PORSCHE", model: "911 RWB", price: 964, description: "Rauh Welt Begriff's Akira Nakai travels the world creating wild-looking custom Porsches with huge wheel arch flares. Forgestar wheels uses one of these machines as the starting point for a show car that packs the Porsche with a long list of modifications, and now it's for rent. The car is allegedly one of the lowest miles RWB-tuned vehicles in the world.", hp: 400, mpg: 17, fuel_type: "Gasoline", doors: 2, seats: 2, vin: "WP0EB0913KS173174")
 
 RWB1 = open('https://suro-seeds.s3.amazonaws.com/RWB911/RWB1.jpg')
 RWB2 = open('https://suro-seeds.s3.amazonaws.com/RWB911/RWB2.jpg')
@@ -86,7 +86,7 @@ RWB.photos.attach(io: RWB6, filename: 'RWB6.jpg')
 CarFeature.create(car_id: 3, feature_id: 14)
 CarFeature.create(car_id: 3, feature_id: 18)
 
-SUPRA = Car.create(owner_id: 3, address: "123 Seed Address", city: "New York", state: "NY", longitude: -74.0056983, latitude: 40.7518851, year: 1997, make: "TOYOTA", model: "SUPRA", price: 166, description: "Highly modified supra, 953 WHP. 32PSI Boost.", hp: 953, mpg: 19, doors: 2, seats: 4, vin: "JT2JA82J2P0002132")
+SUPRA = Car.create(owner_id: 3, address: "123 Seed Address", city: "New York", state: "NY", longitude: -74.0056983, latitude: 40.7518851, year: 1997, make: "TOYOTA", model: "SUPRA", price: 166, description: "Highly modified supra, 953 WHP. 32PSI Boost.", hp: 953, mpg: 19, fuel_type: "Gasoline", doors: 2, seats: 4, vin: "JT2JA82J2P0002132")
 
 SUPRA1 = open('https://suro-seeds.s3.amazonaws.com/SUPRAMK4/Supra1.jpg')
 SUPRA2 = open('https://suro-seeds.s3.amazonaws.com/SUPRAMK4/Supra2.jpg')

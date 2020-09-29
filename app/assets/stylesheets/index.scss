@@ -17,15 +17,15 @@
             margin: 20px 10px 10px 10px;
             .car-card {
                 width: 47%;
-                height: 30%;
-                min-width: 40%;
-                margin: 14px 10px 14px 10px;
+                height: auto;
+                margin: 14px 10px 10px 10px;
                 border: 1px solid rgb(238, 238, 238);
                 border-radius: 4px;
                 box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.1);
                 overflow: hidden;
                 img {
                     overflow: hidden;
+                    height: 70%;
                 }
                 .car-name {
                     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
@@ -34,17 +34,19 @@
                     margin: 10px;
                     padding: 10px;
                     text-align: left;
+                    white-space: nowrap;
+      
                 }
                 .car-price {
                     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-                    font-size: 16px;
+                    font-size: 15px;
                     font-weight: 900;
-                    padding: 0 10px 10px 10px;
-                    padding-top: 20px;
-                    margin: 10px;
                     text-align: right;
+                    padding-right: 20px;
+                    padding-top: 30px;
                     border-top: 1px solid rgb(238, 238, 238);
                     letter-spacing: .06em;
+              
                 }
                 &:hover img {
                     opacity: 0.85;

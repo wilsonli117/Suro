@@ -3,9 +3,14 @@ import Map from '../map/map';
 import { Link } from 'react-router-dom';
 
 class CarIndex extends React.Component {
+
     componentDidMount() {
         this.props.fetchcars();
+        debugger;
+        if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
     }
+
+   
 
     render() {
        
@@ -15,23 +20,13 @@ class CarIndex extends React.Component {
                     <ul>
                         {this.props.cars.map((car, index) => {
                         return (
-                                <>
+                                
                                 <Link to="/" key={index + 1} className="car-card">
                                     <img src={car.photoURLs[0]} />
                                     <div className="car-name">{`${car.make} ${car.model} ${car.year}`}</div>
                                     <div className="car-price">{`$${car.price}/day`}</div>
                                 </Link>
-                                <Link to="/" key={index + 1} className="car-card">
-                                    <img src={car.photoURLs[0]} />
-                                    <div className="car-name">{`${car.make} ${car.model} ${car.year}`}</div>
-                                    <div className="car-price">{`$${car.price}/day`}</div>
-                                </Link>
-                                <Link to="/" key={index + 1} className="car-card">
-                                    <img src={car.photoURLs[0]} />
-                                    <div className="car-name">{`${car.make} ${car.model} ${car.year}`}</div>
-                                    <div className="car-price">{`$${car.price}/day`}</div>
-                                </Link>
-                                </>
+        
                             )
                         })}
                     </ul>
@@ -43,7 +38,7 @@ class CarIndex extends React.Component {
                 </div>
                 <div className="map">
                     <div className="map-container">
-                        <Map />
+                        <Map cars={this.props.cars}/>
                     </div>
                 </div>
              
