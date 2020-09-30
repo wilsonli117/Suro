@@ -1,0 +1,282 @@
+.photo-carousel {
+    position: relative;
+    height: 72%;
+    user-select: none;
+    .carousel-photo-container {
+        height: 100%;
+        width: 100%;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 65%;
+        }
+        
+    }
+    .photo-carousel-left {
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        padding: 10px 15px 10px 15px;
+        border: 1px solid black;
+        background-color: black;
+        border-radius: 50px;
+        opacity: .5;
+        > i {
+            color: white;
+        }
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+    .photo-carousel-right {
+        position: absolute;
+        top: 50%;
+        right: 2%;
+        padding: 10px 15px 10px 15px;
+        border: 1px solid black;
+        background-color: black;
+        border-radius: 50px;
+        opacity: .5;
+        > i {
+            color: white;
+        }
+        &:hover {
+            opacity: .7;
+        }
+    }
+    > p {
+        position: absolute;
+        bottom: 2%;
+        left: 15%;
+        color: white;
+        border: 1px solid white;
+        border-radius: 15px;
+        padding: 2px 7px 2px 7px;
+        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: .1em;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+}
+
+.show-container {
+    display: flex;
+    margin: 50px 0 60px 0;
+    justify-content: center;
+    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+    .show-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 75%;
+        margin: 0 20px 0 20px;
+        .car-info {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+            width: 80%;
+            > span {
+                margin-right: 20px;
+                > p {
+                    font-size: 12px;
+                    font-weight: 900;
+                    color: #898989;
+                    letter-spacing: .08em;
+                    margin: 8px 10px 0 0;
+                    white-space: nowrap;
+                    text-align: right;
+                }
+            }
+            > div {
+                width: 60%;
+            }
+            h1 {
+                font-size: 38px;
+                font-weight: 900;
+                margin-bottom: 5px;
+            }
+            .trim {
+                font-size: 16px;
+                color: #898989;
+                margin-bottom: 5px;
+            }
+            .car-rating {
+                display: flex;
+                font-size: 21px;
+                align-items: center;
+                font-weight: 900;
+                > i {
+                    color: #593cfb;
+                    margin: 0 3px 5px 3px;
+                }
+                > p {
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+            }
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                font-size: 16px;
+                font-weight: 400;
+                margin-top: 20px;
+                min-width: 100%;
+                li {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: nowrap;
+                    white-space: nowrap;
+                    margin: 0 20px 20px 0;
+                    width: 45%;
+                    min-width: 30%;
+                }
+                i {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    .host-info {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 50px;
+        width: 80%;
+        align-items: center;
+        > p {
+            font-size: 12px;
+            font-weight: 900;
+            color: #898989;
+            letter-spacing: .08em;
+            margin: 8px 10px 0 0;
+            white-space: nowrap;
+            text-align: right;
+            margin-right: 20px;
+            height: 100%;
+        }
+        > div {
+            display: flex;
+            align-content: center;
+            width: 60%;
+            .fa-user-circle {
+                position: relative;
+                margin-bottom: 5px;
+            }
+            .host-rating {
+                display: flex;
+                justify-content: center;
+                box-sizing: border-box;
+                padding: 5px 0 5px 0;
+                border: 1px solid lightgray;
+                border-radius: 10px;
+                font-size: 15px;
+                background-color: white;
+                > i {
+                    color: #593cfb;
+                    margin: 1px 0 0 2px;
+                }
+            }
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 30px;
+                h3 {
+                    margin: 0 0 5px 0;
+                    font-size: 21px;
+                    font-weight: 900;
+                }
+                p {
+                    margin-bottom: 5px;
+                }
+                .response-time {
+                    font-size: 12px;
+                    color: #898989;
+                }
+            }
+        }
+    }
+    .description {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        width: 80%;
+        align-items: center;
+        > p {
+            font-size: 12px;
+            font-weight: 900;
+            color: #898989;
+            letter-spacing: .08em;
+            margin: 8px 10px 0 0;
+            white-space: nowrap;
+            text-align: right;
+            margin-right: 20px;
+            height: 100%;
+        }
+        > div {
+            font-size: 16px;
+            font-weight: 400;
+            width: 60%;
+        }
+    }
+    .car-features {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        width: 80%;
+        align-items: center;
+        > p {
+            font-size: 12px;
+            font-weight: 900;
+            color: #898989;
+            letter-spacing: .08em;
+            margin: 8px 10px 0 0;
+            white-space: nowrap;
+            text-align: right;
+            margin-right: 20px;
+            height: 100%;
+        }
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 60%;
+            li {
+                display: flex;
+                align-items: center;
+                width: 45%;
+                min-width: 30%;
+                white-space: nowrap;
+                margin-bottom: 20px;
+                i {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+    .reviews {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+        width: 80%;
+        align-items: center;
+        > p {
+            font-size: 12px;
+            font-weight: 900;
+            color: #898989;
+            letter-spacing: .08em;
+            margin: 8px 10px 0 0;
+            white-space: nowrap;
+            text-align: right;
+            margin-right: 20px;
+            height: 100%;
+        }
+        > div {
+            width: 60%;
+        }
+    }
+}

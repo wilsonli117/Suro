@@ -1,5 +1,6 @@
 import React from 'react'
 import Map from '../map/map';
+import { dateParse } from '../../util/date_util';
 
 class CarShow extends React.Component {
     constructor(props) {
@@ -8,11 +9,46 @@ class CarShow extends React.Component {
         this.state = {
             photoIndex: 0
         }
+
+        this.featureIcons = {
+            1: <i className="fas fa-car fa-2x"></i>,
+            2: <i className="fab fa-android fa-2x"></i>,
+            3: <i className="fab fa-apple fa-2x"></i>,
+            4: <i className="fas fa-music fa-2x"></i>,
+            5: <i className="fas fa-camera fa-2x"></i>,
+            6: <i className="fas fa-bicycle fa-2x"></i>,
+            7: <i className="far fa-eye-slash fa-2x"></i>,
+            8: <i className="fab fa-bluetooth-b fa-2x"></i>,
+            9: <i className="fas fa-baby fa-2x"></i>,
+            10: <i className="fas fa-wind fa-2x"></i>,
+            11: <i className="fas fa-map-marked-alt fa-2x" ></i >,
+            12: <i className="fas fa-fire-alt fa-2x"></i>,
+            13: <i className="fas fa-lock-open fa-2x"></i>,
+            14: <i className="fas fa-paw fa-2x"></i>,
+            15: <i className="fas fa-skiing-nordic fa-2x"></i>,
+            16: <i className="far fa-snowflake fa-2x"></i>,
+            17: <i className="fas fa-sun fa-2x"></i>,
+            18: <i className="fas fa-passport fa-2x"></i>,
+            19: <i className="fab fa-usb fa-2x"></i>,
+            20: <i className="fab fa-usb fa-2x"></i>,
+            21: <i className="fas fa-wheelchair fa-2x"></i>
+        }
     }
 
     componentDidMount() {
         this.props.fetchcar(this.props.match.params.carId);
+        this.props.fetchfeatures();
         this.setState({photoIndex: 0});
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            this.props.fetchcar(this.props.match.params.carId);
+            this.setState({ photoIndex: 0 });
+        }
+        if (this.props.car && !this.props.users[this.props.car.ownerId]) {
+            this.props.fetchhost(this.props.car.ownerId)
+        }
     }
 
     handleCarouselClick(dir) {
@@ -26,18 +62,136 @@ class CarShow extends React.Component {
     }
 
     render() {
-        if (!this.props.car) return null;
-
+        
+        if(!this.props.car || !this.props.users[this.props.car.ownerId] || !this.props.features) return null;
+        
+        const host = this.props.users[this.props.car.ownerId]
+        
         return (
         <>
             <div className="photo-carousel">
                 <div className="photo-carousel-left" onClick={() => this.handleCarouselClick('left')}>
-                    <i className="fas fa-chevron-left"></i>
+                    <i className="fas fa-chevron-left fa-2x"></i>
                 </div>
-                <img src={`${this.props.car.photoURLs[this.state.photoIndex]}`}/>
+                <div className="carousel-photo-container">
+                    <img src={`${this.props.car.photoURLs[this.state.photoIndex]}`}/>
+                </div>
                 <p>{`${this.state.photoIndex + 1} of ${this.props.car.photoURLs.length}`}</p>
                 <div className="photo-carousel-right" onClick={() => this.handleCarouselClick('right')}>
-                    <i className="fas fa-chevron-right"></i>
+                    <i className="fas fa-chevron-right fa-2x"></i>
+                </div>
+            </div>
+
+            <div className="show-container">
+                <div className="show-info">
+                    <div className="car-info">
+                        <span><p>THE CAR</p></span>
+                        <div>
+                            <h1>{`${this.props.car.make} ${this.props.car.model} ${this.props.car.year}`}</h1>
+                            <p className="trim">Trim here</p>
+                            <div className="car-rating">5.0<i className="fas fa-star"></i><p>{`(1 trip)`}</p></div>
+                            <ul>
+                                {this.props.car.fuel_type === "Gasoline" ? 
+                                    <li><i className="fas fa-gas-pump fa-2x"></i>Gas {this.props.car.hp > 300 ? '(Premium)' : ""}</li> :
+                                    <li><i class="fas fa-charging-station fa-2x">Electric</i></li>
+                                }
+                                <li><i className="fas fa-tachometer-alt fa-2x"></i>{`${this.props.car.hp} HP`}</li>
+                                <li><i className="fas fa-car-side fa-2x"></i>{`${this.props.car.numDoors} doors`}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="host-info">
+                        <p>HOSTED BY</p>
+                        <div>
+                            <span>
+                                <i className="far fa-user-circle fa-5x"></i>
+                                <div className="host-rating">5.0<i className="fas fa-star"></i></div>
+                            </span>
+                            <div>
+                                <h3>{host.firstName}</h3>
+                                <p>{`Joined ${dateParse(host.createdAt)}`}</p>
+                                <p className="response-time">{`Typically responds in ${Math.floor(Math.random(2) * 15)} minutes`}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="description">
+                        <p>DESCRIPTION</p>
+                        <div>{this.props.car.description}</div>
+                    </div>
+                    <div className="car-features">
+                        <p>FEATURES</p>
+                        <ul>
+                            {this.props.car.featureIDs.map((featureId, index) => <li key={index + 1}>{this.featureIcons[featureId]}{`${this.props.features[featureId].name}`}</li>)}
+                        </ul>
+                    </div>
+                    <div className="reviews">
+                        <p>REVIEWS</p>
+                        <div>Book this car and be the first to review it.</div>
+                    </div>
+                </div>
+                <div className="booking-container">
+                        <div className="price">
+                            <h2>{`$${this.props.car.price}`}</h2>
+                            <p>/ day</p>
+                        </div>
+                        <div>{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
+                        <form className="show-booking-form"> 
+                            <div className="show-booking-start">Trip start
+                                <label htmlFor="show-booking-start-date"></label>
+                                <select id="show-booking-start-date">
+                                    <option value="10/01/2020">10/01/2020</option>
+                                </select>
+                                <label htmlFor="show-booking-start-time"></label>
+                                <select id="show-booking-start-time">
+                                    <option value="08:00">8:00 AM</option>
+                                </select>
+                            </div>
+                            <div className="show-booking-end">Trip end
+                                <label htmlFor="show-booking-end-date"></label>
+                                <select id="show-booking-end-date">
+                                    <option value="10/03/2020">10/03/2020</option>
+                                </select>
+                                <label htmlFor="show-booking-end-time"></label>
+                                <select id="show-booking-end-time">
+                                    <option value="13:00">1:00 PM</option>
+                                </select>
+                            </div>
+                            <div className="show-booking-location">Pickup & return location
+                                <label htmlFor="pickup-return-location"></label>
+                                <select id="pickup-return-location">
+                                    <option value="">New York, NY 10018</option>
+                                </select>
+                            </div>
+                            <button>Continue</button>
+                        </form>
+                        <div className="free-cancellation">
+                            <i className="far fa-thumbs-up"></i>
+                            <div>
+                                <p>Free Cancellation</p>
+                                <p>Full refund before Sep 30, 10:00 AM</p>
+                            </div>
+                        </div>
+                        <div className="distance-included">
+                            <div>
+                                <p>Distance included</p>
+                                <div>400 mi</div>
+                            </div>
+                            <p>$3.00/mi fee for additional miles drive</p>
+                        </div>
+                        <div className="booking-insurance">
+                            <p>INSURANCE & PROTECTION</p>
+                            <div>Insurance via owner <i className="far fa-question-circle"></i></div>
+                            <p>The vehicle owner may offer you liability insurance or physical damage protection outside of Turo for a fee after you book.</p>
+                        </div>
+                        <button><i className="far fa-heart"></i>Add to favorites</button>
+                        <div className="booking-form-icons">
+                            <div><i className="fab fa-github-square"></i></div>
+                            <div><i className="fab fa-linkedin"></i></div>
+                            <div><i className="fab fa-twitter-square"></i></div>
+                            <div><i className="fas fa-envelope-square"></i></div>
+                        </div>
+                        <p>Report listing</p>
+                        <p>Cancellation policy</p>
                 </div>
             </div>
         </>

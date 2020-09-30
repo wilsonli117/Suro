@@ -24,3 +24,12 @@ export const fetchFeatures = () => {
         })
     )
 }
+
+export const fetchHost = hostId => {
+    return (
+        $.ajax({
+            url: `api/users/${hostId}`,
+            method: "GET"
+        })
+    )
+}

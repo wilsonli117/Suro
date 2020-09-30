@@ -20,7 +20,7 @@ class CarIndex extends React.Component {
                         {this.props.cars.map((car, index) => {
                         return (
                                 
-                                <Link to="/" key={index + 1} className="car-card">
+                                <Link to={`/cars/${car.id}`} key={index + 1} className="car-card">
                                     <img src={car.photoURLs[0]} />
                                     <div className="car-name">{`${car.make} ${car.model} ${car.year}`}</div>
                                     <div className="car-price">{`$${car.price}/day`}</div>

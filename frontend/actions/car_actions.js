@@ -1,9 +1,10 @@
-import { fetchCars, fetchCar, fetchFeatures } from '../util/car_api_util';
+import { fetchCars, fetchCar, fetchFeatures, fetchHost } from '../util/car_api_util';
 
 export const RECEIVE_CARS = "RECEIVE_CARS"
 export const RECEIVE_CAR = "RECEIVE_CAR"
 export const RECEIVE_CAR_ERRORS = "RECEIVE_CAR_ERRORS"
 export const RECEIVE_FEATURES = "RECEIVE_FEATURES"
+export const RECEIVE_HOST = "RECEIVE_HOST"
 
 export const receiveCars = cars => {
     return {
@@ -43,4 +44,9 @@ export const fetchcar = carId => dispatch => fetchCar(carId)
 export const fetchfeatures = () => dispatch => fetchFeatures()
     .then(features => dispatch(receiveFeatures(features)))
 
+export const fetchhost = hostId => dispatch => fetchHost(hostId)
+    .then(host => dispatch({
+        type: RECEIVE_HOST,
+        host
+    }));
     

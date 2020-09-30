@@ -18,4 +18,6 @@ class Feature < ApplicationRecord
     has_many :cars, 
         through: :car_features
 
+    has_one_attached :icon
+
 end
