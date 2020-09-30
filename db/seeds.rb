@@ -40,15 +40,13 @@ User.create(first_name: "Eevy", last_name: "Li", email: "eevy@gmail.com", passwo
 
 SLS = Car.create(owner_id: 1, address: "610 East 11th Street", city: "New York", state: "NY", longitude: -73.9809976, latitude: 40.7270074, year: 2014, make: "MERCEDES-BENZ", model:"SLS-CLASS AMG", price: 630, description: "The SLS Black Series' gem of an engine is derived from the SLS AMG GT’s naturally aspirated and aurally gifted 6.2-liter V-8. An additional 39 horsepower and a shift in the power peak by 600 revs translate to a meaty 622 horsepower at 7400 rpm.", hp: 622, mpg: 15, fuel_type: "Gasoline", doors: 2, seats: 2, vin: "WDDRJ7HA4EA011147")
 
-SLS1 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS1.jpg')
-SLS2 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS2.jpg')
-SLS3 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS3.jpg')
-SLS4 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS4.jpg')
+SLS1 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS2.jpg')
+SLS2 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS3.jpg')
+SLS3 = open('https://suro-seeds.s3.amazonaws.com/SLS/SLS4.jpg')
 
 SLS.photos.attach(io: SLS1, filename: 'SLS1.jpg')
 SLS.photos.attach(io: SLS2, filename: 'SLS2.jpg')
 SLS.photos.attach(io: SLS3, filename: 'SLS3.jpg')
-SLS.photos.attach(io: SLS4, filename: 'SLS4.jpg')
 
 CarFeature.create(car_id: 1, feature_id: 5)
 CarFeature.create(car_id: 1, feature_id: 7)

@@ -17,14 +17,14 @@
             margin: 20px 10px 10px 10px;
             .car-card {
                 width: 47%;
-                height: auto;
+                height: 435px;
                 margin: 14px 10px 10px 10px;
                 border: 1px solid rgb(238, 238, 238);
                 border-radius: 4px;
                 box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.1);
                 overflow: hidden;
                 img {
-                    overflow: hidden;
+                    object-fit: cover;
                     height: 70%;
                 }
                 .car-name {
@@ -42,8 +42,8 @@
                     font-size: 15px;
                     font-weight: 900;
                     text-align: right;
-                    padding-right: 20px;
-                    padding-top: 30px;
+                    margin: 0 15px 0 15px;
+                    padding: 20px 0 20px 0;
                     border-top: 1px solid rgb(238, 238, 238);
                     letter-spacing: .06em;
               

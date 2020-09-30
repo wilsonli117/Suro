@@ -63,10 +63,10 @@ class CarShow extends React.Component {
     }
 
     render() {
-        if(!this.props.car || !this.props.users[this.props.car.ownerId] || !this.props.features) return null;
+        if(!this.props.car || !this.props.users[this.props.car.ownerId] || !Object.keys(this.props.features).length) return null;
         
         const host = this.props.users[this.props.car.ownerId]
-        
+  
         return (
         <>
             <div className="photo-carousel">
