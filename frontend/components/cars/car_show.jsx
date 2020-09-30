@@ -191,13 +191,15 @@ class CarShow extends React.Component {
                         </div>
                         <button><i className="far fa-heart"></i>Add to favorites</button>
                         <div className="booking-form-icons">
-                            <div><i className="fab fa-github-square"></i></div>
-                            <div><i className="fab fa-linkedin"></i></div>
-                            <div><i className="fab fa-twitter-square"></i></div>
-                            <div><i className="fas fa-envelope-square"></i></div>
+                            <div><i className="fab fa-github-square fa-2x"></i></div>
+                            <div><i className="fab fa-linkedin fa-2x"></i></div>
+                            <div><i className="fab fa-twitter-square fa-2x"></i></div>
+                            <div><i className="fas fa-envelope-square fa-2x"></i></div>
                         </div>
-                        <p>Report listing</p>
-                        <p>Cancellation policy</p>
+                        <div>
+                            <p>Report listing</p>
+                            <p>Cancellation policy</p>
+                        </div>
                 </div>
             </div>
         </>
