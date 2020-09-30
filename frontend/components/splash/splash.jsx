@@ -11,7 +11,7 @@ const Splash = (props) => {
         <div>
             <Search history={props.history}/>
             <Covid />
-            <Category />
+            <Category history={props.history}/>
             <Discover history={props.history}/>
             <HostLearn />
             <Footer />

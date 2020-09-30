@@ -8,12 +8,12 @@ const Category = props => {
             <div className="category">
                 <ul className="categories">
                     <div><i className="fas fa-angle-left fa-2x"></i></div>
-                    <li><img src={window.carURL} /><div>Car</div></li>
-                    <li><img src={window.classicURL} /><div>Classics</div></li>
-                    <li><img src={window.convertibleURL} /><div>Convertibles</div></li>
-                    <li><img src={window.exoticURL} /><div>Exotic & luxury</div></li>
-                    <li><img src={window.suvURL} /><div>SUVs</div></li>
-                    <li><img src={window.sportURL} /><div>Sport</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.carURL} /><div>Car</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.classicURL} /><div>Classics</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.convertibleURL} /><div>Convertibles</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.exoticURL} /><div>Exotic & luxury</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.suvURL} /><div>SUVs</div></li>
+                    <li onClick={() => props.history.push("/cars")}><img src={window.sportURL} /><div>Sport</div></li>
                     <div><i className="fas fa-angle-right fa-2x"></i></div>
                 </ul>
             </div>

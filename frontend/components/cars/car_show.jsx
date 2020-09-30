@@ -1,5 +1,6 @@
 import React from 'react'
-import Map from '../map/map';
+import ShowMap from '../map/show_map';
+import Footer from '../splash/footer';
 import { dateParse } from '../../util/date_util';
 
 class CarShow extends React.Component {
@@ -62,7 +63,6 @@ class CarShow extends React.Component {
     }
 
     render() {
-        
         if(!this.props.car || !this.props.users[this.props.car.ownerId] || !this.props.features) return null;
         
         const host = this.props.users[this.props.car.ownerId]
@@ -202,6 +202,10 @@ class CarShow extends React.Component {
                         </div>
                 </div>
             </div>
+            <div className="show-map-container">
+                <ShowMap car={[this.props.car]}/>
+            </div>
+            <Footer />
         </>
         )
     }

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default class MarkerManager {
     constructor(map) {
         this.map = map;
@@ -21,11 +23,23 @@ export default class MarkerManager {
 
     createMarker(car) {
         const position = new google.maps.LatLng(car.latitude, car.longitude);
+        
+        // const info = `$${car.price}`
+            
+        // const infowindow = new google.maps.InfoWindow({
+        //     content: info,
+        // })
+        const image = 'https://suro-seeds.s3.amazonaws.com/marker-icon.png'
         const marker = new google.maps.Marker({
             position,
             map: this.map,
-            carId: car.id
+            carId: car.id,
+            icon: image
         });
+
+        // marker.addListener("click", () => {
+        //     infowindow.open(map, marker);
+        // });
 
         this.markers[marker.carId] = marker;
     }

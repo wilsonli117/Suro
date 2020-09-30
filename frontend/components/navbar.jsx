@@ -79,8 +79,9 @@ const NavBar = props => {
     }
 
     if (!props.currentUser) {
+        
         return (
-            <nav className="no-login-nav-bar">
+            <nav className={props.location.pathname.includes('/cars/') ? "no-login-nav-bar sticky" : "no-login-nav-bar"}>
                 <Link className="logo" to="/"><img src={window.logoURL} alt="Suro"/></Link>
 
                 <ul className="nav-ul">
@@ -104,7 +105,7 @@ const NavBar = props => {
         )
     } else {
         return (
-            <nav className="login-nav-bar">
+            <nav className={props.location.pathname.includes('/cars/') ? "login-nav-bar sticky" : "login-nav-bar"}>
                 <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>
 
                 <ul className="nav-ul">
