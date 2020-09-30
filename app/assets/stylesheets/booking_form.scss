@@ -1,0 +1,148 @@
+.booking-container {
+    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+    
+    .price {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        width: 55%;
+        h2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-right: 5px;
+        }
+    }
+    .price-estimate {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 500;
+        color: #898989;
+        padding-bottom: 19px;
+        border-bottom: 1px solid #b8b8b8;
+        width: 55%;
+        i {
+            margin-left: 5px; 
+            color: black;
+        }
+    }
+    .show-booking-form {
+        margin-top: 19px;
+        width: 55%;
+        border-bottom: 1px solid #b8b8b8;        
+        .show-booking-start {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            p {
+                margin-bottom: 3px;
+            }
+            select {
+                width: 45%;
+                padding: 10px 5px 10px 5px;;
+                font-size: 13px;
+                letter-spacing: .06em;
+                border: 1px solid lightgray;
+                text-align: center;
+            }
+            #show-booking-start-date {
+                width: 55%;
+                border-right: 0;
+            }
+        }
+        .show-booking-end {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            p {
+                margin-bottom: 3px;
+            }
+            select {
+                width: 45%;
+                padding: 10px 5px 10px 5px;;
+                font-size: 13px;
+                letter-spacing: .06em;
+                border: 1px solid lightgray;
+                text-align: center;
+            }
+            #show-booking-end-date {
+                width: 55%;
+                border-right: 0;
+            }
+        }
+        .show-booking-location {
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            label {
+                margin-bottom: 3px;
+            }
+            select {
+                width: 100%;
+                padding: 10px 5px 10px 5px;;
+                font-size: 13px;
+                letter-spacing: .06em;
+                border: 1px solid lightgray;
+                text-align: center;
+            }
+        }
+        button {
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            background-color: #593cfb;
+            width: 100%;
+            text-align: center;
+            padding: 15px 10px 15px 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #b8b8b8;
+            
+        }
+    }
+    .free-cancellation {
+        display: flex;
+        align-items: center;
+        width: 55%;
+        margin: 20px 0 20px 0;
+        
+        i {
+            color: #593cfb;
+            margin: 10px;
+        }
+        > div {
+            font-size: 15px;
+            p {
+                font-size: 13px;
+                color: #949494;
+                white-space: nowrap;
+            }
+        }
+    }
+    .distance-included {
+        border-top: 1px solid #b8b8b8;
+        border-bottom: 1px solid #b8b8b8;
+        width: 55%;
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            font-size: 15px;
+            margin-top: 20px;
+            div {
+                margin: 0;
+            }
+        }
+        > p {
+            font-size: 13px;
+            color: #5d5d5d;
+            margin-bottom: 20px;
+        }
+    }
+}

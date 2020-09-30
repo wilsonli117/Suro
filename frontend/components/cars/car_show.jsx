@@ -134,30 +134,36 @@ class CarShow extends React.Component {
                             <h2>{`$${this.props.car.price}`}</h2>
                             <p>/ day</p>
                         </div>
-                        <div>{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
+                        <div className="price-estimate">{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
                         <form className="show-booking-form"> 
-                            <div className="show-booking-start">Trip start
-                                <label htmlFor="show-booking-start-date"></label>
-                                <select id="show-booking-start-date">
-                                    <option value="10/01/2020">10/01/2020</option>
-                                </select>
-                                <label htmlFor="show-booking-start-time"></label>
-                                <select id="show-booking-start-time">
-                                    <option value="08:00">8:00 AM</option>
-                                </select>
+                            <div className="show-booking-start">
+                            <p>Trip start</p>
+                                <div>
+                                    <label htmlFor="show-booking-start-date"></label>
+                                    <select id="show-booking-start-date">
+                                        <option value="10/01/2020">10/01/2020</option>
+                                    </select>
+                                    <label htmlFor="show-booking-start-time"></label>
+                                    <select id="show-booking-start-time">
+                                        <option value="08:00">8:00 AM</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="show-booking-end">Trip end
-                                <label htmlFor="show-booking-end-date"></label>
-                                <select id="show-booking-end-date">
-                                    <option value="10/03/2020">10/03/2020</option>
-                                </select>
-                                <label htmlFor="show-booking-end-time"></label>
-                                <select id="show-booking-end-time">
-                                    <option value="13:00">1:00 PM</option>
-                                </select>
+                            <div className="show-booking-end">
+                                <p>Trip end</p>
+                                <div>
+                                    <label htmlFor="show-booking-end-date"></label>
+                                    <select id="show-booking-end-date">
+                                        <option value="10/03/2020">10/03/2020</option>
+                                    </select>
+                                    <label htmlFor="show-booking-end-time"></label>
+                                    <select id="show-booking-end-time">
+                                        <option value="13:00">1:00 PM</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div className="show-booking-location">Pickup & return location
-                                <label htmlFor="pickup-return-location"></label>
+                            <div className="show-booking-location">
+                                <label htmlFor="pickup-return-location">Pickup & return location</label>
                                 <select id="pickup-return-location">
                                     <option value="">New York, NY 10018</option>
                                 </select>
@@ -167,7 +173,7 @@ class CarShow extends React.Component {
                         <div className="free-cancellation">
                             <i className="far fa-thumbs-up"></i>
                             <div>
-                                <p>Free Cancellation</p>
+                                <div>Free Cancellation</div>
                                 <p>Full refund before Sep 30, 10:00 AM</p>
                             </div>
                         </div>
