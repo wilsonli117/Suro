@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class CarIndex extends React.Component {
 
     componentDidMount() {
-        this.props.fetchcars();
+        // this.props.fetchcars();
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
     }
 
@@ -37,7 +37,7 @@ class CarIndex extends React.Component {
                 </div>
                 <div className="map">
                     <div className="map-container">
-                        <Map cars={this.props.cars} updateBounds={this.props.updateBounds}/>
+                        <Map cars={this.props.cars} updatefilter={this.props.updatefilter}/>
                     </div>
                 </div>
              

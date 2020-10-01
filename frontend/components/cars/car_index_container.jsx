@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchcars } from '../../actions/car_actions';
-import { updateBounds } from '../../actions/filter_actions';
+import { updatefilter } from '../../actions/filter_actions';
 import CarIndex from './car_index';
 
 const mSTP = (state, ownProps) => {
@@ -12,7 +12,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
     return {
         fetchcars: () => dispatch(fetchcars()),
-        updateBounds: bounds => dispatch(updateBounds(bounds))
+        updatefilter: (filter, value) => dispatch(updatefilter(filter, value))
     }
 }
 

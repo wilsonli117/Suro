@@ -34,7 +34,7 @@ class Map extends React.Component {
                 northEast: { lat: mapBounds.getNorthEast().lat(), lng: mapBounds.getNorthEast().lng() },
                 southWest: { lat: mapBounds.getSouthWest().lat(), lng: mapBounds.getSouthWest().lng() }
             };
-            this.props.updateBounds(bounds);
+            this.props.updatefilter('bounds', bounds);
         });
     }
 

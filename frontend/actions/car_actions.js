@@ -34,7 +34,7 @@ export const receiveCarErrors = errors => {
     }
 }
 
-export const fetchcars = () => dispatch => fetchCars()
+export const fetchcars = filters => dispatch => fetchCars(filters)
     .then(cars => dispatch(receiveCars(cars)))
 
 export const fetchcar = carId => dispatch => fetchCar(carId)

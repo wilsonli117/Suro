@@ -17,7 +17,7 @@ export default class MarkerManager {
 
 
         Object.keys(this.markers).forEach(carId => {
-            if (!carsObj[carId]) this.removeMarker(this.markers.carId);
+            if (!carsObj[carId]) this.removeMarker(this.markers[carId]);
         })
 
     }
