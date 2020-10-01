@@ -34,9 +34,12 @@ class CarShow extends React.Component {
             20: <i className="fab fa-usb fa-2x"></i>,
             21: <i className="fas fa-wheelchair fa-2x"></i>
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
+        if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
         this.props.fetchcar(this.props.match.params.carId);
         this.props.fetchfeatures();
         this.setState({photoIndex: 0});
@@ -49,6 +52,15 @@ class CarShow extends React.Component {
         }
         if (this.props.car && !this.props.users[this.props.car.ownerId]) {
             this.props.fetchhost(this.props.car.ownerId)
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        if (!this.props.currentUser) {
+            this.props.openModal('login')    
+        } else {
+            
         }
     }
 
@@ -135,7 +147,7 @@ class CarShow extends React.Component {
                             <p>/ day</p>
                         </div>
                         <div className="price-estimate">{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
-                        <form className="show-booking-form"> 
+                        <form className="show-booking-form" onClick={this.handleSubmit}> 
                             <div className="show-booking-start">
                             <p>Trip start</p>
                                 <div>

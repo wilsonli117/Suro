@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import {fetchcars, fetchcar, fetchfeatures} from './actions/car_actions';
+import { fetchbooking, createbooking } from './actions/booking_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchcars = fetchcars;
     window.fetchcar = fetchcar;
     window.fetchfeatures = fetchfeatures;
+    window.fetchbooking = fetchbooking;
+    window.createbooking = createbooking;
     
     ReactDOM.render(<Root store={store}/>, root);
 })

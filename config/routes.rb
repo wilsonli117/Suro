@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :cars, only: [:index, :show, :create, :update, :destroy]
     resources :features, only: [:index]
+    resources :bookings, only: [:show, :create, :update, :destroy]
   end
   
 end

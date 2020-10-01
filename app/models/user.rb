@@ -23,6 +23,13 @@ class User < ApplicationRecord
     has_many :cars,
         foreign_key: :owner_id
     
+    has_many :bookings_as_renter,
+        foreign_key: :user_id,
+        class_name: :Booking
+
+    has_many :bookings_as_host,
+        through: :cars,
+        source: :bookings
 
     def self.generate_session_token 
         SecureRandom::urlsafe_base64(16)

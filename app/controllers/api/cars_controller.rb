@@ -1,12 +1,12 @@
 class Api::CarsController < ApplicationController
 
     def index
-        @cars = Car.all
+        @cars = Car.all.includes(:bookings)
         render :index
     end
 
     def show
-        @car = Car.find_by(id: params[:id])
+        @car = Car.includes(:bookings).find(params[:id])
 
         if @car 
             render :show
@@ -30,7 +30,7 @@ class Api::CarsController < ApplicationController
     def update
         @car = Car.find(params[:id])
         
-        if @car.update 
+        if @car.update(car_params) 
             render :show
         else 
             render json: ["Error"], status: 422
@@ -47,6 +47,6 @@ class Api::CarsController < ApplicationController
     private 
 
     def car_params 
-        params.require('car').permit(:owner_id, :address, :city, :state, :longitude, :latitude, :year, :make, :model, :price, :description, :hp, :mpg, :fuel_type, :doors, :seats)
+        params.require(:car).permit(:owner_id, :address, :city, :state, :longitude, :latitude, :year, :make, :model, :price, :description, :hp, :mpg, :fuel_type, :doors, :seats)
     end
 end
