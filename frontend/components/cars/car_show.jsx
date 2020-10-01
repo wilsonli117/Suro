@@ -42,7 +42,7 @@ class CarShow extends React.Component {
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
         this.props.fetchcar(this.props.match.params.carId);
         this.props.fetchfeatures();
-        this.setState({photoIndex: 0});
+        // this.setState({photoIndex: 0});
     }
 
     componentDidUpdate(prevProps) {

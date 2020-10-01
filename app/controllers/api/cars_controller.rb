@@ -1,7 +1,7 @@
 class Api::CarsController < ApplicationController
 
     def index
-        @cars = Car.all.includes(:bookings)
+        @cars = params[:bounds] ? Car.includes(:bookings).in_bounds(params[:bounds]) : Car.all.includes(:bookings)
         render :index
     end
 
@@ -49,4 +49,5 @@ class Api::CarsController < ApplicationController
     def car_params 
         params.require(:car).permit(:owner_id, :address, :city, :state, :longitude, :latitude, :year, :make, :model, :price, :description, :hp, :mpg, :fuel_type, :doors, :seats)
     end
+
 end

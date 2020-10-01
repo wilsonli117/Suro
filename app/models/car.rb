@@ -45,6 +45,13 @@ class Car < ApplicationRecord
     has_many :bookings,
         foreign_key: :car_id,
         class_name: :Booking
+    
+    def self.in_bounds(bounds)
+        Car.where("latitude < ?", bounds[:northEast][:lat])
+            .where("latitude > ?", bounds[:southWest][:lat])
+            .where("longitude < ?", bounds[:northEast][:lng])
+            .where("longitude > ?", bounds[:southWest][:lng])
+    end
 
     def unavailable_dates
         dates = []

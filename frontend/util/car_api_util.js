@@ -1,8 +1,9 @@
-export const fetchCars = () => {
+export const fetchCars = filters => {
     return (
         $.ajax({
             url: "api/cars",
-            method: "GET"
+            method: "GET",
+            data: filters
         })
     )
 }

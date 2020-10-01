@@ -1,9 +1,10 @@
 import React from 'react';
 
 export default class MarkerManager {
-    constructor(map) {
+    constructor(map, handleMarkerClick) {
         this.map = map;
         this.markers = {};
+        this.handleMarkerClick = handleMarkerClick;
     }
 
     updateMarkers(cars) {
@@ -37,9 +38,7 @@ export default class MarkerManager {
             icon: image
         });
 
-        // marker.addListener("click", () => {
-        //     infowindow.open(map, marker);
-        // });
+        marker.addListener("click", () => this.handleMarkerClick(car));
 
         this.markers[marker.carId] = marker;
     }

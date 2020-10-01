@@ -37,7 +37,7 @@ class CarIndex extends React.Component {
                 </div>
                 <div className="map">
                     <div className="map-container">
-                        <Map cars={this.props.cars}/>
+                        <Map cars={this.props.cars} updateBounds={this.props.updateBounds}/>
                     </div>
                 </div>
              

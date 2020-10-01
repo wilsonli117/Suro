@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router-dom';
 import MarkerManager from '../../util/marker_manager';
 
 class Map extends React.Component {
@@ -22,13 +23,27 @@ class Map extends React.Component {
         };
 
         this.map = new google.maps.Map(map, mapOptions);
-        this.MarkerManager = new MarkerManager(this.map)
+        
+        this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
+        this.MarkerManager.updateMarkers(this.props.cars);
 
-        this.MarkerManager.updateMarkers(this.props.cars)
+        google.maps.event.addListener(this.map, 'idle', () => {
+            const mapBounds = this.map.getBounds(); //returns LatLngBounds class instance, can use getNorthEast and getSouthWest methods, then to_JSON on return values of those methods to return LatLngBoundsLiteral instances
+            
+            const bounds = {
+                northEast: { lat: mapBounds.getNorthEast().lat(), lng: mapBounds.getNorthEast().lng() },
+                southWest: { lat: mapBounds.getSouthWest().lat(), lng: mapBounds.getSouthWest().lng() }
+            };
+            this.props.updateBounds(bounds);
+        });
     }
 
     componentDidUpdate() {
-        this.MarkerManager.updateMarkers(this.props.cars)
+        this.MarkerManager.updateMarkers(this.props.cars);
+    }
+
+    handleMarkerClick(car) {
+        this.props.history.push(`cars/${car.id}`)
     }
 
     render() {
@@ -38,4 +53,4 @@ class Map extends React.Component {
     }
 }
 
-export default Map;
+export default withRouter(Map);

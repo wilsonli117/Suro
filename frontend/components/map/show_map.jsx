@@ -11,13 +11,14 @@ class ShowMap extends React.Component {
         const mapOptions = {
             center: { lat: car[0].latitude, lng: car[0].longitude }, //car is an array
             zoom: 15,
-            zoomControl: false,
-            gestureHandling: 'none',
-            mapTypeControl: false,
-            scaleControl: false,
-            streetViewControl: false,
-            rotateControl: false,
-            fullscreenControl: false
+            disableDefaultUI: true,
+            // zoomControl: false,
+            gestureHandling: 'none'
+            // mapTypeControl: false,
+            // scaleControl: false,
+            // streetViewControl: false,
+            // rotateControl: false,
+            // fullscreenControl: false
         };
 
         this.map = new google.maps.Map(map, mapOptions);
