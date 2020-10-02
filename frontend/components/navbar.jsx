@@ -11,15 +11,19 @@ class NavBar extends React.Component {
     componentDidMount() {
         
         const searchbox = document.getElementById('index-nav-where')
-
-        this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+        if (searchbox){
+            this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+        }
     }
 
     componentDidUpdate(prevProps) {
        
         if (this.props.location.pathname.includes("/cars") && (this.props.location.pathname !== prevProps.location.pathname)) {
             const searchbox = document.getElementById('index-nav-where')
-            this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+            
+            if (searchbox) {
+                this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+            }
         }
     }
 
@@ -36,6 +40,9 @@ class NavBar extends React.Component {
             sessionStorage.setItem('lng', lng)
           
             this.props.locationFilter(center);
+            if (this.props.location.pathname.includes('/cars/')) {
+                this.props.history.push("/cars");
+            }
         }
     }
 
@@ -125,8 +132,8 @@ class NavBar extends React.Component {
                     <div>
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro"/></Link>
                         {this.props.location.pathname.includes('/cars/') ? 
-                            <form className="show-where">
-                                <i class="fas fa-search"></i> 
+                            <form className="show-where" onSubmit={this.handleSubmit}>
+                                <i className="fas fa-search"></i> 
                                 <label htmlFor="index-nav-where"></label>
                                 <input type="text" id="index-nav-where" placeholder="City, airport, address, or hotel" />
                             </form> : "" }
@@ -156,8 +163,8 @@ class NavBar extends React.Component {
                     <div>
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>
                         {this.props.location.pathname.includes('/cars/') ?
-                            <form className="show-where">
-                                <i class="fas fa-search"></i>
+                            <form className="show-where" onClick={this.handleSubmit}>
+                                <i className="fas fa-search"></i>
                                 <label htmlFor="index-nav-where"></label>
                                 <input type="text" id="index-nav-where" placeholder="City, airport, address, or hotel"/>
                             </form> : ""}

@@ -26,7 +26,7 @@ class Search extends React.Component {
             sessionStorage.setItem('lat', lat)
             sessionStorage.setItem('lng', lng)
             this.props.locationFilter(center);
-            this.props.history.push({pathname: "/cars", state: center});
+            this.props.history.push("/cars");
         }
     }
 
