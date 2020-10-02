@@ -1,6 +1,7 @@
 import { fetchcars } from './car_actions';
 
 export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const UPDATE_CENTER = 'UPDATE_LOCATION'
 
 // export const updateBounds = bounds => {
 //     return {
@@ -8,6 +9,13 @@ export const UPDATE_FILTER = 'UPDATE_FILTER';
 //         bounds
 //     }
 // }
+
+export const locationFilter = center => {
+    return {
+        type: UPDATE_CENTER,
+       center
+    }
+}
 
 export const updateFilter = (filter, value) => {
     return {
@@ -21,3 +29,4 @@ export const updatefilter = (filter, value) => (dispatch, getState) => {
     dispatch(updateFilter(filter, value));
     return fetchcars(getState().ui.filters)(dispatch);
 }
+

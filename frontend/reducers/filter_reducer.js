@@ -1,7 +1,8 @@
-import { UPDATE_FILTER } from '../actions/filter_actions';
+import { UPDATE_FILTER, UPDATE_CENTER} from '../actions/filter_actions';
 
 const defaultFilters = {
-    bounds: {}
+    bounds: {},
+    center: {}
 }
 
 const filtersReducer = (state = defaultFilters, action) => {
@@ -11,6 +12,9 @@ const filtersReducer = (state = defaultFilters, action) => {
         case UPDATE_FILTER:
             return Object.assign({}, state, { [action.filter]: action.value });
         
+        case UPDATE_CENTER:
+            return Object.assign({}, state, action.center)
+
         default:
             return state;
     }

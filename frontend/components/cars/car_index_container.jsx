@@ -5,7 +5,8 @@ import CarIndex from './car_index';
 
 const mSTP = (state, ownProps) => {
     return {
-        cars: Object.values(state.entities.cars)
+        cars: Object.values(state.entities.cars),
+        mapCenter: state.ui.filters.center
     }
 }
 

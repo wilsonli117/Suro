@@ -3,16 +3,26 @@ import Map from '../map/map';
 import { Link } from 'react-router-dom';
 
 class CarIndex extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
 
     componentDidMount() {
         // this.props.fetchcars();
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
     }
 
-   
-
     render() {
        
+        if (!Object.keys(this.props.mapCenter).length) {
+       
+            this.storageCenter = {
+                lat: parseFloat(sessionStorage.getItem('lat')),
+                lng: parseFloat(sessionStorage.getItem('lng'))
+            }
+        }
+  
         return (
             <div className="index-container">
                 <div className="index-cars-container">
@@ -37,7 +47,7 @@ class CarIndex extends React.Component {
                 </div>
                 <div className="map">
                     <div className="map-container">
-                        <Map cars={this.props.cars} updatefilter={this.props.updatefilter}/>
+                        <Map cars={this.props.cars} updatefilter={this.props.updatefilter} center={ Object.values(this.props.mapCenter).length ? this.props.mapCenter : this.storageCenter}/>
                     </div>
                 </div>
              

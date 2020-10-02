@@ -5,10 +5,11 @@ import MarkerManager from '../../util/marker_manager';
 
 class Map extends React.Component {
     componentDidMount() {
-
+       
         const map = ReactDOM.findDOMNode(this.refs.map)
+        
         const mapOptions = {
-            center: { lat: 40.7472736, lng: -74.0038576 }, 
+            center: Object.keys(this.props.center).length ? this.props.center : { lat: 40.7472736, lng: -74.0038576 }, 
             zoom: 13,
             zoomControl: true,
             zoomControlOptions: {
@@ -21,6 +22,7 @@ class Map extends React.Component {
             fullscreenControl: true
         
         };
+        
 
         this.map = new google.maps.Map(map, mapOptions);
         
@@ -38,7 +40,12 @@ class Map extends React.Component {
         });
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
+    
+        if (prevProps.center.lat !== this.props.center.lat || prevProps.center.lng !== this.props.center.lng) {
+            this.map.setCenter(new google.maps.LatLng(this.props.center.lat, this.props.center.lng))
+           
+        }
         this.MarkerManager.updateMarkers(this.props.cars);
     }
 

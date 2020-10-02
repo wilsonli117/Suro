@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../search/search';
+import Search from '../search/search_container';
 import Covid from './covid'
 import Category from './category';
 import Discover from './discover';
@@ -9,7 +9,7 @@ import Footer from './footer';
 const Splash = (props) => {
     return (
         <div>
-            <Search history={props.history}/>
+            <Search />
             <Covid />
             <Category history={props.history}/>
             <Discover history={props.history}/>
