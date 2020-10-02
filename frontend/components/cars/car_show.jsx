@@ -105,7 +105,7 @@ class CarShow extends React.Component {
                             <ul>
                                 {this.props.car.fuel_type === "Gasoline" ? 
                                     <li><i className="fas fa-gas-pump fa-2x"></i>Gas {this.props.car.hp > 300 ? '(Premium)' : ""}</li> :
-                                    <li><i class="fas fa-charging-station fa-2x">Electric</i></li>
+                                    <li><i className="fas fa-charging-station fa-2x">Electric</i></li>
                                 }
                                 <li><i className="fas fa-tachometer-alt fa-2x"></i>{`${this.props.car.hp} HP`}</li>
                                 <li><i className="fas fa-car-side fa-2x"></i>{`${this.props.car.numDoors} doors`}</li>
@@ -153,11 +153,11 @@ class CarShow extends React.Component {
                                 <div>
                                     <label htmlFor="show-booking-start-date"></label>
                                     <select id="show-booking-start-date">
-                                        <option value="10/01/2020">10/01/2020</option>
+                                        <option value="11/07/2020">11/07/2020</option>
                                     </select>
                                     <label htmlFor="show-booking-start-time"></label>
                                     <select id="show-booking-start-time">
-                                        <option value="08:00">8:00 AM</option>
+                                        <option value="06:00">6:00 PM</option>
                                     </select>
                                 </div>
                             </div>
@@ -166,11 +166,11 @@ class CarShow extends React.Component {
                                 <div>
                                     <label htmlFor="show-booking-end-date"></label>
                                     <select id="show-booking-end-date">
-                                        <option value="10/03/2020">10/03/2020</option>
+                                        <option value="11/09/2020">11/09/2020</option>
                                     </select>
                                     <label htmlFor="show-booking-end-time"></label>
                                     <select id="show-booking-end-time">
-                                        <option value="13:00">1:00 PM</option>
+                                        <option value="13:00">10:00 PM</option>
                                     </select>
                                 </div>
                             </div>

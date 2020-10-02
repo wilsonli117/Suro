@@ -75,7 +75,7 @@ class NavBar extends React.Component {
                                 <p>Until</p>
                                 <label htmlFor="index-nav-until-date"> </label>
                                 <select id="index-nav-until-date">
-                                    <option>11/08/2020   </option>
+                                    <option>11/09/2020   </option>
                                 </select>
                                 <label htmlFor="index-nav-until-time"></label>
                                 <select id="index-nav-until-time" >

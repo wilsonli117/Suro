@@ -64,7 +64,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="until-date"></label>
                                         <select id="until-date">
-                                            <option>11/08/2020 </option>
+                                            <option>11/09/2020 </option>
                                         </select>
                                         <label htmlFor="until-time"></label>
                                         <select id="until-time" >
