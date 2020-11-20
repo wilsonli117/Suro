@@ -220,7 +220,7 @@ SEED4P = open('https://suro-seeds.s3.amazonaws.com/GT500/GT5001.jpg')
 
 SEED4.photos.attach(io: SEED4P, filename: 'SEED4P.jpg')
 
-SEED5 = Car.create(owner_id: 6, address: "123 Seed Address", city: "New York", state: "NY", longitude: -74.0134891, latitude: 40.7093549, year: 1965, make: "TESLA", model: "MODEL X", price: 220, description: "The 2020 Tesla Model X might be the greenest—and one of the fastest—way to tote up to seven people over hill and dale. As the crossover cousin to the brand's iconic Model S sedan, the X is actually practical, with all-wheel drive, a high-tech cabin with room for up to seven, and striking but fussy Falcon Wing doors. Two models are offered, both with over 300 miles of driving range, and each one is impressively quick thanks to two onboard electric motors", hp: 100, mpg: 99, fuel_type: "Electric", doors: 4, seats: 4, vin: "1C4RJFN93JC410435")
+SEED5 = Car.create(owner_id: 6, address: "123 Seed Address", city: "New York", state: "NY", longitude: -74.0134891, latitude: 40.7093549, year: 2019, make: "TESLA", model: "MODEL X", price: 220, description: "The 2020 Tesla Model X might be the greenest—and one of the fastest—way to tote up to seven people over hill and dale. As the crossover cousin to the brand's iconic Model S sedan, the X is actually practical, with all-wheel drive, a high-tech cabin with room for up to seven, and striking but fussy Falcon Wing doors. Two models are offered, both with over 300 miles of driving range, and each one is impressively quick thanks to two onboard electric motors", hp: 100, mpg: 99, fuel_type: "Electric", doors: 4, seats: 4, vin: "1C4RJFN93JC410435")
 
 SEED5P = open('https://suro-seeds.s3.amazonaws.com/2019-tesla-model-x_100697833_h.jpg')
 
