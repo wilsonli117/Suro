@@ -7,7 +7,12 @@ class Search extends React.Component {
         super(props);
         this.formatDate = this.formatDate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+        this.handleStartDayChange = this.handleStartDayChange.bind(this);
+        this.handleEndDayChange = this.handleEndDayChange.bind(this);
+        this.state = {
+            startDate: new Date(),
+            endDate: new Date()
+        }
     }
 
     componentDidMount() {
@@ -17,10 +22,20 @@ class Search extends React.Component {
     }
 
     formatDate(date, format, locale) {
-        const month = date.getMonth() > 9 ? `${date.getMonth() + 1}` : `0${date.getMonth() + 1}`
-        const day = date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`
-        const year = `${date.getFullYear()}`;
-        return `${month}-${day}-${year}`;
+        // const month = date.getMonth() > 9 ? `${date.getMonth() + 1}` : `0${date.getMonth() + 1}`
+        // const day = date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`
+        // const year = `${date.getFullYear()}`;
+        // return `${month}-${day}-${year}`;
+        
+        return date.toLocaleDateString();
+    }
+
+    handleStartDayChange(selectedDay) {
+        this.setState({ startDate: selectedDay })
+    }
+
+    handleEndDayChange(selectedDay) {
+        this.setState({ endDate: selectedDay })
     }
 
     handleSubmit(e) {
@@ -41,12 +56,13 @@ class Search extends React.Component {
         }
     }
 
-
-
-
     render() {
         const disabled = {
             before: new Date()
+        }
+        const selectedDays = {
+            from: this.state.startDate,
+            to: this.state.endDate
         }
         return (
                 <div className='search'>
@@ -66,11 +82,14 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="from-date"></label>
                                         <DayPickerInput 
+                                            showOverlay={true}
                                             formatDate={this.formatDate}
-                                            value={this.formatDate(new Date())}
+                                            value={this.formatDate(this.state.startDate)}
                                             dayPickerProps={{
-                                            disabledDays: disabled
-                                    }}
+                                                disabledDays: disabled,
+                                                selectedDays: selectedDays
+                                            }}
+                                            onDayChange={this.handleStartDayChange}
                                         />
                                         <label htmlFor="from-time"></label>
                                         <select id="from-time" >
@@ -84,11 +103,14 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="until-date"></label>
                                         <DayPickerInput
+                                            showOverlay={true}
                                             formatDate={this.formatDate}
-                                            value={this.formatDate(new Date())}
+                                            value={this.formatDate(this.state.endDate)}
                                             dayPickerProps={{
-                                                disabledDays: disabled 
+                                                disabledDays: disabled,
+                                                selectedDays: selectedDays 
                                             }}
+                                            onDayChange={this.handleEndDayChange}
                                         />
                                         <label htmlFor="until-time"></label>
                                         <select id="until-time" >
