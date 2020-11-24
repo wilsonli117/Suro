@@ -80,6 +80,15 @@
                             border: none;
                         }
                 }
+                .DayPicker-Day {
+                    border-radius: 50%;
+                }
+                .DayPicker-Day--selected {
+                    color: #f5a731f5;
+                    background-color: white;
+                    border: 1px solid #f5a731f5;
+                    border-radius: 50%;
+                }
             }
             .until {
                 > p {

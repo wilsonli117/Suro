@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -63,9 +64,7 @@ class NavBar extends React.Component {
                             <div className="index-from">
                                 <p>From</p>
                                 <label htmlFor="index-nav-from-date"></label>
-                                <select id="index-nav-from-date">
-                                    <option>11/07/2020   </option>
-                                </select>
+                                <DayPickerInput />
                                 <label htmlFor="index-nav-from-time"></label>
                                 <select id="index-nav-from-time" >
                                     <option value="18:00">6:00 PM   </option>
@@ -74,9 +73,7 @@ class NavBar extends React.Component {
                             <div className="index-until">
                                 <p>Until</p>
                                 <label htmlFor="index-nav-until-date"> </label>
-                                <select id="index-nav-until-date">
-                                    <option>11/09/2020   </option>
-                                </select>
+                                <DayPickerInput />
                                 <label htmlFor="index-nav-until-time"></label>
                                 <select id="index-nav-until-time" >
                                     <option value="20:00">10:00 PM   </option>
