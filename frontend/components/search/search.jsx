@@ -32,7 +32,12 @@ class Search extends React.Component {
     }
 
     handleStartDayChange(selectedDay) {
-        this.setState({ startDate: selectedDay })
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay })
+        }  else {
+            this.setState({ startDate: selectedDay, endDate: selectedDay })
+        }
+        
     }
 
     handleEndDayChange(selectedDay) {
@@ -87,7 +92,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="from-date"></label>
                                         <DayPickerInput 
-                                            showOverlay={true}
+                                            
                                             formatDate={this.formatDate}
                                             value={this.formatDate(this.state.startDate)}
                                             dayPickerProps={{
@@ -108,7 +113,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="until-date"></label>
                                         <DayPickerInput
-                                            showOverlay={true}
+                                            
                                             formatDate={this.formatDate}
                                             value={this.formatDate(this.state.endDate)}
                                             dayPickerProps={{

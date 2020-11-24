@@ -1,7 +1,7 @@
 import { fetchcars } from './car_actions';
 
 export const UPDATE_FILTER = 'UPDATE_FILTER';
-export const UPDATE_CENTER = 'UPDATE_LOCATION'
+export const UPDATE_CENTER = 'UPDATE_CENTER'
 
 // export const updateBounds = bounds => {
 //     return {
