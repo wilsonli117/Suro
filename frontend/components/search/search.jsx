@@ -1,5 +1,6 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import { DateUtils } from "react-day-picker";
 import 'react-day-picker/lib/style.css';
 
 class Search extends React.Component {
@@ -35,7 +36,11 @@ class Search extends React.Component {
     }
 
     handleEndDayChange(selectedDay) {
-        this.setState({ endDate: selectedDay })
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay, endDate: selectedDay })
+        } else {
+            this.setState({ endDate: selectedDay })
+        }
     }
 
     handleSubmit(e) {
