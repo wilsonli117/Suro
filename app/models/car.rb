@@ -53,6 +53,17 @@ class Car < ApplicationRecord
             .where("longitude > ?", bounds[:southWest][:lng])
     end
 
+    def available(startdate, enddate)
+        available = true;
+        
+        self.unavailable_dates.each do |date|
+            available = false if (date == startdate) || (date == enddate) || (date > startdate && date < enddate)     
+        end
+
+        return available
+       
+    end
+
     def unavailable_dates
         dates = []
 
@@ -62,7 +73,7 @@ class Car < ApplicationRecord
             booking_length = end_date - start_date
         
             (0..booking_length).each do |num|
-                dates << (start_date + num).strftime("%m/%d/%Y")
+                dates << (start_date + num)
             end
 
         end

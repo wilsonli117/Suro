@@ -60,8 +60,10 @@ class Search extends React.Component {
             sessionStorage.setItem('lat', lat)
             sessionStorage.setItem('lng', lng)
             this.props.locationFilter(center);
+            this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
         } else {
+            this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
         }
     }
