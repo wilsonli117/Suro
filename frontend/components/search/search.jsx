@@ -32,7 +32,12 @@ class Search extends React.Component {
     }
 
     handleStartDayChange(selectedDay) {
-        this.setState({ startDate: selectedDay })
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay })
+        }  else {
+            this.setState({ startDate: selectedDay, endDate: selectedDay })
+        }
+        
     }
 
     handleEndDayChange(selectedDay) {
@@ -55,8 +60,10 @@ class Search extends React.Component {
             sessionStorage.setItem('lat', lat)
             sessionStorage.setItem('lng', lng)
             this.props.locationFilter(center);
+            this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
         } else {
+            this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
         }
     }
@@ -87,7 +94,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="from-date"></label>
                                         <DayPickerInput 
-                                            showOverlay={true}
+                                            
                                             formatDate={this.formatDate}
                                             value={this.formatDate(this.state.startDate)}
                                             dayPickerProps={{
@@ -96,6 +103,7 @@ class Search extends React.Component {
                                             }}
                                             onDayChange={this.handleStartDayChange}
                                         />
+                                        <i className="fas fa-angle-down"></i>
                                         <label htmlFor="from-time"></label>
                                         <select id="from-time" >
                                             <option value="18:00">6:00 PM </option>
@@ -108,7 +116,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="until-date"></label>
                                         <DayPickerInput
-                                            showOverlay={true}
+                                            
                                             formatDate={this.formatDate}
                                             value={this.formatDate(this.state.endDate)}
                                             dayPickerProps={{
