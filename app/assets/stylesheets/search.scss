@@ -61,6 +61,7 @@
                 font-weight: 500;
                 font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
                 }
+
             }
             .from {
                 > p {
@@ -80,11 +81,19 @@
                             border: none;
                         }
                 }
+                .DayPickerInput {
+                    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;
                     background-color: white;
                     border: 1px solid #f5a731f5;
                     border-radius: 50%;
+                }
+                i {
+                    font-weight: 700;
                 }
             }
             .until {
@@ -103,6 +112,11 @@
                                 font-weight: 500;
                                 border: none;
                         }
+                }
+                .DayPickerInput {
+                    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                    font-size: 18px;
+                    font-weight: 500;
                 }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;
@@ -126,4 +140,12 @@
         }
     }
    
+}
+
+.pac-container {
+    
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 380px;
+    height: 390px;
 }

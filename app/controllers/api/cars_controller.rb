@@ -4,7 +4,7 @@ class Api::CarsController < ApplicationController
         startdate = Date.parse(params[:dates][:startDate])
         enddate = Date.parse(params[:dates][:endDate])
 
-        @cars = Car.includes(:bookings).in_bounds(params[:bounds]).select { |car| car.available(startdate, enddate) }
+        @cars = Car.includes(:bookings).in_bounds(params[:bounds]).select { |car| car.available?(startdate, enddate) }
         
         #more filters to come here
         render :index

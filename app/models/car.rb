@@ -53,9 +53,9 @@ class Car < ApplicationRecord
             .where("longitude > ?", bounds[:southWest][:lng])
     end
 
-    def available(startdate, enddate)
+    def available?(startdate, enddate)
         available = true;
-        
+
         self.unavailable_dates.each do |date|
             available = false if (date == startdate) || (date == enddate) || (date > startdate && date < enddate)     
         end

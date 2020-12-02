@@ -103,6 +103,7 @@ class Search extends React.Component {
                                             }}
                                             onDayChange={this.handleStartDayChange}
                                         />
+                                        <i className="fas fa-angle-down"></i>
                                         <label htmlFor="from-time"></label>
                                         <select id="from-time" >
                                             <option value="18:00">6:00 PM </option>
