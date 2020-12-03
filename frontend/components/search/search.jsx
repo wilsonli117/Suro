@@ -1,7 +1,8 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { DateUtils } from "react-day-picker";
+import { DateUtils} from "react-day-picker";
 import 'react-day-picker/lib/style.css';
+import { times } from '../../util/date_util';
 
 class Search extends React.Component {
     constructor(props) {
@@ -10,16 +11,22 @@ class Search extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleStartDayChange = this.handleStartDayChange.bind(this);
         this.handleEndDayChange = this.handleEndDayChange.bind(this);
+        this.handleTimeSelect = this.handleTimeSelect.bind(this);
         this.state = {
             startDate: new Date(),
-            endDate: new Date()
+            endDate: undefined
         }
+
     }
 
     componentDidMount() {
         const searchbox = document.getElementById('search-box')
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+        const tomorrow = new Date()
+        tomorrow.setDate(this.state.startDate.getDate() + 1);
+        this.setState({ endDate: tomorrow })
+        
     }
 
     formatDate(date, format, locale) {
@@ -27,8 +34,9 @@ class Search extends React.Component {
         // const day = date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`
         // const year = `${date.getFullYear()}`;
         // return `${month}-${day}-${year}`;
-        
-        return date.toLocaleDateString();
+        if (date) {
+            return date.toLocaleDateString();
+        }
     }
 
     handleStartDayChange(selectedDay) {
@@ -45,6 +53,16 @@ class Search extends React.Component {
             this.setState({ startDate: selectedDay, endDate: selectedDay })
         } else {
             this.setState({ endDate: selectedDay })
+        }
+    }
+
+    handleTimeSelect(selectedDate, e) {
+        if (selectedDate === 'from') {
+            console.log('from')
+            console.log(e.target.value)
+        } else {
+            console.log('until')
+            console.log(e.target.value)
         }
     }
 
@@ -105,8 +123,10 @@ class Search extends React.Component {
                                         />
                                         <i className="fas fa-angle-down"></i>
                                         <label htmlFor="from-time"></label>
-                                        <select id="from-time" >
-                                            <option value="18:00">6:00 PM </option>
+                                        <select id="from-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                            {times.map((time, idx) => {
+                                                return <option value={time} key={idx}>{time}</option>               
+                                            })}
                                         </select>
 
                                     </div>
@@ -126,8 +146,10 @@ class Search extends React.Component {
                                             onDayChange={this.handleEndDayChange}
                                         />
                                         <label htmlFor="until-time"></label>
-                                        <select id="until-time" >
-                                            <option value="20:00">10:00 PM </option>
+                                        <select id="until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('until', e)}>
+                                            {times.map((time, idx) => {
+                                                return <option value={time} key={idx}>{time}</option>
+                                            })}
                                         </select>
 
                                     </div>
