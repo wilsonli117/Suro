@@ -79,6 +79,9 @@
                             font-size: 18px;
                             font-weight: 500;
                             border: none;
+                            &:focus {
+                                outline: none;
+                            }
                         }
                 }
                 .DayPickerInput {
@@ -107,10 +110,13 @@
                 > div {
                     display: flex;
                         > select{
-                                font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-                                font-size: 18px;
-                                font-weight: 500;
-                                border: none;
+                            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                            font-size: 18px;
+                            font-weight: 500;
+                            border: none;
+                            &:focus {
+                                outline: none;
+                            }
                         }
                 }
                 .DayPickerInput {
