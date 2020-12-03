@@ -23,8 +23,11 @@ class Search extends React.Component {
         const searchbox = document.getElementById('search-box')
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+
         const tomorrow = new Date()
         tomorrow.setDate(this.state.startDate.getDate() + 1);
+
+        this.state.startDate
         this.setState({ endDate: tomorrow })
         
     }
@@ -58,8 +61,9 @@ class Search extends React.Component {
 
     handleTimeSelect(selectedDate, e) {
         if (selectedDate === 'from') {
-            console.log('from')
-            console.log(e.target.value)
+            if (e.target.value === 'Noon' || e.target.value === 'Midnight') {
+
+            }
         } else {
             console.log('until')
             console.log(e.target.value)

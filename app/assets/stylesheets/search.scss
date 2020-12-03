@@ -1,7 +1,3 @@
-select:focus {
-    outline: none;
-}
-
 .search {
     background-image: image-url("gtr.jpg");
     background-size: cover;
@@ -83,6 +79,9 @@ select:focus {
                             font-size: 18px;
                             font-weight: 500;
                             border: none;
+                            &:focus {
+                                outline: none;
+                            }
                         }
                 }
                 .DayPickerInput {
@@ -111,10 +110,13 @@ select:focus {
                 > div {
                     display: flex;
                         > select{
-                                font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-                                font-size: 18px;
-                                font-weight: 500;
-                                border: none;
+                            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                            font-size: 18px;
+                            font-weight: 500;
+                            border: none;
+                            &:focus {
+                                outline: none;
+                            }
                         }
                 }
                 .DayPickerInput {
