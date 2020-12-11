@@ -10,12 +10,13 @@ class CarIndex extends React.Component {
 
     componentDidMount() {
         // this.props.fetchcars();
+    
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
     }
 
     render() {
        
-        if (!Object.keys(this.props.mapCenter).length) {
+        if (!Object.keys(this.props.mapCenter).length && this.props.history.action === "POP") {
        
             this.storageCenter = {
                 lat: parseFloat(sessionStorage.getItem('lat')),
@@ -47,7 +48,7 @@ class CarIndex extends React.Component {
                 </div>
                 <div className="map">
                     <div className="map-container">
-                        <Map cars={this.props.cars} updatefilter={this.props.updatefilter} center={ Object.values(this.props.mapCenter).length ? this.props.mapCenter : this.storageCenter}/>
+                        <Map cars={this.props.cars} updatefilter={this.props.updatefilter} center={Object.keys(this.props.mapCenter).length ? this.props.mapCenter : this.storageCenter}/>
                     </div>
                 </div>
              

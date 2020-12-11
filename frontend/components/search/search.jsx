@@ -2,7 +2,7 @@ import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { DateUtils} from "react-day-picker";
 import 'react-day-picker/lib/style.css';
-import { times } from '../../util/date_util';
+import { times, parseTime } from '../../util/date_util';
 
 class Search extends React.Component {
     constructor(props) {
@@ -27,7 +27,6 @@ class Search extends React.Component {
         const tomorrow = new Date()
         tomorrow.setDate(this.state.startDate.getDate() + 1);
 
-        this.state.startDate
         this.setState({ endDate: tomorrow })
         
     }
@@ -60,13 +59,23 @@ class Search extends React.Component {
     }
 
     handleTimeSelect(selectedDate, e) {
-        if (selectedDate === 'from') {
-            if (e.target.value === 'Noon' || e.target.value === 'Midnight') {
+        const time = parseTime(e.target.value);
+        const hours = time[0];
+        const minutes = time[1];
+        let newDate;
 
-            }
+        if (selectedDate === 'from') {
+            newDate = this.state.startDate
+            newDate.setHours(hours, minutes);
+            
+            this.setState({ startDate: newDate })
+            console.log(this.state.startDate);
         } else {
-            console.log('until')
-            console.log(e.target.value)
+            newDate = this.state.endDate
+            newDate.setHours(hours, minutes);
+            
+            this.setState({ endDate: newDate })
+            console.log(this.state.endDate);
         }
     }
 
@@ -84,10 +93,7 @@ class Search extends React.Component {
             this.props.locationFilter(center);
             this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
-        } else {
-            this.props.updateFilter("dates", this.state);
-            this.props.history.push("/cars");
-        }
+        } 
     }
 
     render() {

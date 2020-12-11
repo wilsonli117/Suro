@@ -5,7 +5,7 @@ import MarkerManager from '../../util/marker_manager';
 
 class Map extends React.Component {
     componentDidMount() {
-       
+      
         const map = ReactDOM.findDOMNode(this.refs.map)
         
         const mapOptions = {
@@ -41,7 +41,7 @@ class Map extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-    
+        
         if (prevProps.center.lat !== this.props.center.lat || prevProps.center.lng !== this.props.center.lng) {
             this.map.setCenter(new google.maps.LatLng(this.props.center.lat, this.props.center.lng))
            
