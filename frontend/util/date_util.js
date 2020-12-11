@@ -70,3 +70,18 @@ export const times = ['Midnight',
                     '10:30 PM',
                     '11:00 PM',
                     '11:30 PM']
+
+export const parseTime = (input) => {
+    if (input === 'Midnight') return [0, 0];
+    if (input === 'Noon') return [12, 0];
+    if (input === '12:30 AM') return [0, 30];
+    if (input === '12:30 PM') return [12, 30];
+
+    const time = input.split(' ')[0];
+    let hours = parseInt(time.split(':')[0]);
+    const minutes = parseInt(time.split(':')[1]);
+
+    if (input.split(' ')[1] === 'PM') hours += 12;
+
+    return [hours, minutes];
+}
