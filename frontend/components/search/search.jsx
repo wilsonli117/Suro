@@ -93,10 +93,7 @@ class Search extends React.Component {
             this.props.locationFilter(center);
             this.props.updateFilter("dates", this.state);
             this.props.history.push("/cars");
-        } else {
-            this.props.updateFilter("dates", this.state);
-            this.props.history.push("/cars");
-        }
+        } 
     }
 
     render() {
