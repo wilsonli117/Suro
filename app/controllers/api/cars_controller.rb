@@ -1,11 +1,15 @@
 class Api::CarsController < ApplicationController
 
     def index
-        startdate = Date.parse(params[:dates][:startDate])
-        enddate = Date.parse(params[:dates][:endDate])
-
-        @cars = Car.includes(:bookings).in_bounds(params[:bounds]).select { |car| car.available?(startdate, enddate) }
         
+        if !params[:dates] == ""
+            startdate = Date.parse(params[:dates][:startDate])
+            enddate = Date.parse(params[:dates][:endDate])
+            @cars = Car.includes(:bookings).in_bounds(params[:bounds]).select { |car| car.available?(startdate, enddate) }
+        else 
+            @cars = Car.includes(:bookings).in_bounds(params[:bounds])
+        end
+
         #more filters to come here
         render :index
     end
