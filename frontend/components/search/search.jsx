@@ -149,7 +149,7 @@ class Search extends React.Component {
                                                 return <option value={time} key={idx}>{time}</option>               
                                             })}
                                         </select>
-
+                                        <i className="fas fa-angle-down"></i>
                                     </div>
                                 </div>
                                 <div className="until">
@@ -166,13 +166,14 @@ class Search extends React.Component {
                                             }}
                                             onDayChange={this.handleEndDayChange}
                                         />
+                                        <i className="fas fa-angle-down"></i>
                                         <label htmlFor="until-time"></label>
                                         <select id="until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('until', e)}>
                                             {times.map((time, idx) => {
                                                 return <option value={time} key={idx}>{time}</option>
                                             })}
                                         </select>
-
+                                        <i className="fas fa-angle-down"></i>
                                     </div>
                                 </div>
                                 <button onClick={this.handleSubmit}><i className="fas fa-search"></i></button>

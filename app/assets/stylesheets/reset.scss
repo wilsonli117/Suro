@@ -44,3 +44,8 @@ input[type="submit"] {
 html,body, #root, #root-div {
   height: 100%;
 }
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
