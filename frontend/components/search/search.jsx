@@ -24,6 +24,15 @@ class Search extends React.Component {
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
 
+        // const autocompleteDropdown = document.getElementsByClassName('pac-container');
+
+        // searchbox.addEventListener('focus', () => {
+        //     autocompleteDropdown[0].style.display = 'block';
+        //     autocompleteDropdown[0].style.position = 'absolute';
+        //     autocompleteDropdown[0].style.left = '102px';
+        //     autocompleteDropdown[0].style.top = '424px';
+        // })
+
         const tomorrow = new Date()
         tomorrow.setDate(this.state.startDate.getDate() + 1);
 

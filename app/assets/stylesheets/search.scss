@@ -149,9 +149,22 @@
 }
 
 .pac-container {
-    
     margin-top: 10px;
     margin-left: 10px;
-    width: 380px;
-    height: 390px;
+    width: 375px !important;   
+    .pac-item {
+        border-top: none;
+    }
+}
+
+.pac-item:hover {
+    color: #f5a731f5;
+}
+
+.pac-matched:hover {
+    color: #f5a731f5;
+}
+
+.pac-logo:after {
+    background-position: center;
 }
