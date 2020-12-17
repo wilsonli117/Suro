@@ -1,6 +1,5 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { DateUtils} from "react-day-picker";
 import 'react-day-picker/lib/style.css';
 import { times, parseTime } from '../../util/date_util';
 
@@ -24,19 +23,12 @@ class Search extends React.Component {
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
 
-        // const autocompleteDropdown = document.getElementsByClassName('pac-container');
-
-        // searchbox.addEventListener('focus', () => {
-        //     autocompleteDropdown[0].style.display = 'block';
-        //     autocompleteDropdown[0].style.position = 'absolute';
-        //     autocompleteDropdown[0].style.left = '102px';
-        //     autocompleteDropdown[0].style.top = '424px';
-        // })
-
-        const tomorrow = new Date()
+        const tomorrow = new Date();
         tomorrow.setDate(this.state.startDate.getDate() + 1);
+        const dayAfterTomorrow = new Date();
+        dayAfterTomorrow.setDate(this.state.startDate.getDate() + 2);
 
-        this.setState({ endDate: tomorrow })
+        this.setState({ startDate: tomorrow, endDate: dayAfterTomorrow })
         
     }
 
@@ -68,7 +60,7 @@ class Search extends React.Component {
     }
 
     handleTimeSelect(selectedDate, e) {
-        const time = parseTime(e.target.value);
+        const time = e.target.value;
         const hours = time[0];
         const minutes = time[1];
         let newDate;
