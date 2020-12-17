@@ -33,10 +33,7 @@ class Search extends React.Component {
     }
 
     formatDate(date, format, locale) {
-        // const month = date.getMonth() > 9 ? `${date.getMonth() + 1}` : `0${date.getMonth() + 1}`
-        // const day = date.getDate() > 9 ? `${date.getDate()}` : `0${date.getDate()}`
-        // const year = `${date.getFullYear()}`;
-        // return `${month}-${day}-${year}`;
+        
         if (date) {
             return date.toLocaleDateString();
         }
@@ -60,7 +57,7 @@ class Search extends React.Component {
     }
 
     handleTimeSelect(selectedDate, e) {
-        const time = e.target.value;
+        const time = parseTime(e.target.value);
         const hours = time[0];
         const minutes = time[1];
         let newDate;

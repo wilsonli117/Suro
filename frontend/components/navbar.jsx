@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import { times, parseTime } from '../util/date_util';
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.formatDate = this.formatDate.bind(this);
+        this.handleStartDayChange = this.handleStartDayChange.bind(this);
+        this.handleEndDayChange = this.handleEndDayChange.bind(this);
+        this.handleTimeSelect = this.handleTimeSelect.bind(this);
+        this.state = {
+            startDate: new Date(),
+            endDate: undefined
+        }
     }
 
     componentDidMount() {
@@ -25,6 +33,50 @@ class NavBar extends React.Component {
             if (searchbox) {
                 this.autocomplete = new google.maps.places.Autocomplete(searchbox);
             }
+        }
+    }
+
+    formatDate(date, format, locale) {
+        if (date) {
+            return date.toLocaleDateString();
+        }
+    }
+
+    handleStartDayChange(selectedDay) {
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay })
+        } else {
+            this.setState({ startDate: selectedDay, endDate: selectedDay })
+        }
+
+    }
+
+    handleEndDayChange(selectedDay) {
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay, endDate: selectedDay })
+        } else {
+            this.setState({ endDate: selectedDay })
+        }
+    }
+
+    handleTimeSelect(selectedDate, e) {
+        const time = parseTime(e.target.value);
+        const hours = time[0];
+        const minutes = time[1];
+        let newDate;
+
+        if (selectedDate === 'from') {
+            newDate = this.state.startDate
+            newDate.setHours(hours, minutes);
+
+            this.setState({ startDate: newDate })
+            console.log(this.state.startDate);
+        } else {
+            newDate = this.state.endDate
+            newDate.setHours(hours, minutes);
+
+            this.setState({ endDate: newDate })
+            console.log(this.state.endDate);
         }
     }
 
@@ -66,8 +118,10 @@ class NavBar extends React.Component {
                                 <label htmlFor="index-nav-from-date"></label>
                                 <DayPickerInput />
                                 <label htmlFor="index-nav-from-time"></label>
-                                <select id="index-nav-from-time" >
-                                    <option value="18:00">6:00 PM   </option>
+                                <select id="index-nav-from-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                    {times.map((time, idx) => {
+                                        return <option value={time} key={idx}>{time}</option>
+                                    })}
                                 </select>
                             </div>
                             <div className="index-until">
@@ -75,8 +129,10 @@ class NavBar extends React.Component {
                                 <label htmlFor="index-nav-until-date"> </label>
                                 <DayPickerInput />
                                 <label htmlFor="index-nav-until-time"></label>
-                                <select id="index-nav-until-time" >
-                                    <option value="20:00">10:00 PM   </option>
+                                <select id="index-nav-until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                    {times.map((time, idx) => {
+                                        return <option value={time} key={idx}>{time}</option>
+                                    })}
                                 </select>
                             </div>
                         
