@@ -123,6 +123,7 @@ class NavBar extends React.Component {
                                         return <option value={time} key={idx}>{time}</option>
                                     })}
                                 </select>
+                                <i className="fas fa-angle-down"></i>
                             </div>
                             <div className="index-until">
                                 <p>Until</p>
@@ -134,6 +135,7 @@ class NavBar extends React.Component {
                                         return <option value={time} key={idx}>{time}</option>
                                     })}
                                 </select>
+                                <i className="fas fa-angle-down"></i>
                             </div>
                         
                     </form>
