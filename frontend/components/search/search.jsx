@@ -101,7 +101,7 @@ class Search extends React.Component {
 
     render() {
         const disabled = {
-            before: new Date()
+            before: this.state.startDate
         }
         const selectedDays = {
             from: this.state.startDate,
