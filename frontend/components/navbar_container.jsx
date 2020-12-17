@@ -6,13 +6,19 @@ import { openModal } from '../actions/modal_actions';
 import { locationFilter } from '../actions/filter_actions';
 
 const mSTP = state => {
-   if (state.session.id) {
+   if (state.session.id && state.ui.filters.dates) {
+       
        return {
-           currentUser: state.entities.users[state.session.id]
+           currentUser: state.entities.users[state.session.id],
+           startDate: state.ui.filters.dates.startDate,
+           endDate: state.ui.filters.dates.endDate
        }
    } else {
+       
        return {
-           currentUser: null
+           currentUser: null, 
+           startDate: undefined,
+           startDate: undefined
        }
    }
 }
