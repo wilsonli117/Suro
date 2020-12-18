@@ -12,8 +12,8 @@ class NavBar extends React.Component {
         this.handleEndDayChange = this.handleEndDayChange.bind(this);
         this.handleTimeSelect = this.handleTimeSelect.bind(this);
         this.state = {
-            startDate: this.props.startDate,
-            endDate: this.props.endDate
+            startDate: undefined,
+            endDate: undefined
         }
     }
 
@@ -26,17 +26,23 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-       
+       debugger;
         if (this.props.location.pathname.includes("/cars") && (this.props.location.pathname !== prevProps.location.pathname)) {
             const searchbox = document.getElementById('index-nav-where')
             
             if (searchbox) {
                 this.autocomplete = new google.maps.places.Autocomplete(searchbox);
             }
+
+            if (!this.state.startDate && this.props.dates) {
+                debugger;
+                this.setState({ startDate: this.props.dates.startDate, endDate: this.props.dates.endDate})
+            }
         }
     }
 
     formatDate(date, format, locale) {
+        
         if (date) {
             return date.toLocaleDateString();
         }
@@ -129,12 +135,12 @@ class NavBar extends React.Component {
                                 <DayPickerInput
 
                                     formatDate={this.formatDate}
-                                    value={this.formatDate(this.state.endDate)}
+                                    value={this.formatDate(this.state.startDate)}
                                     dayPickerProps={{
                                         disabledDays: disabled,
                                         selectedDays: selectedDays
                                     }}
-                                    onDayChange={this.handleEndDayChange}
+                                    onDayChange={this.handleStartDayChange}
                                 />
                                 <label htmlFor="index-nav-from-time"></label>
                                 <select id="index-nav-from-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
@@ -147,7 +153,16 @@ class NavBar extends React.Component {
                             <div className="index-until">
                                 <p>Until</p>
                                 <label htmlFor="index-nav-until-date"> </label>
-                                <DayPickerInput />
+                                <DayPickerInput
+
+                                    formatDate={this.formatDate}
+                                    value={this.formatDate(this.state.endDate)}
+                                    dayPickerProps={{
+                                        disabledDays: disabled,
+                                        selectedDays: selectedDays
+                                    }}
+                                    onDayChange={this.handleEndDayChange}
+                                />
                                 <label htmlFor="index-nav-until-time"></label>
                                 <select id="index-nav-until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
                                     {times.map((time, idx) => {
