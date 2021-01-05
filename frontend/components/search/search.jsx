@@ -32,8 +32,7 @@ class Search extends React.Component {
         
     }
 
-    formatDate(date, format, locale) {
-        
+    formatDate(date) {   
         if (date) {
             return date.toLocaleDateString();
         }
