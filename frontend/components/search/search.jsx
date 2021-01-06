@@ -25,8 +25,12 @@ class Search extends React.Component {
 
         const tomorrow = new Date();
         tomorrow.setDate(this.state.startDate.getDate() + 1);
+        tomorrow.setHours(10);
+        tomorrow.setMinutes(0);
         const dayAfterTomorrow = new Date();
         dayAfterTomorrow.setDate(this.state.startDate.getDate() + 2);
+        dayAfterTomorrow.setHours(10);
+        dayAfterTomorrow.setMinutes(0);
 
         this.setState({ startDate: tomorrow, endDate: dayAfterTomorrow })
         
@@ -64,15 +68,13 @@ class Search extends React.Component {
         if (selectedDate === 'from') {
             newDate = this.state.startDate
             newDate.setHours(hours, minutes);
-            
             this.setState({ startDate: newDate })
-            console.log(this.state.startDate);
+            
         } else {
             newDate = this.state.endDate
             newDate.setHours(hours, minutes);
             
             this.setState({ endDate: newDate })
-            console.log(this.state.endDate);
         }
     }
 
@@ -84,13 +86,12 @@ class Search extends React.Component {
             const lat = place.lat();
             const lng = place.lng();
             const center = { center: { lat, lng } }
-            sessionStorage.clear();
             sessionStorage.setItem('lat', lat)
             sessionStorage.setItem('lng', lng)
             sessionStorage.setItem('startdate', this.state.startDate.toString());
             sessionStorage.setItem('enddate', this.state.endDate.toString());
-            this.props.locationFilter(center);
             this.props.updateFilter("dates", this.state);
+            this.props.locationFilter(center);
             this.props.history.push("/cars");
         } 
     }
