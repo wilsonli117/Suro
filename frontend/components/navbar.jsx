@@ -54,10 +54,10 @@ class NavBar extends React.Component {
     }
 
     handleStartDayChange(selectedDay) {
-        debugger;
+        
         const hours = this.state.startDate.getHours();
         const minutes = this.state.startDate.getMinutes();
-        debugger;
+        
         selectedDay.setHours(hours);
         selectedDay.setMinutes(minutes);
 
@@ -65,12 +65,16 @@ class NavBar extends React.Component {
             this.setState({ startDate: selectedDay })
             sessionStorage.setItem('startdate', this.state.startDate.toString());
         } else {
-            selectedDay = selectedDay + 1;
-            this.setState({ startDate: selectedDay, endDate: selectedDay})
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ startDate: selectedDay })
+            debugger;
+            // sessionStorage.setItem('startdate', this.state.startDate.toString());
+            // selectedDay.setDate(this.state.startDate.getDate() + 1);
+            // this.setState({ endDate: selectedDay })
+            // debugger;
+            // sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
 
+        debugger;
         this.props.updateFilter("dates", this.state);
     }
 
@@ -83,8 +87,10 @@ class NavBar extends React.Component {
         selectedDay.setMinutes(minutes);
 
         if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay, endDate: selectedDay});
+            this.setState({ startDate: selectedDay});
             sessionStorage.setItem('startdate', this.state.startDate.toString());
+            selectedDay.setHours(this.state.startDate.getHours() + 1);
+            this.setState({ endDate: selectedDay })
             sessionStorage.setItem('enddate', this.state.endDate.toString());
         } else {
             this.setState({ endDate: selectedDay });
@@ -132,9 +138,11 @@ class NavBar extends React.Component {
 
     render() {
         if (this.props.location.pathname == '/cars') {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
 
             const disabled = {
-                before: this.state.startDate
+                before: tomorrow
             }
             const selectedDays = {
                 from: this.state.startDate,
