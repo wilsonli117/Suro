@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { times, parseTime } from '../util/date_util';
+import { times, parseTime, defaultTime } from '../util/date_util';
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLocationChange = this.handleLocationChange.bind(this);
         this.formatDate = this.formatDate.bind(this);
         this.handleStartDayChange = this.handleStartDayChange.bind(this);
         this.handleEndDayChange = this.handleEndDayChange.bind(this);
@@ -18,51 +18,86 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        
         const searchbox = document.getElementById('index-nav-where')
         if (searchbox){
             this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+            this.autocomplete.addListener('place_changed', this.handleLocationChange)
+        }
+
+        if(!this.state.startDate || !this.state.endDate) {
+            const startDate = new Date(sessionStorage.getItem('startdate'));
+            const endDate = new Date(sessionStorage.getItem('enddate'));
+            
+            this.setState({ startDate: startDate, endDate: endDate });
         }
     }
 
     componentDidUpdate(prevProps) {
-       debugger;
+        
         if (this.props.location.pathname.includes("/cars") && (this.props.location.pathname !== prevProps.location.pathname)) {
             const searchbox = document.getElementById('index-nav-where')
             
             if (searchbox) {
                 this.autocomplete = new google.maps.places.Autocomplete(searchbox);
+                this.autocomplete.addListener('place_changed', this.handleLocationChange)
             }
-
-            if (!this.state.startDate && this.props.dates) {
-                debugger;
-                this.setState({ startDate: this.props.dates.startDate, endDate: this.props.dates.endDate})
-            }
+          
+            this.setState({ startDate: this.props.dates.startDate, endDate: this.props.dates.endDate})
+           
         }
     }
 
-    formatDate(date, format, locale) {
-        
+    formatDate(date) {
         if (date) {
             return date.toLocaleDateString();
         }
     }
 
     handleStartDayChange(selectedDay) {
-        if (selectedDay < this.state.startDate) {
+        
+        const hours = this.state.startDate.getHours();
+        const minutes = this.state.startDate.getMinutes();
+        
+        selectedDay.setHours(hours);
+        selectedDay.setMinutes(minutes);
+
+        if (selectedDay < this.state.endDate) {
             this.setState({ startDate: selectedDay })
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
         } else {
-            this.setState({ startDate: selectedDay, endDate: selectedDay })
+            this.setState({ startDate: selectedDay })
+            debugger;
+            // sessionStorage.setItem('startdate', this.state.startDate.toString());
+            // selectedDay.setDate(this.state.startDate.getDate() + 1);
+            // this.setState({ endDate: selectedDay })
+            // debugger;
+            // sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
 
+        debugger;
+        this.props.updateFilter("dates", this.state);
     }
 
     handleEndDayChange(selectedDay) {
+        debugger;
+        const hours = this.state.endDate.getHours();
+        const minutes = this.state.endDate.getMinutes();
+        debugger;
+        selectedDay.setHours(hours);
+        selectedDay.setMinutes(minutes);
+
         if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay, endDate: selectedDay })
-        } else {
+            this.setState({ startDate: selectedDay});
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            selectedDay.setHours(this.state.startDate.getHours() + 1);
             this.setState({ endDate: selectedDay })
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
+        } else {
+            this.setState({ endDate: selectedDay });
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
+
+        this.props.updateFilter("dates", this.state);
     }
 
     handleTimeSelect(selectedDate, e) {
@@ -74,44 +109,40 @@ class NavBar extends React.Component {
         if (selectedDate === 'from') {
             newDate = this.state.startDate
             newDate.setHours(hours, minutes);
-
             this.setState({ startDate: newDate })
-            console.log(this.state.startDate);
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
         } else {
             newDate = this.state.endDate
             newDate.setHours(hours, minutes);
-
             this.setState({ endDate: newDate })
-            console.log(this.state.endDate);
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
+
     }
 
-    handleSubmit(e) {
-       
-        e.preventDefault();
-        if (this.autocomplete.getPlace()) {
-            const place = this.autocomplete.getPlace().geometry.location;
-            const lat = place.lat();
-            const lng = place.lng();
-            const center = { center: { lat, lng } }
-            sessionStorage.clear();
-            sessionStorage.setItem('lat', lat)
-            sessionStorage.setItem('lng', lng)
-          
-            this.props.locationFilter(center);
-            if (this.props.location.pathname.includes('/cars/')) {
-                this.props.history.push("/cars");
-            }
+    handleLocationChange() {
+        const place = this.autocomplete.getPlace().geometry.location;
+        const lat = place.lat();
+        const lng = place.lng();
+        const center = { center: { lat, lng } }
+        sessionStorage.setItem('lat', lat)
+        sessionStorage.setItem('lng', lng)
+        sessionStorage.setItem('startdate', this.state.startDate.toString());
+        sessionStorage.setItem('enddate', this.state.endDate.toString());
+        this.props.updateFilter("dates", this.state);
+        this.props.locationFilter(center);
+        if (this.props.location.pathname.includes('/cars/')) {
+            this.props.history.push("/cars");
         }
     }
 
     render() {
-       
-
         if (this.props.location.pathname == '/cars') {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
 
             const disabled = {
-                before: this.state.startDate
+                before: tomorrow
             }
             const selectedDays = {
                 from: this.state.startDate,
@@ -121,13 +152,13 @@ class NavBar extends React.Component {
             return (
                 <>
                 <nav className="car-index-nav-bar">
-                    <form className="car-index-nav-search" onSubmit={this.handleSubmit}>
+                    <form className="car-index-nav-search" >
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>   
                         
                             <div className="index-where"> 
                                 <p>Where</p>
                                 <label htmlFor="index-nav-where"></label>
-                                <input type="text" id="index-nav-where" placeholder="Map location"/>
+                                <input type="text" id="index-nav-where" placeholder="Map location" />
                             </div>
                             <div className="index-from">
                                 <p>From</p>
@@ -143,7 +174,7 @@ class NavBar extends React.Component {
                                     onDayChange={this.handleStartDayChange}
                                 />
                                 <label htmlFor="index-nav-from-time"></label>
-                                <select id="index-nav-from-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                <select id="index-nav-from-time" value={defaultTime(this.state.startDate)} onChange={(e) => this.handleTimeSelect('from', e)}>
                                     {times.map((time, idx) => {
                                         return <option value={time} key={idx}>{time}</option>
                                     })}
@@ -164,7 +195,7 @@ class NavBar extends React.Component {
                                     onDayChange={this.handleEndDayChange}
                                 />
                                 <label htmlFor="index-nav-until-time"></label>
-                                <select id="index-nav-until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                <select id="index-nav-until-time" value={defaultTime(this.state.endDate)} onChange={(e) => this.handleTimeSelect('until', e)}>
                                     {times.map((time, idx) => {
                                         return <option value={time} key={idx}>{time}</option>
                                     })}

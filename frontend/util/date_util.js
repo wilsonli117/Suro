@@ -25,18 +25,18 @@ export const dateParse = date => {
 
 export const times = ['Midnight',
                     '12:30 AM',
-                    '1:00 AM ',
-                    '1:30 AM ',
-                    '2:00 AM ',
-                    '2:30 AM ',
+                    '1:00 AM',
+                    '1:30 AM',
+                    '2:00 AM',
+                    '2:30 AM',
                     '3:00 AM',
-                    '3:30 AM ',
-                    '4:00 AM ',
-                    '4:30 AM ',
-                    '5:00 AM ',
-                    '5:30 AM ',
+                    '3:30 AM',
+                    '4:00 AM',
+                    '4:30 AM',
+                    '5:00 AM',
+                    '5:30 AM',
                     '6:00 AM',
-                    '6:30 AM ',
+                    '6:30 AM',
                     '7:00 AM',
                     '7:30 AM',
                     '8:00 AM',
@@ -84,4 +84,30 @@ export const parseTime = (input) => {
     if (input.split(' ')[1] === 'PM') hours += 12;
 
     return [hours, minutes];
+}
+
+export const defaultTime = (date) => {
+    if (!date) return '';
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    if (hours === 0 && minutes === 0) return 'Midnight';
+    if (hours === 12 && minutes === 0) return 'Noon';
+
+    if (hours > 12) {
+        hours = hours - 12;
+        if (minutes === 0) {
+            return `${hours}:0${minutes} PM`
+        } else {
+            return `${hours}:${minutes} PM`
+        }
+    } else {
+        if (minutes === 0) {
+            return `${hours}:0${minutes} AM`
+        } else {
+            return `${hours}:${minutes} AM`
+        }
+    }
+
+    
 }

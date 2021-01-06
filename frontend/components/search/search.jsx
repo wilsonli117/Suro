@@ -19,21 +19,31 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
+        debugger;
         const searchbox = document.getElementById('search-box')
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
 
-        const tomorrow = new Date();
-        tomorrow.setDate(this.state.startDate.getDate() + 1);
-        const dayAfterTomorrow = new Date();
-        dayAfterTomorrow.setDate(this.state.startDate.getDate() + 2);
-
-        this.setState({ startDate: tomorrow, endDate: dayAfterTomorrow })
+        if (sessionStorage.getItem('startdate')) {
+            const startDate = new Date(sessionStorage.getItem('startdate'));
+            const endDate = new Date(sessionStorage.getItem('enddate'));
+            this.setState({ startDate: startDate, endDate: endDate });
+        } else {
+            const tomorrow = new Date();
+            tomorrow.setDate(this.state.startDate.getDate() + 1);
+            tomorrow.setHours(10);
+            tomorrow.setMinutes(0);
+            const dayAfterTomorrow = new Date();
+            dayAfterTomorrow.setDate(this.state.startDate.getDate() + 2);
+            dayAfterTomorrow.setHours(10);
+            dayAfterTomorrow.setMinutes(0);
+    
+            this.setState({ startDate: tomorrow, endDate: dayAfterTomorrow })
+        }
         
     }
 
-    formatDate(date, format, locale) {
-        
+    formatDate(date) {   
         if (date) {
             return date.toLocaleDateString();
         }
@@ -42,17 +52,27 @@ class Search extends React.Component {
     handleStartDayChange(selectedDay) {
         if (selectedDay < this.state.startDate) {
             this.setState({ startDate: selectedDay })
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
         }  else {
-            this.setState({ startDate: selectedDay, endDate: selectedDay })
+            this.setState({ startDate: selectedDay })
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            selectedDay.setDate(this.state.startDate.getDate() + 1);
+            this.setState({ endDate: selectedDay })
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
         
     }
 
     handleEndDayChange(selectedDay) {
         if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay, endDate: selectedDay })
+            this.setState({ startDate: selectedDay });
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            selectedDay.setHours(this.state.startDate.getHours() + 1);
+            this.setState({ endDate: selectedDay })
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
         } else {
             this.setState({ endDate: selectedDay })
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
         }
     }
 
@@ -65,15 +85,13 @@ class Search extends React.Component {
         if (selectedDate === 'from') {
             newDate = this.state.startDate
             newDate.setHours(hours, minutes);
-            
             this.setState({ startDate: newDate })
-            console.log(this.state.startDate);
+            
         } else {
             newDate = this.state.endDate
             newDate.setHours(hours, minutes);
             
             this.setState({ endDate: newDate })
-            console.log(this.state.endDate);
         }
     }
 
@@ -85,20 +103,22 @@ class Search extends React.Component {
             const lat = place.lat();
             const lng = place.lng();
             const center = { center: { lat, lng } }
-            sessionStorage.clear();
             sessionStorage.setItem('lat', lat)
             sessionStorage.setItem('lng', lng)
             sessionStorage.setItem('startdate', this.state.startDate.toString());
             sessionStorage.setItem('enddate', this.state.endDate.toString());
-            this.props.locationFilter(center);
             this.props.updateFilter("dates", this.state);
+            this.props.locationFilter(center);
             this.props.history.push("/cars");
         } 
     }
 
     render() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
         const disabled = {
-            before: this.state.startDate
+            before: tomorrow
         }
         const selectedDays = {
             from: this.state.startDate,
