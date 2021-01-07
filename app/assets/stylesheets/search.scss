@@ -79,12 +79,12 @@
                 border-right: 1px solid lightgray;
                 > div {
                     display: flex;
-                        > select{
-                            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-                            font-size: 18px;
-                            font-weight: 500;
-                            border: none;
-                        }
+                    > select{
+                        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                        font-size: 18px;
+                        font-weight: 500;
+                        border: none;
+                    }
                 }
                 .DayPickerInput {
                     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
@@ -92,6 +92,9 @@
                     font-weight: 500;
                     width: 105px;
                     padding-left: 5px;
+                    input {
+                        cursor: pointer;
+                    }
                 }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;
@@ -127,6 +130,9 @@
                     font-weight: 500;
                     width: 105px;
                     padding-left: 5px;
+                    input {
+                        cursor: pointer;
+                    }
                 }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;
