@@ -1,12 +1,11 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { times, parseTime, defaultTime } from '../../util/date_util';
+import { times, parseTime, defaultTime, formatDate } from '../../util/date_util';
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.formatDate = this.formatDate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleStartDayChange = this.handleStartDayChange.bind(this);
         this.handleEndDayChange = this.handleEndDayChange.bind(this);
@@ -40,12 +39,6 @@ class Search extends React.Component {
             this.setState({ startDate: tomorrow, endDate: dayAfterTomorrow })
         }
         
-    }
-
-    formatDate(date) {   
-        if (date) {
-            return date.toLocaleDateString();
-        }
     }
 
     handleStartDayChange(selectedDay) {
@@ -151,9 +144,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="from-date"></label>
                                         <DayPickerInput 
-                                            
-                                            formatDate={this.formatDate}
-                                            value={this.formatDate(this.state.startDate)}
+                                            value={formatDate(this.state.startDate)}
                                             dayPickerProps={{
                                                 disabledDays: disabled,
                                                 selectedDays: selectedDays
@@ -175,9 +166,7 @@ class Search extends React.Component {
                                     <div>
                                         <label htmlFor="until-date"></label>
                                         <DayPickerInput
-                                            
-                                            formatDate={this.formatDate}
-                                            value={this.formatDate(this.state.endDate)}
+                                            value={formatDate(this.state.endDate)}
                                             dayPickerProps={{
                                                 disabledDays: disabled,
                                                 selectedDays: selectedDays 

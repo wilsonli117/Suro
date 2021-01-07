@@ -11,7 +11,6 @@ class Api::CarsController < ApplicationController
                 @cars = Car.includes(:bookings).in_bounds(params[:bounds])
             end
         else 
-            debugger
             @cars = []
         end
 
