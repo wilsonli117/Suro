@@ -27,7 +27,9 @@ class NavBar extends React.Component {
             const startDate = new Date(sessionStorage.getItem('startdate'));
             const endDate = new Date(sessionStorage.getItem('enddate'));
             
-            this.setState({ startDate: startDate, endDate: endDate });
+            this.setState({ startDate: startDate, endDate: endDate }), () => {
+                this.props.updateFilter('dates', this.state)
+            };
         }
     }
 

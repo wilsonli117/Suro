@@ -9,13 +9,7 @@ class CarIndex extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchcars();
-    
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
-        if (this.props.history.action === "POP") {
-            //retrieves dates from localstorage when user refreshes
-            this.props.updatefilter('dates', { startDate : sessionStorage.getItem('startdate'), endDate : sessionStorage.getItem('enddate') });
-        }
     }
 
     render() {
