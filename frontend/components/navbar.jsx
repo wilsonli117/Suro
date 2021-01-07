@@ -54,7 +54,6 @@ class NavBar extends React.Component {
     }
 
     handleStartDayChange(selectedDay) {
-        
         const hours = this.state.startDate.getHours();
         const minutes = this.state.startDate.getMinutes();
         
@@ -62,42 +61,44 @@ class NavBar extends React.Component {
         selectedDay.setMinutes(minutes);
 
         if (selectedDay < this.state.endDate) {
-            this.setState({ startDate: selectedDay })
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            })
         } else {
-            this.setState({ startDate: selectedDay })
-            debugger;
-            // sessionStorage.setItem('startdate', this.state.startDate.toString());
-            // selectedDay.setDate(this.state.startDate.getDate() + 1);
-            // this.setState({ endDate: selectedDay })
-            // debugger;
-            // sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            })
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
+            })
         }
-
-        debugger;
-        this.props.updateFilter("dates", this.state);
     }
 
     handleEndDayChange(selectedDay) {
-        debugger;
         const hours = this.state.endDate.getHours();
         const minutes = this.state.endDate.getMinutes();
-        debugger;
+    
         selectedDay.setHours(hours);
         selectedDay.setMinutes(minutes);
 
         if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay});
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
-            selectedDay.setHours(this.state.startDate.getHours() + 1);
-            this.setState({ endDate: selectedDay })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ startDate: selectedDay}), () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            };
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
+            })
         } else {
-            this.setState({ endDate: selectedDay });
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ endDate: selectedDay }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+            });
         }
-
-        this.props.updateFilter("dates", this.state);
     }
 
     handleTimeSelect(selectedDate, e) {
@@ -148,7 +149,7 @@ class NavBar extends React.Component {
                 from: this.state.startDate,
                 to: this.state.endDate
             }
-
+          
             return (
                 <>
                 <nav className="car-index-nav-bar">
