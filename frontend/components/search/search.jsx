@@ -1,7 +1,7 @@
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { times, parseTime } from '../../util/date_util';
+import { times, parseTime, defaultTime } from '../../util/date_util';
 
 class Search extends React.Component {
     constructor(props) {
@@ -19,7 +19,6 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        debugger;
         const searchbox = document.getElementById('search-box')
 
         this.autocomplete = new google.maps.places.Autocomplete(searchbox);
@@ -50,29 +49,39 @@ class Search extends React.Component {
     }
 
     handleStartDayChange(selectedDay) {
-        if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay })
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
-        }  else {
-            this.setState({ startDate: selectedDay })
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
-            selectedDay.setDate(this.state.startDate.getDate() + 1);
-            this.setState({ endDate: selectedDay })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+        if (selectedDay < this.state.endDate) {
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            })
+        } else {
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            })
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
+            })
         }
         
     }
 
     handleEndDayChange(selectedDay) {
         if (selectedDay < this.state.startDate) {
-            this.setState({ startDate: selectedDay });
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
-            selectedDay.setHours(this.state.startDate.getHours() + 1);
-            this.setState({ endDate: selectedDay })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ startDate: selectedDay }), () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            };
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
+            })
         } else {
-            this.setState({ endDate: selectedDay })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ endDate: selectedDay }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+            });
         }
     }
 
@@ -153,7 +162,7 @@ class Search extends React.Component {
                                         />
                                         <i className="fas fa-angle-down"></i>
                                         <label htmlFor="from-time"></label>
-                                        <select id="from-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('from', e)}>
+                                        <select id="from-time" value={defaultTime(this.state.startDate)} onChange={(e) => this.handleTimeSelect('from', e)}>
                                             {times.map((time, idx) => {
                                                 return <option value={time} key={idx}>{time}</option>               
                                             })}
@@ -177,7 +186,7 @@ class Search extends React.Component {
                                         />
                                         <i className="fas fa-angle-down"></i>
                                         <label htmlFor="until-time"></label>
-                                        <select id="until-time" defaultValue='10:00 AM' onChange={(e) => this.handleTimeSelect('until', e)}>
+                                        <select id="until-time" value={defaultTime(this.state.endDate)} onChange={(e) => this.handleTimeSelect('until', e)}>
                                             {times.map((time, idx) => {
                                                 return <option value={time} key={idx}>{time}</option>
                                             })}
