@@ -44,7 +44,6 @@
             background: white;
             border: 1px solid lightgray;
             border-radius: 50px;
-            // box-shadow: -1px 3px 60px 27px rgba(0,0,0,0.58);
             box-shadow: -1px 3px 52px 16px rgba(0,0,0,0.55);
             margin-top: 30px;
             p {
@@ -76,24 +75,26 @@
                 }
                 display: flex;
                 flex-direction: column;
-                
                 padding: 9px 15px 9px 5px;
                 border-right: 1px solid lightgray;
                 > div {
                     display: flex;
-                        > select{
-                            font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-                            font-size: 18px;
-                            font-weight: 500;
-                            border: none;
-                        }
+                    > select{
+                        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                        font-size: 18px;
+                        font-weight: 500;
+                        border: none;
+                    }
                 }
                 .DayPickerInput {
                     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
                     font-size: 18px;
                     font-weight: 500;
-                    width: 110px;
+                    width: 105px;
                     padding-left: 5px;
+                    input {
+                        cursor: pointer;
+                    }
                 }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;
@@ -127,8 +128,11 @@
                     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
                     font-size: 18px;
                     font-weight: 500;
-                    width: 110px;
+                    width: 105px;
                     padding-left: 5px;
+                    input {
+                        cursor: pointer;
+                    }
                 }
                 .DayPicker-Day--selected {
                     color: #f5a731f5;

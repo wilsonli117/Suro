@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
+import Sort from '../filter/sort';
 
 const Modal = props => {
     if (!props.modal) return null;
@@ -16,6 +17,10 @@ const Modal = props => {
 
         case 'signup':
             component = <SignupFormContainer />
+            break;
+
+        case 'sort':
+            component = <Sort closeModal={closeModal}/>
             break;
 
         default:

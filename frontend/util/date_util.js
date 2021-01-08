@@ -86,8 +86,21 @@ export const parseTime = (input) => {
     return [hours, minutes];
 }
 
+export const formatDate = (date) => {
+    if (!date) return "";
+    date = date.toLocaleDateString().split('/');
+    let month = date[0];
+    let day = date[1];
+    let year = date[2];
+
+    if (parseInt(month) < 10) month = '0' + month;
+    if (parseInt(day) < 10) day = '0' + day;
+
+    return `${month}/${day}/${year}`;
+}
+
 export const defaultTime = (date) => {
-    if (!date) return '';
+    if (!date) return "";
     let hours = date.getHours();
     const minutes = date.getMinutes();
 
