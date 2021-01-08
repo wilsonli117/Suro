@@ -1,7 +1,6 @@
 class Api::CarsController < ApplicationController
 
     def index
-        
         if params[:bounds]
             if !params[:dates] == ""
                 startdate = Date.parse(params[:dates][:startDate])
