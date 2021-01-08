@@ -26,7 +26,6 @@ export const updateFilter = (filter, value) => {
 }
 
 export const updatefilter = (filter, value) => (dispatch, getState) => {
-    debugger;
     dispatch(updateFilter(filter, value));
     return fetchcars(getState().ui.filters)(dispatch);
 }
