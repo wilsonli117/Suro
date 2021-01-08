@@ -42,7 +42,7 @@ class NavBar extends React.Component {
                 this.autocomplete = new google.maps.places.Autocomplete(searchbox);
                 this.autocomplete.addListener('place_changed', this.handleLocationChange)
             }
-          
+           //this setState causes a bug
             this.setState({ startDate: this.props.dates.startDate, endDate: this.props.dates.endDate})
            
         }
@@ -228,7 +228,7 @@ class NavBar extends React.Component {
                         </div>
                 </nav>
                 <div className="index-nav-filters">
-                    <button>Sort By</button>
+                    <button onClick={() => this.props.openModal('sort')}>Sort By</button>
                     <button>Price</button>
                     <button>Book Instantly</button>
                     <button>Delivery</button>
