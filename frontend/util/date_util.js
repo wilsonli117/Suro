@@ -1,5 +1,3 @@
-import { applyMiddleware } from "redux";
-
 export const dateParse = date => {
 
     const months = {

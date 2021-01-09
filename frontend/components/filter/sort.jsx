@@ -23,7 +23,7 @@ const Sort = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(updateFilter('sort', sort));
+        dispatch(updatefilter('sort', sort));
     }
     
     
