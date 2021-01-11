@@ -1,11 +1,11 @@
 import React from 'react';
 import Map from '../map/map';
 import { Link } from 'react-router-dom';
+import { sortCars } from '../../util/car_util'
 
 class CarIndex extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
@@ -14,6 +14,7 @@ class CarIndex extends React.Component {
 
     render() {
        
+        let cars = this.props.cars;
         if (!Object.keys(this.props.mapCenter).length && this.props.history.action === "POP") {
        
             this.storageCenter = {
@@ -21,12 +22,16 @@ class CarIndex extends React.Component {
                 lng: parseFloat(sessionStorage.getItem('lng'))
             }
         }
-  
+
+        if(this.props.sortBy) {
+            cars = sortCars(this.props.cars, this.props.sortBy);
+        }
+
         return (
             <div className="index-container">
                 <div className="index-cars-container">
                     <ul>
-                        {this.props.cars.map((car, index) => {
+                        {cars.map((car, index) => {
                         return (
                                 
                                 <Link to={`/cars/${car.id}`} key={index + 1} className="car-card">

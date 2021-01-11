@@ -13,7 +13,6 @@ class Api::CarsController < ApplicationController
             @cars = []
         end
 
-        debugger
         render :index
     end
 
