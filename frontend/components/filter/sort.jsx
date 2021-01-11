@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { updatefilter } from '../../actions/filter_actions'
+import { updateFilter } from '../../actions/filter_actions'
 
 const Sort = props => {
  
@@ -15,7 +15,7 @@ const Sort = props => {
             if (isMountRef.current) {
                 isMountRef.current = false;
             } else {
-                dispatch(updatefilter('sort', sort));
+                dispatch(updateFilter('sort', sort));
             }
         },
         [sort]
@@ -23,7 +23,7 @@ const Sort = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(updatefilter('sort', sort));
+        dispatch(updateFilter('sort', sort));
     }
     
     
