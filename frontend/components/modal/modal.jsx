@@ -29,7 +29,7 @@ const Modal = props => {
 
     return (
         <div className='modal-background' onMouseDown={props.closeModal}>
-            <div className="modal-child" onMouseDown={e => e.stopPropagation()}>
+            <div className={`${props.modal}-modal-child`} onMouseDown={e => e.stopPropagation()}>
                 { component }
             </div>
         </div>

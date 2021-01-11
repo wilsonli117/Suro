@@ -3,13 +3,6 @@ import { fetchcars } from './car_actions';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export const UPDATE_CENTER = 'UPDATE_CENTER'
 
-// export const updateBounds = bounds => {
-//     return {
-//         type: UPDATE_BOUNDS,
-//         bounds
-//     }
-// }
-
 export const locationFilter = center => {
     return {
         type: UPDATE_CENTER,
