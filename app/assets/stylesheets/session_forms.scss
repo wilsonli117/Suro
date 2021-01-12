@@ -1,4 +1,14 @@
-.modal-background {
+.login-modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(50, 50, 50, 0.75);
+  z-index: 10;
+}
+
+.signup-modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
