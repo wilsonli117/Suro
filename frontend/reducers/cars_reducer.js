@@ -1,4 +1,4 @@
-import { RECEIVE_CARS, RECEIVE_CAR } from "../actions/car_actions";
+import { RECEIVE_CARS, RECEIVE_CAR} from "../actions/car_actions";
 
 const carsReducer = (state={}, action) => {
     Object.freeze(state);
@@ -10,7 +10,7 @@ const carsReducer = (state={}, action) => {
         
         case RECEIVE_CAR:
             return Object.assign({}, state, action.car);
-        
+
         default:
             return state;
     }

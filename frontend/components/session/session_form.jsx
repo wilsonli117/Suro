@@ -102,11 +102,11 @@ class SessionForm extends React.Component {
                                 {this.props.errors.map((error, index) => <li key={index}><i className="fas fa-exclamation-circle"></i><p>{error}</p></li>)}
                             </ul>
                         </div>
-                        <div className="login">
-                            <p>Already have an account?</p>
-                            {this.props.logInForm}
-                        </div>
                     </form>
+                    <div className="login">
+                        <p>Already have an account?</p>
+                        {this.props.logInForm}
+                    </div>
                 </div>
             )
         } else {
