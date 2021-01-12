@@ -31,12 +31,21 @@ const Sort = props => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input type="radio" name="sortType" id="sortType" value ="relevance" checked={sort === 'relevance'} onChange={() => setSort('relevance')}/>
-                <label htmlFor="relevance">Relevance</label>
-                <input type="radio" name="sortType" id="sortType" value="lowToHigh" checked={sort === 'lowToHigh'} onChange={() => setSort('lowToHigh')}/>
-                <label htmlFor="lowToHigh">Price: low to high</label>
-                <input type="radio" name="sortType" id="sortType" value="highToLow" checked={sort === 'highToLow'} onChange={() => setSort('highToLow')}/>
-                <label htmlFor="highToLow">Price: high to low</label>
+                <div>
+                    <input type="radio" className="sort-radio" name="sortType" value="relevance" id="relevance" checked={sort === 'relevance'} onChange={() => setSort('relevance')}/>
+                    <label htmlFor="relevance"></label>
+                    <p>Relevance</p>
+                </div>
+                <div>
+                    <input type="radio" className="sort-radio" name="sortType" value="lowToHigh" id="lowToHigh" checked={sort === 'lowToHigh'} onChange={() => setSort('lowToHigh')}/>
+                    <label htmlFor="lowToHigh"></label>
+                    <p>Price: low to high</p>
+                </div>
+                <div>
+                    <input type="radio" className="sort-radio" name="sortType" value="highToLow" id="highToLow" checked={sort === 'highToLow'} onChange={() => setSort('highToLow')}/>
+                    <label htmlFor="highToLow"></label>
+                    <p>Price: high to low</p>
+                </div>
                 <button type="submit">Apply</button>
             </form>
             <i className="fas fa-times" onClick={() => dispatch(props.closeModal())}></i>
