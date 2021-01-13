@@ -1,14 +1,18 @@
 import React from 'react'
 import ShowMap from '../map/show_map';
 import Footer from '../splash/footer';
-import { dateParse } from '../../util/date_util';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+import { dateParse, times } from '../../util/date_util';
 
 class CarShow extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            photoIndex: 0
+            photoIndex: 0,
+            startDate: this.props.startDate,
+            endDate: this.props.endDate
         }
 
         this.featureIcons = {
@@ -40,9 +44,17 @@ class CarShow extends React.Component {
 
     componentDidMount() {
         if (this.props.history.action === "PUSH") window.scrollTo(0, 0);
-        this.props.fetchcar(this.props.match.params.carId);
+        if (!this.props.car) {
+            this.props.fetchcar(this.props.match.params.carId);
+        }
         this.props.fetchfeatures();
         // this.setState({photoIndex: 0});
+        if (!this.state.startDate || !this.state.endDate) {
+            const startDate = new Date(sessionStorage.getItem('startdate'));
+            const endDate = new Date(sessionStorage.getItem('enddate'));
+
+            this.setState({ startDate: startDate, endDate: endDate });
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -56,12 +68,12 @@ class CarShow extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        if (!this.props.currentUser) {
-            this.props.openModal('login')    
-        } else {
+        // e.preventDefault();
+        // if (!this.props.currentUser) {
+        //     this.props.openModal('login')    
+        // } else {
             
-        }
+        // }
     }
 
     handleCarouselClick(dir) {
@@ -157,7 +169,9 @@ class CarShow extends React.Component {
                                     </select>
                                     <label htmlFor="show-booking-start-time"></label>
                                     <select id="show-booking-start-time">
-                                        <option value="06:00">6:00 PM</option>
+                                        {times.map((time, idx) => {
+                                            return <option value={time} key={idx}>{time}</option>
+                                        })}
                                     </select>
                                 </div>
                             </div>
@@ -170,7 +184,9 @@ class CarShow extends React.Component {
                                     </select>
                                     <label htmlFor="show-booking-end-time"></label>
                                     <select id="show-booking-end-time">
-                                        <option value="13:00">10:00 PM</option>
+                                        {times.map((time, idx) => {
+                                            return <option value={time} key={idx}>{time}</option>
+                                        })}
                                     </select>
                                 </div>
                             </div>
