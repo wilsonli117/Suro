@@ -58,6 +58,7 @@ class NavBar extends React.Component {
         if (selectedDay < this.state.endDate) {
             this.setState({ startDate: selectedDay }, () => {
                 sessionStorage.setItem('startdate', this.state.startDate.toString());
+                this.props.updateFilter("dates", this.state);
             })
         } else {
             this.setState({ startDate: selectedDay }, () => {
@@ -92,6 +93,7 @@ class NavBar extends React.Component {
         } else {
             this.setState({ endDate: selectedDay }, () => {
                 sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
             });
         }
     }

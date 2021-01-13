@@ -3,11 +3,15 @@ import ShowMap from '../map/show_map';
 import Footer from '../splash/footer';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { dateParse, times } from '../../util/date_util';
+import { dateParse, times, formatDate, defaultTime, parseTime } from '../../util/date_util';
 
 class CarShow extends React.Component {
     constructor(props) {
         super(props);
+        this.handleStartDayChange = this.handleStartDayChange.bind(this);
+        this.handleEndDayChange = this.handleEndDayChange.bind(this);
+        this.handleTimeSelect = this.handleTimeSelect.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
             photoIndex: 0,
@@ -38,8 +42,6 @@ class CarShow extends React.Component {
             20: <i className="fab fa-usb fa-2x"></i>,
             21: <i className="fas fa-wheelchair fa-2x"></i>
         }
-
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -58,13 +60,83 @@ class CarShow extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.location !== prevProps.location) {
-            this.props.fetchcar(this.props.match.params.carId);
-            this.setState({ photoIndex: 0 });
-        }
+        // if (this.props.location !== prevProps.location) {
+        //     this.props.fetchcar(this.props.match.params.carId);
+        //     this.setState({ photoIndex: 0 });
+        // }
         if (this.props.car && !this.props.users[this.props.car.ownerId]) {
             this.props.fetchhost(this.props.car.ownerId)
         }
+    }
+
+    handleStartDayChange(selectedDay) {
+        const hours = this.state.startDate.getHours();
+        const minutes = this.state.startDate.getMinutes();
+
+        selectedDay.setHours(hours);
+        selectedDay.setMinutes(minutes);
+
+        if (selectedDay < this.state.endDate) {
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate })
+            })
+        } else {
+            this.setState({ startDate: selectedDay }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            })
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate });
+            })
+        }
+    }
+
+    handleEndDayChange(selectedDay) {
+        const hours = this.state.endDate.getHours();
+        const minutes = this.state.endDate.getMinutes();
+
+        selectedDay.setHours(hours);
+        selectedDay.setMinutes(minutes);
+
+        if (selectedDay < this.state.startDate) {
+            this.setState({ startDate: selectedDay }), () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+            };
+            const dayAfter = new Date(selectedDay.getTime());
+            dayAfter.setDate(dayAfter.getDate() + 1);
+            this.setState({ endDate: dayAfter }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", this.state);
+            })
+        } else {
+            this.setState({ endDate: selectedDay }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate })
+            });
+        }
+    }
+
+    handleTimeSelect(selectedDate, e) {
+        const time = parseTime(e.target.value);
+        const hours = time[0];
+        const minutes = time[1];
+        let newDate;
+
+        if (selectedDate === 'from') {
+            newDate = this.state.startDate
+            newDate.setHours(hours, minutes);
+            this.setState({ startDate: newDate })
+            sessionStorage.setItem('startdate', this.state.startDate.toString());
+        } else {
+            newDate = this.state.endDate
+            newDate.setHours(hours, minutes);
+            this.setState({ endDate: newDate })
+            sessionStorage.setItem('enddate', this.state.endDate.toString());
+        }
+
     }
 
     handleSubmit(e) {
@@ -90,6 +162,17 @@ class CarShow extends React.Component {
         if(!this.props.car || !this.props.users[this.props.car.ownerId] || !Object.keys(this.props.features).length) return null;
         
         const host = this.props.users[this.props.car.ownerId]
+
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const disabled = {
+            before: tomorrow
+        }
+        const selectedDays = {
+            from: this.state.startDate,
+            to: this.state.endDate
+        }
   
         return (
         <>
@@ -159,16 +242,21 @@ class CarShow extends React.Component {
                             <p>/ day</p>
                         </div>
                         <div className="price-estimate">{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
-                        <form className="show-booking-form" onClick={this.handleSubmit}> 
+                        <form className="show-booking-form" onSubmit={this.handleSubmit}> 
                             <div className="show-booking-start">
                             <p>Trip start</p>
                                 <div>
                                     <label htmlFor="show-booking-start-date"></label>
-                                    <select id="show-booking-start-date">
-                                        <option value="11/07/2020">11/07/2020</option>
-                                    </select>
+                                    <DayPickerInput
+                                        value={formatDate(this.state.startDate)}
+                                        dayPickerProps={{
+                                            disabledDays: disabled,
+                                            selectedDays: selectedDays
+                                        }}
+                                        onDayChange={this.handleStartDayChange}
+                                    />
                                     <label htmlFor="show-booking-start-time"></label>
-                                    <select id="show-booking-start-time">
+                                    <select id="show-booking-start-time" value={defaultTime(this.state.startDate)} onChange={(e) => this.handleTimeSelect('from', e)}>
                                         {times.map((time, idx) => {
                                             return <option value={time} key={idx}>{time}</option>
                                         })}
@@ -179,11 +267,16 @@ class CarShow extends React.Component {
                                 <p>Trip end</p>
                                 <div>
                                     <label htmlFor="show-booking-end-date"></label>
-                                    <select id="show-booking-end-date">
-                                        <option value="11/09/2020">11/09/2020</option>
-                                    </select>
+                                    <DayPickerInput
+                                        value={formatDate(this.state.endDate)}
+                                        dayPickerProps={{
+                                            disabledDays: disabled,
+                                            selectedDays: selectedDays
+                                        }}
+                                        onDayChange={this.handleEndDayChange}
+                                    />
                                     <label htmlFor="show-booking-end-time"></label>
-                                    <select id="show-booking-end-time">
+                                    <select id="show-booking-end-time" value={defaultTime(this.state.endDate)} onChange={(e) => this.handleTimeSelect('until', e)}>
                                         {times.map((time, idx) => {
                                             return <option value={time} key={idx}>{time}</option>
                                         })}
