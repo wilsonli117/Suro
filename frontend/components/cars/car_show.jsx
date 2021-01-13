@@ -114,7 +114,7 @@ class CarShow extends React.Component {
         } else {
             this.setState({ endDate: selectedDay }, () => {
                 sessionStorage.setItem('enddate', this.state.endDate.toString());
-                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate })
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate });
             });
         }
     }
@@ -128,15 +128,18 @@ class CarShow extends React.Component {
         if (selectedDate === 'from') {
             newDate = this.state.startDate
             newDate.setHours(hours, minutes);
-            this.setState({ startDate: newDate })
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            this.setState({ startDate: newDate }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate:this.state.endDate });
+            })
         } else {
             newDate = this.state.endDate
             newDate.setHours(hours, minutes);
-            this.setState({ endDate: newDate })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ endDate: newDate }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate });
+            })
         }
-
     }
 
     handleSubmit(e) {

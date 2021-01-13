@@ -28,7 +28,7 @@ class NavBar extends React.Component {
             const endDate = new Date(sessionStorage.getItem('enddate'));
             
             this.setState({ startDate: startDate, endDate: endDate }, () => {
-                this.props.updateFilter('dates', this.state)
+                this.props.updatefilter('dates', this.state)
             });
         }
     }
@@ -46,6 +46,7 @@ class NavBar extends React.Component {
             this.setState({ startDate: this.props.dates.startDate, endDate: this.props.dates.endDate})
            
         }
+
     }
 
     handleStartDayChange(selectedDay) {
@@ -58,7 +59,7 @@ class NavBar extends React.Component {
         if (selectedDay < this.state.endDate) {
             this.setState({ startDate: selectedDay }, () => {
                 sessionStorage.setItem('startdate', this.state.startDate.toString());
-                this.props.updateFilter("dates", this.state);
+                this.props.updatefilter("dates", this.state);
             })
         } else {
             this.setState({ startDate: selectedDay }, () => {
@@ -68,7 +69,7 @@ class NavBar extends React.Component {
             dayAfter.setDate(dayAfter.getDate() + 1);
             this.setState({ endDate: dayAfter }, () => {
                 sessionStorage.setItem('enddate', this.state.endDate.toString());
-                this.props.updateFilter("dates", this.state);
+                this.props.updatefilter("dates", this.state);
             })
         }
     }
@@ -88,12 +89,12 @@ class NavBar extends React.Component {
             dayAfter.setDate(dayAfter.getDate() + 1);
             this.setState({ endDate: dayAfter }, () => {
                 sessionStorage.setItem('enddate', this.state.endDate.toString());
-                this.props.updateFilter("dates", this.state);
+                this.props.updatefilter("dates", this.state);
             })
         } else {
             this.setState({ endDate: selectedDay }, () => {
                 sessionStorage.setItem('enddate', this.state.endDate.toString());
-                this.props.updateFilter("dates", this.state);
+                this.props.updatefilter("dates", this.state);
             });
         }
     }
@@ -107,15 +108,18 @@ class NavBar extends React.Component {
         if (selectedDate === 'from') {
             newDate = this.state.startDate
             newDate.setHours(hours, minutes);
-            this.setState({ startDate: newDate })
-            sessionStorage.setItem('startdate', this.state.startDate.toString());
+            this.setState({ startDate: newDate }, () => {
+                sessionStorage.setItem('startdate', this.state.startDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate });
+            })
         } else {
             newDate = this.state.endDate
             newDate.setHours(hours, minutes);
-            this.setState({ endDate: newDate })
-            sessionStorage.setItem('enddate', this.state.endDate.toString());
+            this.setState({ endDate: newDate }, () => {
+                sessionStorage.setItem('enddate', this.state.endDate.toString());
+                this.props.updateFilter("dates", { startDate: this.state.startDate, endDate: this.state.endDate });
+            })
         }
-
     }
 
     handleLocationChange() {
@@ -125,9 +129,6 @@ class NavBar extends React.Component {
         const center = { center: { lat, lng } }
         sessionStorage.setItem('lat', lat)
         sessionStorage.setItem('lng', lng)
-        sessionStorage.setItem('startdate', this.state.startDate.toString());
-        sessionStorage.setItem('enddate', this.state.endDate.toString());
-        this.props.updateFilter("dates", this.state);
         this.props.locationFilter(center);
         if (this.props.location.pathname.includes('/cars/')) {
             this.props.history.push("/cars");
