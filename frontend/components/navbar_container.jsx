@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import NavBar from './navbar';
 import { logout } from '../actions/session_actions';
 import { openModal } from '../actions/modal_actions';
-import { locationFilter, updateFilter } from '../actions/filter_actions';
+import { locationFilter, updatefilter, updateFilter } from '../actions/filter_actions';
 
 const mSTP = state => {
     
@@ -25,7 +25,8 @@ const mDTP = dispatch => {
         logout: () => dispatch(logout()),
         openModal: modal => dispatch(openModal(modal)),
         locationFilter: center => dispatch(locationFilter(center)),
-        updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
+        updatefilter: (filter, value) => dispatch(updatefilter(filter, value)),
+        updateFilter: (filter, value) => dispatch(updatefilter(filter, value))
     }
 }
 
