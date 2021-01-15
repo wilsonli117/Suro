@@ -271,12 +271,14 @@
         font-weight: 700;
         color: #593cfb;
         margin-top: 5px;
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
         p {
             margin-top: 10px;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
+        
     }
 }
