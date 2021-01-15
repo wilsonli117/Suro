@@ -119,6 +119,35 @@ export const defaultTime = (date) => {
             return `${hours}:${minutes} AM`
         }
     }
+}
 
+export const cancellationDate =  date => {
+    if (!date) return "";
     
+    const months = {
+        1: "Jan",
+        2: "Feb",
+        3: "Mar",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "Aug",
+        9: "Sept",
+        10: "Oct",
+        11: "Nov",
+        12: "Dec"
+    }
+
+    const month = months[date.getMonth() + 1];
+    const day = date.getDate();
+    const time = defaultTime(date);
+
+    if (time === 'Midnight') {
+        return `${month} ${day}, 12:00 AM`
+    } else if (time === 'Noon') {
+        return `${month} ${day}, 12:00 PM`
+    } else {
+        return `${month} ${day}, ${time}`
+    }
 }

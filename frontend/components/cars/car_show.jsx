@@ -3,7 +3,7 @@ import ShowMap from '../map/show_map';
 import Footer from '../splash/footer';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { dateParse, times, formatDate, defaultTime, parseTime } from '../../util/date_util';
+import { dateParse, times, formatDate, defaultTime, parseTime, cancellationDate } from '../../util/date_util';
 
 class CarShow extends React.Component {
     constructor(props) {
@@ -308,7 +308,7 @@ class CarShow extends React.Component {
                             <i className="far fa-thumbs-up"></i>
                             <div>
                                 <div>Free Cancellation</div>
-                                <p>Full refund before Sep 30, 10:00 AM</p>
+                                <p>{`Full refund before ${cancellationDate(this.state.startDate)}`}</p>
                             </div>
                         </div>
                         <div className="distance-included">
