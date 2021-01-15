@@ -249,41 +249,51 @@ class CarShow extends React.Component {
                             <div className="show-booking-start">
                             <p>Trip start</p>
                                 <div>
-                                    <label htmlFor="show-booking-start-date"></label>
-                                    <DayPickerInput
-                                        value={formatDate(this.state.startDate)}
-                                        dayPickerProps={{
-                                            disabledDays: disabled,
-                                            selectedDays: selectedDays
-                                        }}
-                                        onDayChange={this.handleStartDayChange}
-                                    />
-                                    <label htmlFor="show-booking-start-time"></label>
-                                    <select id="show-booking-start-time" value={defaultTime(this.state.startDate)} onChange={(e) => this.handleTimeSelect('from', e)}>
-                                        {times.map((time, idx) => {
-                                            return <option value={time} key={idx}>{time}</option>
-                                        })}
-                                    </select>
+                                    <div className="show-booking-start-datepicker">
+                                        <DayPickerInput
+                                            value={formatDate(this.state.startDate)}
+                                            dayPickerProps={{
+                                                disabledDays: disabled,
+                                                selectedDays: selectedDays
+                                            }}
+                                            onDayChange={this.handleStartDayChange}
+                                        />
+                                        <i className="fas fa-angle-down"></i>
+                                    </div>
+                                    <div className="show-booking-start-timeselect">
+                                        <label htmlFor="show-booking-start-time"></label>
+                                        <select id="show-booking-start-time" value={defaultTime(this.state.startDate)} onChange={(e) => this.handleTimeSelect('from', e)}>
+                                            {times.map((time, idx) => {
+                                                return <option value={time} key={idx}>{time}</option>
+                                            })}
+                                        </select>
+                                        <i className="fas fa-angle-down"></i>
+                                    </div>
                                 </div>
                             </div>
                             <div className="show-booking-end">
                                 <p>Trip end</p>
                                 <div>
-                                    <label htmlFor="show-booking-end-date"></label>
-                                    <DayPickerInput
-                                        value={formatDate(this.state.endDate)}
-                                        dayPickerProps={{
-                                            disabledDays: disabled,
-                                            selectedDays: selectedDays
-                                        }}
-                                        onDayChange={this.handleEndDayChange}
-                                    />
-                                    <label htmlFor="show-booking-end-time"></label>
-                                    <select id="show-booking-end-time" value={defaultTime(this.state.endDate)} onChange={(e) => this.handleTimeSelect('until', e)}>
-                                        {times.map((time, idx) => {
-                                            return <option value={time} key={idx}>{time}</option>
-                                        })}
-                                    </select>
+                                    <div className="show-booking-end-datepicker">
+                                        <DayPickerInput
+                                            value={formatDate(this.state.endDate)}
+                                            dayPickerProps={{
+                                                disabledDays: disabled,
+                                                selectedDays: selectedDays
+                                            }}
+                                            onDayChange={this.handleEndDayChange}
+                                        />
+                                        <i className="fas fa-angle-down"></i>
+                                    </div>
+                                    <div className="show-booking-end-timeselect">
+                                        <label htmlFor="show-booking-end-time"></label>
+                                        <select id="show-booking-end-time" value={defaultTime(this.state.endDate)} onChange={(e) => this.handleTimeSelect('until', e)}>
+                                            {times.map((time, idx) => {
+                                                return <option value={time} key={idx}>{time}</option>
+                                            })}
+                                        </select>
+                                        <i className="fas fa-angle-down"></i>
+                                    </div>
                                 </div>
                             </div>
                             <div className="show-booking-location">

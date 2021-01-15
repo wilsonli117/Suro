@@ -40,17 +40,48 @@
             p {
                 margin-bottom: 3px;
             }
-            select {
-                width: 45%;
-                padding: 10px 5px 10px 5px;;
-                font-size: 13px;
-                letter-spacing: .06em;
-                border: 1px solid lightgray;
-                text-align: center;
-            }
-            #show-booking-start-date {
-                width: 55%;
-                border-right: 0;
+            > div {
+                display: flex;
+                flex-direction: row;
+
+                .show-booking-start-datepicker {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 55%;
+                    padding: 10px 5px 10px 5px;
+                    border: 1px solid lightgray;
+                    border-right: 0;
+                    .DayPickerInput {
+                        width: 80%;
+                        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                        font-size: 13px;
+                        font-weight: 500;
+                        input {
+                            width: 123%;
+                        }
+                    }
+                }
+                .show-booking-start-timeselect {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 45%;
+                    padding: 10px 5px 10px 5px;
+                    font-size: 13px;
+                    letter-spacing: .06em;
+                    text-align: center;
+                    border: 1px solid lightgray;
+                    select {
+                        width: 100%;
+                        border: none;
+                    }
+                    i {
+                        margin-right: 10px;
+                    }
+                }
             }
         }
         .show-booking-end {
@@ -62,17 +93,48 @@
             p {
                 margin-bottom: 3px;
             }
-            select {
-                width: 45%;
-                padding: 10px 5px 10px 5px;;
-                font-size: 13px;
-                letter-spacing: .06em;
-                border: 1px solid lightgray;
-                text-align: center;
-            }
-            #show-booking-end-date {
-                width: 55%;
-                border-right: 0;
+            > div {
+                display: flex;
+                flex-direction: row;
+
+                .show-booking-end-datepicker {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 55%;
+                    padding: 10px 5px 10px 5px;
+                    border: 1px solid lightgray;
+                    border-right: 0;
+                    .DayPickerInput {
+                        width: 80%;
+                        font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+                        font-size: 13px;
+                        font-weight: 500;
+                        input {
+                            width: 123%;
+                        }
+                    }
+                }
+                .show-booking-end-timeselect {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 45%;
+                    padding: 10px 5px 10px 5px;
+                    font-size: 13px;
+                    letter-spacing: .06em;
+                    text-align: center;
+                    border: 1px solid lightgray;
+                    select {
+                        width: 100%;
+                        border: none;
+                    }
+                    i {
+                        margin-right: 10px;
+                    }
+                }
             }
         }
         .show-booking-location {
