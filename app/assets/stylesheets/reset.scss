@@ -48,6 +48,7 @@ html,body, #root, #root-div {
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
+    outline: none;
     &:focus {
         outline: none;
     }
