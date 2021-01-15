@@ -73,29 +73,27 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        width: 640px;
-        min-width: 49%;
-        margin: 0 20px 0 20px;
+        width: 620px;
+        min-width: 620px;
+        padding: 0 10px 0 10px;
         .car-info {
             display: flex;
             justify-content: flex-end;
             margin-bottom: 30px;
-            width: 80%;
-           
             > span {
-                margin-right: 20px;
                 > p {
                     font-size: 12px;
                     font-weight: 900;
                     color: #898989;
                     letter-spacing: .08em;
-                    margin: 8px 10px 0 0;
+                    margin: 8px 0 0 0;
                     white-space: nowrap;
                     text-align: right;
                 }
             }
             > div {
-                width: 60%;
+                width: 460px;
+                padding: 0 20px 0 20px;
             }
             h1 {
                 font-size: 38px;
@@ -148,23 +146,22 @@
         display: flex;
         justify-content: flex-end;
         margin-bottom: 50px;
-        width: 80%;
         align-items: center;
         > p {
             font-size: 12px;
             font-weight: 900;
             color: #898989;
             letter-spacing: .08em;
-            margin: 8px 10px 0 0;
+            margin: 8px 0 0 0;
             white-space: nowrap;
             text-align: right;
-            margin-right: 20px;
             height: 100%;
         }
         > div {
             display: flex;
             align-content: center;
-            width: 60%;
+            width: 460px;
+            padding: 0 20px 0 20px;
             .fa-user-circle {
                 position: relative;
                 margin-bottom: 5px;
@@ -207,23 +204,22 @@
         display: flex;
         justify-content: flex-end;
         margin-bottom: 30px;
-        width: 80%;
         align-items: center;
         > p {
             font-size: 12px;
             font-weight: 900;
             color: #898989;
             letter-spacing: .08em;
-            margin: 8px 10px 0 0;
+            margin: 8px 0 0 0;
             white-space: nowrap;
             text-align: right;
-            margin-right: 20px;
             height: 100%;
         }
         > div {
             font-size: 16px;
             font-weight: 400;
-            width: 60%;
+            width: 460px;
+            padding: 0 20px 0 20px;
         }
     }
     .car-features {
@@ -237,17 +233,18 @@
             font-weight: 900;
             color: #898989;
             letter-spacing: .08em;
-            margin: 8px 10px 0 0;
+            margin: 8px 0 0 0;
             white-space: nowrap;
             text-align: right;
-            margin-right: 20px;
             height: 100%;
         }
         ul {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            width: 60%;
+            width: 460px;
+            min-width: 460px;
+            padding: 0 20px 0 20px;
             li {
                 display: flex;
                 align-items: center;
@@ -272,14 +269,15 @@
             font-weight: 900;
             color: #898989;
             letter-spacing: .08em;
-            margin: 8px 10px 0 0;
+            margin: 8px 0 0 0;
             white-space: nowrap;
             text-align: right;
-            margin-right: 20px;
             height: 100%;
         }
         > div {
-            width: 60%;
+            width: 460px;
+            min-width: 460px;
+            padding: 0 20px 0 20px;
         }
     }
 }
