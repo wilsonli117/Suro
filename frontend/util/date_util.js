@@ -151,3 +151,16 @@ export const cancellationDate =  date => {
         return `${month} ${day}, ${time}`
     }
 }
+
+export const daysBetween = (start, end) => {
+    const msInADay = 1000 * 60 * 60 * 24;
+    const msDifference = end - start;
+    const result = Math.floor(msDifference/msInADay);
+
+    if (result) {
+        return result;
+    } else {
+        return 1;
+    }
+
+}

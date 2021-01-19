@@ -3,7 +3,7 @@ import ShowMap from '../map/show_map';
 import Footer from '../splash/footer';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import { dateParse, times, formatDate, defaultTime, parseTime, cancellationDate } from '../../util/date_util';
+import { dateParse, times, formatDate, defaultTime, parseTime, cancellationDate, daysBetween } from '../../util/date_util';
 
 class CarShow extends React.Component {
     constructor(props) {
@@ -244,7 +244,7 @@ class CarShow extends React.Component {
                             <h2>{`$${this.props.car.price}`}</h2>
                             <p>/ day</p>
                         </div>
-                        <div className="price-estimate">{`$${this.props.car.price * 3} est. total + fees`}<i className="far fa-question-circle"></i></div>
+                        <div className="price-estimate">{`$${this.props.car.price * daysBetween(this.state.startDate, this.state.endDate)} est. total + fees`}<i className="far fa-question-circle"></i></div>
                         <form className="show-booking-form" onSubmit={this.handleSubmit}> 
                             <div className="show-booking-start">
                             <p>Trip start</p>
