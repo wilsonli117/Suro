@@ -6,6 +6,7 @@ import NavBar from './navbar_container';
 import Splash from './splash/splash';
 import CarIndex from './cars/car_index_container';
 import CarShow from './cars/car_show_container';
+import BookingForm from '../components/booking/booking_form';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
 
             <Route exact path="/cars" component={CarIndex} />
             <Route exact path="/cars/:carId" component={CarShow} />
+            <Route exact path="/cars/:carId/checkout" component={BookingForm} />
             <Route exact path="/" component={Splash}/>
 
         </div>

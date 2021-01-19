@@ -143,12 +143,12 @@ class CarShow extends React.Component {
     }
 
     handleSubmit(e) {
-        // e.preventDefault();
-        // if (!this.props.currentUser) {
-        //     this.props.openModal('login')    
-        // } else {
-            
-        // }
+        e.preventDefault();
+        if (!this.props.currentUser) {
+            this.props.openModal('login')    
+        } else {
+            this.props.history.push(`/cars/${this.props.car.id}/checkout`)
+        }
     }
 
     handleCarouselClick(dir) {
