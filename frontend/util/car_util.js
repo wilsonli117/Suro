@@ -22,3 +22,13 @@ export const sortCars = (cars, sort) => {
     return cars;
 
 }
+
+export const makeModelFormat = (make, model) => {
+    let result = make + '' + model;
+
+    if (result.length > 16) {
+        return result.slice(0, 17) + '...';
+    } else {
+        return result;
+    }
+}
