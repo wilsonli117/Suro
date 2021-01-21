@@ -57,6 +57,18 @@ const BookingForm = (props) => {
                     </div>
                     <div className="trip-info-car">
                         <p>{`${host.firstName}'s`}</p>
+                        <div className="trip-info-car-info">
+                            <p>{makeModelFormat(car.make, car.model)}</p>
+                            <p>{car.year}</p>
+                        </div>
+                        <div className="trip-info-car-rating">
+                            <p>5.0</p>
+                            <i className="fas fa-star"></i>
+                            <p>(2 trips)</p>
+                        </div>
+                        <div className="trip-info-dates">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
