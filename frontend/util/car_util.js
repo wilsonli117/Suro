@@ -24,7 +24,7 @@ export const sortCars = (cars, sort) => {
 }
 
 export const makeModelFormat = (make, model) => {
-    let result = make + '' + model;
+    let result = `${make} ${model}`
 
     if (result.length > 16) {
         return result.slice(0, 17) + '...';

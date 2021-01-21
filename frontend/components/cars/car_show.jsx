@@ -317,7 +317,7 @@ class CarShow extends React.Component {
                         <div className="distance-included">
                             <div>
                                 <p>Distance included</p>
-                                <div>400 mi</div>
+                                <div>{`${200 * daysBetween(this.state.startDate, this.state.endDate)} mi`}</div>
                             </div>
                             <p>$3.00/mi fee for additional miles drive</p>
                         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../splash/footer';
-import { cancellationDate } from '../../util/date_util';
+import { cancellationDate, checkoutDateFormat } from '../../util/date_util';
 import { makeModelFormat } from '../../util/car_util';  
 
 const BookingForm = (props) => {
@@ -69,7 +69,9 @@ const BookingForm = (props) => {
                                 <p>(2 trips)</p>
                             </div>
                             <div className="trip-info-dates">
-
+                                <div className="trip-info-dates-start">
+                                    <p>{}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
