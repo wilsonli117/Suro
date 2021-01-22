@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../splash/footer';
-import { cancellationDate, checkoutDateFormat } from '../../util/date_util';
+import { cancellationDate, checkoutDateFormat, checkoutTimeFormat, daysBetween } from '../../util/date_util';
 import { makeModelFormat } from '../../util/car_util';  
 
 const BookingForm = (props) => {
@@ -68,10 +68,20 @@ const BookingForm = (props) => {
                                 <i className="fas fa-star"></i>
                                 <p>(2 trips)</p>
                             </div>
-                            <div className="trip-info-dates">
-                                <div className="trip-info-dates-start">
-                                    <p>{}</p>
+                            <div className="trip-info-schedule">
+                                <div className="trip-info-schedule-start">
+                                    <p>{checkoutDateFormat(startDate)}</p>
+                                    <p>{checkoutTimeFormat(startDate)}</p>
                                 </div>
+                                <div className="trip-info-schedule-icon"></div>
+                                <div className="trip-info-schedule-end">
+                                    <p>{checkoutDateFormat(endDate)}</p>
+                                    <p>{checkoutTimeFormat(endDate)}</p>
+                                </div>
+                            </div>
+                            <div className="trip-info-car-location">
+                                <p>Meeting Location</p>
+                                <p><i className="fas fa-car"></i> New York, NY 10018</p>
                             </div>
                         </div>
                     </div>

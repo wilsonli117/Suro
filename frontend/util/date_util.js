@@ -166,7 +166,7 @@ export const daysBetween = (start, end) => {
 }
 
 export const checkoutDateFormat = date => {
-    days = {
+    const days = {
         0: 'Sun',
         1: 'Mon',
         2: 'Tue',
@@ -191,5 +191,28 @@ export const checkoutDateFormat = date => {
         12: "Dec"
     }
 
-    return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`;
+    return `${days[date.getDay()]}, ${months[date.getMonth() + 1]} ${date.getDate()}`;
+}
+
+export const checkoutTimeFormat = date => {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    if (hours === 0 && minutes === 0) return '12:00 AM';
+    if (hours === 12 && minutes === 0) return '12:00 PM';
+
+    if (hours > 12) {
+        hours = hours - 12;
+        if (minutes === 0) {
+            return `${hours}:0${minutes} PM`
+        } else {
+            return `${hours}:${minutes} PM`
+        }
+    } else {
+        if (minutes === 0) {
+            return `${hours}:0${minutes} AM`
+        } else {
+            return `${hours}:${minutes} AM`
+        }
+    }
 }
