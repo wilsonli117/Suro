@@ -124,7 +124,7 @@ const BookingForm = (props) => {
                         <div className="trip-info-cancellation">
                             <i className="far fa-thumbs-up"></i>
                             <div>
-                                <p>Free canellation</p>
+                                <p>Free cancellation</p>
                                 <p>{`Full refund before ${cancellationDate(startDate)} in local time of the car`}</p>
                             </div>
                         </div>

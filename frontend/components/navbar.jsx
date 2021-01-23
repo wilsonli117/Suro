@@ -17,6 +17,7 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
+        debugger;
         const searchbox = document.getElementById('index-nav-where')
         if (searchbox){
             this.autocomplete = new google.maps.places.Autocomplete(searchbox);
@@ -276,7 +277,7 @@ class NavBar extends React.Component {
             )
         } else {
             return (
-                <nav className={this.props.location.pathname.includes('/cars/') ? "login-nav-bar sticky" : "login-nav-bar"}>
+                <nav className={this.props.location.pathname === '/cars' ? "login-nav-bar sticky" : "login-nav-bar"}>
                     <div>
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>
                         {this.props.location.pathname.includes('/cars/') ?
