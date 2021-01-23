@@ -10,6 +10,8 @@ const BookingForm = (props) => {
     const host = useSelector(state => state.entities.users[car.ownerId]);
     const startDate = useSelector(state => state.ui.filters.dates.startDate);
     const endDate = useSelector(state => state.ui.filters.dates.endDate);
+    const tripDays = daysBetween(startDate, endDate);
+    const tripTotalPrice = (car.price + 23.35) * tripDays;
 
     return (
         <>
@@ -68,22 +70,65 @@ const BookingForm = (props) => {
                                 <i className="fas fa-star"></i>
                                 <p>(2 trips)</p>
                             </div>
-                            <div className="trip-info-schedule">
-                                <div className="trip-info-schedule-start">
-                                    <p>{checkoutDateFormat(startDate)}</p>
-                                    <p>{checkoutTimeFormat(startDate)}</p>
-                                </div>
-                                <div className="trip-info-schedule-icon"></div>
-                                <div className="trip-info-schedule-end">
-                                    <p>{checkoutDateFormat(endDate)}</p>
-                                    <p>{checkoutTimeFormat(endDate)}</p>
-                                </div>
+                        </div>
+                        <div className="trip-info-schedule">
+                            <div className="trip-info-schedule-start">
+                                <p>{checkoutDateFormat(startDate)}</p>
+                                <p>{checkoutTimeFormat(startDate)}</p>
                             </div>
-                            <div className="trip-info-car-location">
-                                <p>Meeting Location</p>
-                                <p><i className="fas fa-car"></i> New York, NY 10018</p>
+                            <div className="trip-info-schedule-icon"></div>
+                            <div className="trip-info-schedule-end">
+                                <p>{checkoutDateFormat(endDate)}</p>
+                                <p>{checkoutTimeFormat(endDate)}</p>
                             </div>
                         </div>
+                        <div className="trip-info-car-location">
+                            <p>Meeting Location</p>
+                            <p><i className="fas fa-car"></i> New York, NY 10018</p>
+                        </div>
+                        <div className="trip-info-daily-estimate">
+                            <div>
+                                <p>{`${tripDays}-day trip`}</p>
+                                <p>{`$${car.price}.00/day`}</p>
+                            </div>
+                            <div>
+                                <p>Trip fee</p>
+                                <p>$23.35/day</p>
+                            </div>
+                            <div>
+                                <p>Total per day</p>
+                                <p>{`$${car.price + 23.35}/day`}</p>
+                            </div>
+                        </div>
+                        <div className="trip-info-price-breakdown">
+                            <ul>
+                                <li>
+                                    <p>Trip Total</p>
+                                    <p>{`$${tripTotalPrice}`}</p>
+                                </li>
+                                <li>
+                                    <p>Sales Tax</p>
+                                    <p>{`$${tripTotalPrice * .08875}`}</p>
+                                </li>
+                                <li className="break-down-miles">
+                                    <p>{`${tripDays * 200} total miles`}</p>
+                                    <p>FREE</p>
+                                </li>
+                                {tripDays >= 3 ? <li><p>3+ day discount</p><p>-$27.80</p></li> : null}
+                                <li>
+                                    <p>Total</p>
+                                    <p>{`$${tripTotalPrice * 1.08875}`}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="trip-info-cancellation">
+                            <i className="far fa-thumbs-up"></i>
+                            <div>
+                                <p>Free cancellation</p>
+                                <p>{`Full refund before ${cancellationDate(startDate)} in local time of the car`}</p>
+                            </div>
+                        </div>
+                        <button className="add-promo">Add promo code</button>
                     </div>
                 </div>
             </div>
