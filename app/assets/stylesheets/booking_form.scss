@@ -311,5 +311,53 @@
 }
 
 .checkout {
-    margin-top: 61px;
+    font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
+    padding: 111px 200px 20px 200px;
+    h1 {
+        font-size: 38px;
+        font-weight: 900;
+        letter-spacing: -.2px;
+    }
+    .free-cancellation {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        align-items: center;
+        i {
+            color: #593cfb;
+            margin-right: 16px;
+        }
+        > div {
+            flex-direction: column;
+            p:first-child {
+                font-size: 15px;
+                font-weight: 400;
+                color: rgb(18, 18, 20);
+            }
+            p:last-child {
+                font-size: 12px;
+                font-weight: 500;
+                color: #898989;
+            }
+        }
+    }
+}
+
+.checkout-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.trip-info {
+    .trip-info-images {
+        display: flex;
+        flex-direction: row;
+        img {
+            height: 137px;
+            width: 215px;
+        }
+        > div {
+            flex-direction: column;
+        }
+    }
 }
