@@ -30,21 +30,21 @@ const BookingForm = (props) => {
                             <h2>Extras</h2>
                             <div className="booking-form-extras-convenience">
                             </div>
-                            <button id="booking-form-extras-button">None</button>
+                            <div id="booking-form-extras-button">None</div>
                         </div>
                         <div className="booking-form-protection">
                             <h2>Protection plans</h2>
-                            <button id="booking-form-protection-button">Minimum</button>
+                            <div id="booking-form-protection-button">Minimum</div>
                         </div>
                         <div className="booking-form-payment">
                             <h2>Payment method</h2>
-                            <button id="booking-form-payment-button">MasterCard 1234</button>
+                            <div id="booking-form-payment-button">MasterCard 1234</div>
                         </div>
                         <div className="booking-form-insurance">
                             <h2>Your insurance info (optional)</h2>
-                            <button id="booking-form-insurance-button">Add</button>
+                            <div id="booking-form-insurance-button">Add</div>
                         </div>
-                        <p>{`You'll be able to message ${host.firstName} after checkout`}</p>
+                        <p>{`You'll be able to message ${host.firstName} after checkout.`}</p>
                         <div className="booking-form-tos">
                             <input type="checkbox" id="tos" required/>
                             <label htmlFor="tos"><p>I agree to pay the total shown and to the</p><a>Turo terms of service</a><p>and</p><a>cancellation policy</a></label>

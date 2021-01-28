@@ -348,7 +348,110 @@
     flex-direction: row;
 }
 
+.booking-form {
+    width: 590px;
+    min-width: 590px;
+    border-top: 1px solid lightgrey;
+    > p {
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 10px;
+        color: rgb(35, 31, 32);
+    }
+    .booking-form-tos {
+        margin-top: 16px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: row;
+    }
+ }
+
+ .booking-form-extras {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 700;
+        border-bottom: 1px solid lightgrey;
+        h2 {
+            color: #231f20;
+            padding: 15px 10px 15px 0;
+        }
+        div {
+            color: #593cfb;
+            margin: 15px 0 15px 0;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+}
+
+.booking-form-protection {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 700;
+        border-bottom: 1px solid lightgrey;
+        h2 {
+            color: #231f20;
+            padding: 15px 10px 15px 0;
+        }
+        div {
+            color: #593cfb;
+            margin: 15px 0 15px 0;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+}
+
+.booking-form-payment {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 700;
+        border-bottom: 1px solid lightgrey;
+        h2 {
+            color: #231f20;
+            padding: 15px 10px 15px 0;
+        }
+        div {
+            color: #593cfb;
+            margin: 15px 0 15px 0;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+}
+
+.booking-form-insurance {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 700;
+        border-bottom: 1px solid lightgrey;
+        h2 {
+            color: #231f20;
+            padding: 15px 10px 15px 0;
+        }
+        div {
+            color: #593cfb;
+            margin: 15px 0 15px 0;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+}
+
 .trip-info {
+    margin-left: 50px;
     .trip-info-images {
         display: flex;
         flex-direction: row;
