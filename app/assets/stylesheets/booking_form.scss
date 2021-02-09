@@ -358,11 +358,17 @@
         margin-top: 10px;
         color: rgb(35, 31, 32);
     }
-    .booking-form-tos {
+    > button {
         margin-top: 16px;
-        font-size: 16px;
-        display: flex;
-        flex-direction: row;
+        width: 132px;
+        height: 35px;
+        background-color: #593cfb;
+        text-align: center;
+        color: white;
+        font-weight: 700;
+        &:hover {
+            background-color: #2d17a5;
+        }
     }
  }
 
@@ -448,6 +454,30 @@
                 text-decoration: underline;
             }
         }
+}
+
+.booking-form-tos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+    label {
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap;
+        font-size: 13px;
+        font-weight: 500;
+        margin: 2px 0 0 10px;
+        a {
+            color: #593cfb;
+            font-weight: 600;
+            margin: 0 5px 0 5px;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .trip-info {
