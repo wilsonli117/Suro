@@ -47,7 +47,7 @@ const BookingForm = (props) => {
                         <p>{`You'll be able to message ${host.firstName} after checkout.`}</p>
                         <div className="booking-form-tos">
                             <input type="checkbox" id="tos" required/>
-                            <label htmlFor="tos"><p>I agree to pay the total shown and to the</p><a>Turo terms of service</a><p>and</p><a>cancellation policy</a></label>
+                            <label htmlFor="tos"><p>I agree to pay the total shown and to the</p><a>Turo terms of service</a><p>and</p><a>cancellation policy.</a></label>
                         </div>
                         <button>Book this trip</button>
                     </form>
