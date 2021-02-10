@@ -83,7 +83,7 @@ const BookingForm = (props) => {
                             </div>
                         </div>
                         <div className="trip-info-car-location">
-                            <p>Meeting Location</p>
+                            <p>MEETING LOCATION</p>
                             <p><i className="fas fa-car"></i> New York, NY 10018</p>
                         </div>
                         <div className="trip-info-daily-estimate">

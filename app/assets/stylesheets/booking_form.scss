@@ -553,8 +553,79 @@
     padding: 15px 0;
     .trip-info-schedule-start {
         flex-direction: column;
+        text-align: left;
+        p:first-child {
+            font-size: 16px;
+            font-weight: 900;
+        }
+        p:last-child {
+            color: rgb(137, 137, 137);
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+    .trip-info-schedule-icon {
+        width: 21px;
+        height: 10px;
+        background-image: image-url("scheduleicon.png");
+        background-position: 0 0;
+        background-size: 21px 20px;
+        margin: 20px auto;
     }
     .trip-info-schedule-end {
         flex-direction: column;
+        text-align: right;
+         p:first-child {
+            font-size: 16px;
+            font-weight: 900;
+        }
+        p:last-child {
+            color: rgb(137, 137, 137);
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
+
+.trip-info-car-location {
+    margin: 0 20px;
+    padding: 25px 0 0;
+    border-top: 1px solid #e6e6e6;
+    p:first-child {
+        font-size: 13px;
+        font-weight: 600;
+        color: #5d5d5d;
+    }
+    p:last-child {
+        font-weight: 500;
+    }
+    i {
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 20px;
+    }
+}
+
+.trip-info-daily-estimate {
+    margin: 0 20px;
+    padding: 25px 0 0;
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
+    div:last-child {
+        font-weight: 900; 
+    }
+}
+
+.trip-info-price-breakdown {
+    margin: 0 20px;
+    ul {
+        border: 1px solid rgb(231, 231, 232);
+        border-radius: 7px;
+        background-color: rgb(244, 244, 244);
+        padding: 15px 20px;
     }
 }
