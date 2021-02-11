@@ -67,7 +67,7 @@ const BookingForm = (props) => {
                             </div>
                             <div className="trip-info-car-rating">
                                 <p>5.0</p>
-                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star fa-xs"></i>
                                 <p>(2 trips)</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ const BookingForm = (props) => {
                             </div>
                         </div>
                         <div className="trip-info-car-location">
-                            <p>Meeting Location</p>
+                            <p>MEETING LOCATION</p>
                             <p><i className="fas fa-car"></i> New York, NY 10018</p>
                         </div>
                         <div className="trip-info-daily-estimate">
