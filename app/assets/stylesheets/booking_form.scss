@@ -623,9 +623,17 @@
 .trip-info-price-breakdown {
     margin: 0 20px;
     ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         border: 1px solid rgb(231, 231, 232);
         border-radius: 7px;
         background-color: rgb(244, 244, 244);
         padding: 15px 20px;
+        li {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 }
