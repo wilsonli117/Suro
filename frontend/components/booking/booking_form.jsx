@@ -11,7 +11,7 @@ const BookingForm = (props) => {
     const startDate = useSelector(state => state.ui.filters.dates.startDate);
     const endDate = useSelector(state => state.ui.filters.dates.endDate);
     const tripDays = daysBetween(startDate, endDate);
-    const tripTotalPrice = (car.price + 23.35) * tripDays;
+    const tripTotalPrice = ((car.price + 23.35) * tripDays).toFixed(2);
 
     return (
         <>
@@ -108,16 +108,16 @@ const BookingForm = (props) => {
                                 </li>
                                 <li>
                                     <p>Sales Tax</p>
-                                    <p>{`$${tripTotalPrice * .08875}`}</p>
+                                    <p>{`$${(tripTotalPrice * .08875).toFixed(2)}`}</p>
                                 </li>
                                 <li className="break-down-miles">
                                     <p>{`${tripDays * 200} total miles`}</p>
                                     <p>FREE</p>
                                 </li>
-                                {tripDays >= 3 ? <li><p>3+ day discount</p><p>-$27.80</p></li> : null}
+                                {tripDays >= 3 ? <li className="break-down-discount"><p>3+ day discount</p><p>-$27.80</p></li> : null}
                                 <li>
                                     <p>Total</p>
-                                    <p>{`$${tripTotalPrice * 1.08875}`}</p>
+                                    <p>{`$${(tripTotalPrice * 1.08875).toFixed(2)}`}</p>
                                 </li>
                             </ul>
                         </div>
@@ -128,7 +128,9 @@ const BookingForm = (props) => {
                                 <p>{`Full refund before ${cancellationDate(startDate)} in local time of the car`}</p>
                             </div>
                         </div>
-                        <button className="add-promo">Add promo code</button>
+                        <div className="trip-info-promo">
+                            <button className="add-promo">Add promo code</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -311,8 +311,11 @@
 }
 
 .checkout {
+    width: 940px;
     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-    padding: 111px 200px 20px 200px;
+    padding-top: 111px;
+    margin-left: auto;
+    margin-right: auto;
     h1 {
         font-size: 38px;
         font-weight: 900;
@@ -333,11 +336,15 @@
                 font-size: 15px;
                 font-weight: 400;
                 color: rgb(18, 18, 20);
+                line-height: 24px;
+                letter-spacing: .2px;
             }
             p:last-child {
                 font-size: 12px;
                 font-weight: 500;
-                color: #898989;
+                color: rgb(137, 137, 137);
+                line-height: 16px;
+                letter-spacing: .2px;
             }
         }
     }
@@ -483,6 +490,7 @@
 .trip-info {
     margin-left: 50px;
     width: 300px;
+    min-width: 300px;
     border: 1px solid #e6e6e6;
     border-radius: 6px;
 }
@@ -634,6 +642,66 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            p:first-child {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
+        li:last-child {
+            cursor: text;
+            font-weight: 900;
+            p:first-child {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.break-down-miles p:last-child {
+    color: rgb(14, 134, 92);
+}
+
+.break-down-discount p:last-child {
+    color: rgb(14, 134, 92);
+}
+
+.trip-info-cancellation {
+    margin: 0 20px;
+    padding: 25px 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    i {
+        color: #593cfb;
+        margin-right: 16px;
+    }
+    > div {
+        flex-direction: column;
+        p:first-child {
+            font-size: 15px;
+            font-weight: 400;
+            color: rgb(18, 18, 20);
+            line-height: 24px;
+            letter-spacing: .2px;
+        }
+        p:last-child {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgb(137, 137, 137);
+            line-height: 16px;
+            letter-spacing: .2px;
+        }
+    }
+}
+
+.trip-info-promo {
+    margin: 0 20px;
+    padding: 15px 0 27px;
+    button {
+        color: #593cfb;
+        font-weight: 700;
+    
     }
 }
