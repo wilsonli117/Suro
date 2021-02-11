@@ -114,7 +114,7 @@ const BookingForm = (props) => {
                                     <p>{`${tripDays * 200} total miles`}</p>
                                     <p>FREE</p>
                                 </li>
-                                {tripDays >= 3 ? <li><p>3+ day discount</p><p>-$27.80</p></li> : null}
+                                {tripDays >= 3 ? <li className="break-down-discount"><p>3+ day discount</p><p>-$27.80</p></li> : null}
                                 <li>
                                     <p>Total</p>
                                     <p>{`$${(tripTotalPrice * 1.08875).toFixed(2)}`}</p>
@@ -128,7 +128,9 @@ const BookingForm = (props) => {
                                 <p>{`Full refund before ${cancellationDate(startDate)} in local time of the car`}</p>
                             </div>
                         </div>
-                        <button className="add-promo">Add promo code</button>
+                        <div className="trip-info-promo">
+                            <button className="add-promo">Add promo code</button>
+                        </div>
                     </div>
                 </div>
             </div>
