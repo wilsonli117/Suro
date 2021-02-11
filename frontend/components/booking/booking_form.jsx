@@ -11,7 +11,7 @@ const BookingForm = (props) => {
     const startDate = useSelector(state => state.ui.filters.dates.startDate);
     const endDate = useSelector(state => state.ui.filters.dates.endDate);
     const tripDays = daysBetween(startDate, endDate);
-    const tripTotalPrice = (car.price + 23.35) * tripDays;
+    const tripTotalPrice = ((car.price + 23.35) * tripDays).toFixed(2);
 
     return (
         <>
@@ -108,7 +108,7 @@ const BookingForm = (props) => {
                                 </li>
                                 <li>
                                     <p>Sales Tax</p>
-                                    <p>{`$${tripTotalPrice * .08875}`}</p>
+                                    <p>{`$${(tripTotalPrice * .08875).toFixed(2)}`}</p>
                                 </li>
                                 <li className="break-down-miles">
                                     <p>{`${tripDays * 200} total miles`}</p>
@@ -117,7 +117,7 @@ const BookingForm = (props) => {
                                 {tripDays >= 3 ? <li><p>3+ day discount</p><p>-$27.80</p></li> : null}
                                 <li>
                                     <p>Total</p>
-                                    <p>{`$${tripTotalPrice * 1.08875}`}</p>
+                                    <p>{`$${(tripTotalPrice * 1.08875).toFixed(2)}`}</p>
                                 </li>
                             </ul>
                         </div>
