@@ -55,8 +55,10 @@ const BookingForm = (props) => {
                         <div className="trip-info-images">
                             <img src={`${car.photoURLs[0]}`}/>
                             <div>
-                                <i className="far fa-user-circle fa-2x"></i>
-                                <div>5.0<i className="fas fa-star"></i></div>
+                                <div className="trip-info-images-user">
+                                    <i className="far fa-user-circle fa-5x"></i>
+                                </div>
+                                <div className="trip-info-images-user-rating">5.0<i className="fas fa-star"></i></div>
                             </div>
                         </div>
                         <div className="trip-info-car">

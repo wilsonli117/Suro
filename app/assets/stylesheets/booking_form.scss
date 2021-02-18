@@ -380,87 +380,87 @@
  }
 
  .booking-form-extras {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 16px;
-        font-weight: 700;
-        border-bottom: 1px solid lightgrey;
-        h2 {
-            color: #231f20;
-            padding: 15px 10px 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid lightgrey;
+    h2 {
+        color: #231f20;
+        padding: 15px 10px 15px 0;
+    }
+    div {
+        color: #593cfb;
+        margin: 15px 0 15px 0;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
-        div {
-            color: #593cfb;
-            margin: 15px 0 15px 0;
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        }
+    }
 }
 
 .booking-form-protection {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 16px;
-        font-weight: 700;
-        border-bottom: 1px solid lightgrey;
-        h2 {
-            color: #231f20;
-            padding: 15px 10px 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid lightgrey;
+    h2 {
+        color: #231f20;
+        padding: 15px 10px 15px 0;
+    }
+    div {
+        color: #593cfb;
+        margin: 15px 0 15px 0;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
-        div {
-            color: #593cfb;
-            margin: 15px 0 15px 0;
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        }
+    }
 }
 
 .booking-form-payment {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 16px;
-        font-weight: 700;
-        border-bottom: 1px solid lightgrey;
-        h2 {
-            color: #231f20;
-            padding: 15px 10px 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid lightgrey;
+    h2 {
+        color: #231f20;
+        padding: 15px 10px 15px 0;
+    }
+    div {
+        color: #593cfb;
+        margin: 15px 0 15px 0;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
-        div {
-            color: #593cfb;
-            margin: 15px 0 15px 0;
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        }
+    }
 }
 
 .booking-form-insurance {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 16px;
-        font-weight: 700;
-        border-bottom: 1px solid lightgrey;
-        h2 {
-            color: #231f20;
-            padding: 15px 10px 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid lightgrey;
+    h2 {
+        color: #231f20;
+        padding: 15px 10px 15px 0;
+    }
+    div {
+        color: #593cfb;
+        margin: 15px 0 15px 0;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
         }
-        div {
-            color: #593cfb;
-            margin: 15px 0 15px 0;
-            &:hover {
-                cursor: pointer;
-                text-decoration: underline;
-            }
-        }
+    }
 }
 
 .booking-form-tos {
@@ -495,30 +495,58 @@
     border-radius: 6px;
 }
 
- .trip-info-images {
+.trip-info-images {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    img {
+        height: 137px;
+        width: 215px;
+        object-fit: contain;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+    > div {
         display: flex;
-        flex-direction: row;
-        padding: 20px;
-        img {
-            height: 137px;
-            width: 215px;
-            object-fit: contain;
-            box-sizing: border-box;
-            border-radius: 3px;
-        }
-        > div {
-            flex-direction: column;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: auto;
+        margin-left: -45px;
+        .trip-info-images-user {
+            display: flex;
             justify-content: center;
-            margin-left: -45px;
-            > div {
-                display: flex;
-                flex-direction: row;
-                box-sizing: border-box;
-                border-radius: 20px;
-                padding: 7px 15px;
-                box-shadow: 0 2px 5px 0 rgba(255,241,240,0);
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            background-color: white;
+            border-radius: 50px;
+            &:hover {
+                cursor: pointer;
             }
         }
+        .trip-info-images-user-rating {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 20px;
+            padding: 7px 15px;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,13%);
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: .2px;
+            margin-top: -15px;
+            i {
+                color: #593cfb;
+                margin: 0 0 3px 5px;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .trip-info-car {
@@ -550,6 +578,7 @@
         i {
             color: #593cfb;
             margin-right: 5px;
+            margin-left: 5px;
         }
     }
 }
