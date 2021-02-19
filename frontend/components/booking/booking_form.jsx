@@ -12,6 +12,7 @@ const BookingForm = (props) => {
     const endDate = useSelector(state => state.ui.filters.dates.endDate);
     const tripDays = daysBetween(startDate, endDate);
     const tripTotalPrice = ((car.price + 23.35) * tripDays).toFixed(2);
+    const threeDayDiscount = tripDays >= 3 ? 27.80 : 0;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -124,7 +125,7 @@ const BookingForm = (props) => {
                                     {tripDays >= 3 ? <li className="break-down-discount"><p>3+ day discount</p><p>-$27.80</p></li> : null}
                                     <li>
                                         <p>Total</p>
-                                        <p>{`$${(tripTotalPrice * 1.08875).toFixed(2)}`}</p>
+                                        <p>{`$${(tripTotalPrice * 1.08875).toFixed(2) - threeDayDiscount}`}</p>
                                     </li>
                                 </ul>
                             </div>
