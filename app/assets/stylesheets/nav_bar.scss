@@ -277,6 +277,7 @@ ul[class*="dropdown"] {
     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
     font-size: 16px;
     background-color: white;
+    border-bottom: 1px solid rgb(238, 238, 238);
     .logo {
         display: flex;
         justify-content: center;
@@ -399,7 +400,6 @@ ul[class*="dropdown"] {
     z-index: 2;
     display: flex;
     justify-content: flex-start;
-    border-top: 1px solid rgb(238, 238, 238);
     box-shadow: 0px 5px 10px -5px rgba(230,230,230,1);
     button {
         display: flex;
