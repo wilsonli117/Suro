@@ -34,7 +34,7 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        
+       
         if (this.props.location.pathname.includes("/cars") && (this.props.location.pathname !== prevProps.location.pathname)) {
             const searchbox = document.getElementById('index-nav-where')
             
@@ -245,7 +245,7 @@ class NavBar extends React.Component {
         if (!this.props.currentUser) {
             
             return (
-                <nav className={this.props.location.pathname.includes('/cars/') ? "no-login-nav-bar sticky" : "no-login-nav-bar"}>
+                <nav className={this.props.location.pathname.includes('/cars/') && !this.props.location.pathname.includes('checkout') ? "no-login-nav-bar sticky" : "no-login-nav-bar"}>
                     <div>
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro"/></Link>
                         {this.props.location.pathname.includes('/cars/') ? 
@@ -276,7 +276,7 @@ class NavBar extends React.Component {
             )
         } else {
             return (
-                <nav className={this.props.location.pathname.includes('/cars/') ? "login-nav-bar sticky" : "login-nav-bar"}>
+                <nav className={this.props.location.pathname.includes('/cars/') && !this.props.location.pathname.includes('checkout') ? "login-nav-bar sticky" : "login-nav-bar"}>
                     <div>
                         <Link className="logo" to="/"><img src={window.logoURL} alt="Suro" /></Link>
                         {this.props.location.pathname.includes('/cars/') ?
