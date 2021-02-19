@@ -310,10 +310,14 @@
     }
 }
 
+.checkout-border {
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
 .checkout {
     width: 940px;
     font-family: Avenir,Helvetica Neue,Helvetica,sans-serif;
-    padding-top: 111px;
+    padding-top: 50px;
     margin-left: auto;
     margin-right: auto;
     h1 {
