@@ -11,6 +11,9 @@ class Api::BookingsController < ApplicationController
     end
 
     def create
+        booking_params["start_date"] = DateTime.parse(booking_params["start_date"])
+        booking_params["end_date"] = DateTime.parse(booking_params["end_date"])
+
         @booking = Booking.new(booking_params)
 
         if @booking.save

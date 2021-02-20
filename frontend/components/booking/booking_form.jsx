@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import Footer from '../splash/footer';
 import { cancellationDate, checkoutDateFormat, checkoutTimeFormat, daysBetween } from '../../util/date_util';
 import { makeModelFormat } from '../../util/car_util';  
+import { createbooking } from '../../actions/booking_actions';
 
 const BookingForm = (props) => {
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.session.id);
     const carId = props.match.params.carId;
     const car = useSelector(state => state.entities.cars[carId]);
     const host = useSelector(state => state.entities.users[car.ownerId]);
@@ -17,6 +20,12 @@ const BookingForm = (props) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handleSubmit = (e) => {
+        debugger;
+        e.preventDefault();
+        dispatch(createbooking({ user_id : userId, car_id : carId, status: true, start_date: startDate, end_date: endDate }))
+    }
 
     return (
         <>  
@@ -31,7 +40,7 @@ const BookingForm = (props) => {
                         </div>
                     </div>
                     <div className="checkout-info">
-                        <form className="booking-form">
+                        <form className="booking-form" onSubmit={handleSubmit}>
                             <div className="booking-form-extras">
                                 <h2>Extras</h2>
                                 <div className="booking-form-extras-convenience">
