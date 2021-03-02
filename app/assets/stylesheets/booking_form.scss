@@ -563,14 +563,15 @@
     .trip-info-car-info {
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
         font-weight: 700;
         p:first-child {
-            font-size: 16px;
+            font-size: 21px;
             margin-right: 8px;
         }
         p:last-child {
-            font-size: 14px;
+            font-size: 16px;
+            margin-top: 3px;
         }
     }
     .trip-info-car-rating {

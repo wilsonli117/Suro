@@ -22,7 +22,6 @@ const BookingForm = (props) => {
     }, []);
 
     const handleSubmit = (e) => {
-        debugger;
         e.preventDefault();
         dispatch(createbooking({ user_id : userId, car_id : carId, status: true, start_date: startDate, end_date: endDate }))
     }
